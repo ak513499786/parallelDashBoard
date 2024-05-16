@@ -78,6 +78,29 @@
 .zoom::-webkit-scrollbar-track {
   background-color: transparent;
 }
+.candidates {
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent #888;
+  width: calc(100% - 447px);
+  border-radius: 7px;
+  height: calc(100vh - 267px);
+  padding: 29px 43.43px 29px 22px;
+  background-color: white;
+}
+.candidates::-webkit-scrollbar {
+  width: 20px !important;
+}
+.candidates::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.candidates::-webkit-scrollbar-track {
+  background-color: transparent;
+}
 .rank {
   overflow-y: auto;
   overflow-x: hidden;
@@ -98,4 +121,62 @@
 }
 .rank::-webkit-scrollbar-track {
   background-color: transparent;
+}
+@media only screen and (max-width: 1440px) {
+  .candidates {
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent #888;
+    width: 873px;
+    border-radius: 7px; 
+    left: calc(50% - 436px);
+    top: 140px;
+    height: calc(100vh - 267px);
+    padding: 29px 43.43px 29px 22px;
+    background-color: white;
+    z-index: 50;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .candidates {
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent #888;
+    width: calc(100% - 120px);
+    border-radius: 7px; 
+    left: 60px;
+    top: 140px;
+    height: calc(100vh - 267px);
+    padding: 29px 43.43px 29px 22px;
+    background-color: white;
+    z-index: 50;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .scroll {
+    width: 100%;
+    margin-top: 33.6px;
+  }
+  .candidates {
+    width: calc(100% - 80px);
+    left: 40px;
+    top: 5vh;
+    height: 90vh;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .learn {
+    height: 341.5px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .candidates {
+    width: calc(100% - 40px);
+    left: 20px;
+    top: 5vh;
+    padding: 20px;
+    height: 90vh;
+  }
 }

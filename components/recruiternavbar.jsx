@@ -3,7 +3,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useRef, useState, useEffect } from "react";
 
-export default function Navbar() {
+export default function RecruiterNavbar() {
   const [openHamburger, setOpenHamburger] = useState(false);
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
@@ -94,21 +94,13 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="px-[60px] sticky top-0 z-[9999999999] relative max-md:px-[40px] max-sm:px-[20px] flex justify-between pt-[40px] pb-[20px] bg-white shadow-nav">
+      <nav className="px-[60px] sticky top-0 z-[49] relative max-md:px-[40px] max-sm:px-[20px] flex justify-between pt-[40px] pb-[20px] bg-white shadow-nav">
         <Image src="/Frame 96.svg" width={120.92} height={22} />
-        <div className="gap-[36px] max-smallerphone:gap-[10px] items-center hidden max-hamburger:flex">
-          <Link
-            className={openHamburger ? "hidden" : ""}
-            href={"/notifications"}
-          >
-            <Image src="/c.svg" width={24} height={24} />
-          </Link>
-          <div
-            ref={Hamburger}
-            onClick={handleHamburger}
-            className="h-[20px] max-smallerphone:w-[60px] max-smallerphone:h-[15px] w-[80px] hidden max-hamburger:block border-t-[2px] border-b-[2px] border-black curser-pointer"
-          ></div>
-        </div>
+        <div
+          ref={Hamburger}
+          onClick={handleHamburger}
+          className="h-[20px] max-smallerphone:w-[60px] max-smallerphone:h-[15px] w-[80px] hidden max-hamburger:block border-t-[2px] border-b-[2px] border-black curser-pointer"
+        ></div>
         <div
           ref={Cross}
           onClick={handleHamburgerClose}
@@ -127,42 +119,42 @@ export default function Navbar() {
         >
           <ul className="list-none max-hamburger:flex-col flex max-hamburger:gap-[20px] gap-[32px]">
             <Link
-              href={"/dashboard"}
+              href={"/recruiter/candidates"}
               ref={Menuitems1}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Dashboard
+              Candidates
             </Link>
             <Link
-              href={"/learn"}
+              href={"/recruiter/applicants"}
               ref={Menuitems2}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Learn
+              Applicants
             </Link>
             <Link
-              href={"/ranking"}
+              href={"/recruiter/positions"}
               ref={Menuitems3}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Ranking
-            </Link>
-            <Link
-              href={"/jobs"}
-              ref={Menuitems4}
-              className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
-            >
-              Jobs
+              Positions
             </Link>
           </ul>
-          <div className="flex gap-[32px]">
-            <Link
-              ref={Menuitems5}
-              className="max-hamburger:hidden"
-              href={"/notifications"}
-            >
-              <Image src="/c.svg" width={24} height={24} />
-            </Link>
+          <div className="flex max-hamburger:flex-col max-hamburger:items-end gap-[32px]">
+            <div ref={Menuitems5} className="flex gap-[8px]">
+              <Image
+                src="/call.svg"
+                className="max-hamburger:w-[27px]"
+                width={19.66}
+                height={19.66}
+              />
+              <Link
+                href={"/recruiter/support"}
+                className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
+              >
+                Support{" "}
+              </Link>
+            </div>
             <div ref={Menuitems6} className="flex gap-[8px]">
               <Image
                 src="/codicon_account.svg"
@@ -171,7 +163,7 @@ export default function Navbar() {
                 height={24}
               />
               <Link
-                href={"/profile"}
+                href={"/recruiter/profile"}
                 className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
               >
                 My Account

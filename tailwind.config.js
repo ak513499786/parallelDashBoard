@@ -14,7 +14,15 @@ module.exports = {
       },
       boxShadow: {
         'nav' : '0px 4px 25.5px 0px #0000001A'
-      }
+      },
+      screens: {
+        'hamburger': '980px',
+        'bigscreen': '1360px',
+        'biggerscreen': '1441px',
+        'smalllaptop': '1186px',
+        'smallphone': '380px',
+        'smallerphone': '368px',
+      },
     },
   },
   plugins: [],
