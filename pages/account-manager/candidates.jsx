@@ -1,0 +1,601 @@
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import style from "@/styles/style.module.css";
+import ManagerNavbar from "@/components/managerNavbar";
+
+export default function Jobs() {
+  const [viewprofile, setviewprofile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [item, setItem] = useState("Select role type");
+
+  return (
+    <>
+      <ManagerNavbar />
+      <main className="px-[59.5px] pt-[41.36px] max-md:px-[40px] pb-[50px] max-sm:px-[20px]">
+        <h1 className="text-[20px] mb-[32px] leading-[26px] pl-[0.5px] font-semibold">
+          Candidates{" "}
+        </h1>
+        <div className="flex flex-col">
+          <div className="mb-[18px] bg-white pl-[19.08px] max-sm:flex-col max-sm:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[16px] max-sm:gap-[8px] items-center justify-between">
+            <div className="flex gap-[24px] justify-between max-md:gap-[8px] max-sm:flex-col max-hamburger:justify-between max-hamburger:w-full items-center">
+              <Image
+                src="/drop.svg"
+                className={
+                  isOpen
+                    ? "absolute max-sm:left-auto max-lg:left-[179px] rotate-180 h-[10.75px] w-[19.98px] max-sm:right-[40px] left-[259px] cursor-pointer top-[35.08px]"
+                    : "absolute max-sm:left-auto max-lg:left-[179px] h-[10.75px] w-[19.98px] left-[259px] cursor-pointer max-sm:right-[35px] max-smallerphone:right-[25px] top-[35.08px]"
+                }
+                width={19.98}
+                height={10.75}
+              />
+              <div
+                onClick={() => setIsOpen(!isOpen)}
+                className="pl-[15.71px] max-sm:w-full w-[278px] max-lg:w-[198px] h-[48px] bg-white cursor-pointer border-[1px] border-black rounded-[6px] flex items-center max-smallerphone:text-base text-[14px] leading-[16.8px]"
+              >
+                <p className=" max-sm:w-[95%]">{item}</p>
+              </div>{" "}
+              {isOpen && (
+                <div className="bg-white absolute max-md:w-[90%] border-[1px] border-black top-[63px] z-[22222] cursor-pointer">
+                  <ul>
+                    <li
+                      onClick={() => setItem("Frontend Developer")}
+                      className="pl-[15.71px] max-sm:px-[15px] max-sm:w-full w-[274.5px] max-lg:w-[179px] cursor-pointer mt-[8px] pt-[11px] pb-[11px] text-[16px] leading-[19.2px]"
+                    >
+                      Frontend Developer
+                    </li>
+                    <li
+                      onClick={() => setItem("Data Analyst")}
+                      className="pl-[15.71px] max-sm:px-[15px] max-sm:w-full w-[274.5px] max-lg:w-[179px] cursor-pointer mt-[8px] pt-[11px] pb-[11px] text-[16px] leading-[19.2px]"
+                    >
+                      Data Analyst
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+            <input
+              type="search"
+              name=""
+              className="w-[323px] max-sm:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
+              placeholder="Search applicants"
+              id=""
+            />
+            <Image
+              src="/search.svg"
+              className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:top-[83px] max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[72px] absolute right-[36.92px]"
+              width={24}
+              height={24}
+            />
+          </div>
+          <div className="flex gap-[20px]">
+            <section
+              className={
+                viewprofile
+                  ? "flex gap-[20px] h-[calc(100vh-267px)] max-biggerscreen:h-auto overflow-scroll max-biggerscreen:overflow-normal max-biggerscreen:w-auto flex-wrap w-[427px]"
+                  : "flex gap-[20px] flex-wrap w-full"
+              }
+            >
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+              <div className="w-[427px] max-biggerscreen:w-[32%] max-smalllaptop:w-[48.3%] max-md:w-full max-smalllaptop:h-auto max-smalllaptop:pb-[80px] max-smallphone:pb-[30px] relative bg-[white] rounded-[5px] pt-[26px] pb-[21.61px] pr-[19.08px] pl-[18.92px]">
+                <div className="flex gap-[15px] mb-[19px] items-center">
+                  <div className="w-[53.39px] h-[53.39px] bg-[#D9D9D9] rounded-[100%]"></div>
+                  <div>
+                    <h1 className="text-[20px] leading-[24px]">
+                      Candidate name
+                    </h1>
+                    <p className="mt-[8px] text-[14px] leading-[16.8px]">
+                      MERN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Available to hire{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Experience{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
+                  </div>
+                  <div>
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
+                      Expected salary{" "}
+                    </p>
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      ₹ 6 - 8 LPA
+                    </h1>
+                  </div>
+                </div>
+                <div className="flex gap-[12px] mt-[30px] justify-end w-full">
+                  <button
+                    className="h-[37px] w-[107px] max-sm:w-[100px] max-smallphone:w-full bg-white border-[1px] border-[#000000] text-[#000000] rounded-[6px] text-[14px] leading-[16.8px]"
+                    onClick={() => setviewprofile(true)}
+                  >
+                    View profile{" "}
+                  </button>{" "}
+                </div>
+              </div>
+            </section>
+            <div
+              className={
+                viewprofile
+                  ? "top-0 max-biggerscreen:block hidden left-0 w-full h-[100%] z-[49] fixed top-0 left-0 bg-black opacity-30"
+                  : "hidden"
+              }
+            ></div>
+            <div className={viewprofile ? style.candidates : "hidden"}>
+              <Image
+                src="/close.svg"
+                className="cursor-pointer absolute right-[43.41px] max-sm:right-[20px]"
+                width={36.41}
+                height={36.41}
+                onClick={() => setviewprofile(false)}
+              />
+              <div className="flex max-sm:flex-col border-b-[1px] border-[#00000033] pb-[27px] mb-[22px] gap-[15px] mb-[19px] items-center">
+                <div className="w-[123.59px] h-[123.59px] bg-[#D9D9D9] rounded-[100%]"></div>
+                <div>
+                  <h1 className="text-[28px] leading-[33.6px] max-sm:text-center">
+                    Candidate name
+                  </h1>
+                  <p className="mt-[21px] max-sm:w-full max-sm:text-center max-hamburger:w-[210px] max-hamburger:mt-[14px] text-[14px] leading-[16.8px]">
+                    Bangalore, Karnataka | Fresher | Graduated in 2024
+                  </p>
+                  <div className="flex max-sm:justify-center mt-[21px] gap-[8px]">
+                    <Image
+                      src="/github.svg"
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                    <Image
+                      src="/linkedin.svg"
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex absolute max-sm:static right-[43.41px] max-md:top-[97px] top-[77.3px] gap-[7px]">
+                <p className="px-[9px] py-[5px] text-[#1C1C1C] font-semibold rounded-[27px] text-[12px] leading-[14.4px] bg-[#F6F6F6]">
+                  Recommended
+                </p>
+                <p className="px-[9px] py-[5px] text-[#18BE50] font-semibold rounded-[27px] text-[12px] leading-[14.4px] bg-[#F1FFF2]">
+                  80% match
+                </p>
+              </div>
+              <div className="flex mt-[12px] mb-[10px] pb-[20px] border-b-[1px] border-[#00000033] absolute max-sm:static right-[43.41px] top-[116px] max-md:top-[132px] gap-[14px]">
+                <button className="border-[1px] border-black bg-white rounded-[6px] w-[54px] h-[36px] flex justify-center items-center">
+                  <Image
+                    src="/share.svg"
+                    className="cursor-pointer"
+                    width={24}
+                    height={24}
+                  />
+                </button>
+                <button className="h-[37px] w-[152px] flex justify-center items-center gap-[4px] max-smallphone:w-full max-sm:w-[170px] bg-black text-white rounded-[6px] text-[14px] leading-[16.8px]">
+                  Download Resume{" "}
+                </button>
+              </div>
+              <div className="flex gap-[15px] max-hamburger:flex-col">
+                <div className="w-[calc(100%-335px)] max-hamburger:w-full">
+                  <div className="border-[1px] border-[#00000033] h-[459px] rounded-[8px] pl-[16.97px] pt-[15.73px]">
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      Core skills
+                    </h1>
+                  </div>
+                  <div className="border-[1px] border-[#00000033] h-[166px] rounded-[8px] pl-[16.97px] pt-[15.73px] mt-[14px]">
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      Contact Details{" "}
+                    </h1>
+                  </div>
+                </div>
+                <div className="w-[320px] max-hamburger:w-full">
+                  <div className="border-[1px] border-[#00000033] h-[313px] rounded-[8px] pl-[16.97px] pt-[15.73px]">
+                    <h1 className="text-[16px] leading-[19.2px]">Profile </h1>
+                  </div>
+                  <div className="border-[1px] border-[#00000033] h-[313px] rounded-[8px] mt-[14px] pl-[16.97px] pt-[15.73px]">
+                    <h1 className="text-[16px] leading-[19.2px]">
+                      Work Experience{" "}
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}

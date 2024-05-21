@@ -477,7 +477,6 @@ export default function Profile() {
               </div>
             </div>{" "}
           </div>
-
           <button className="w-[152px] h-[43px] max-sm:w-full mt-[31px] bg-black text-white rounded-[6px] text-[16px] leading-[19.2px]">
             Save profile{" "}
           </button>

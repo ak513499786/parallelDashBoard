@@ -174,19 +174,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -276,19 +276,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -378,19 +378,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -480,19 +480,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -582,19 +582,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -684,19 +684,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -786,19 +786,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -888,19 +888,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -990,19 +990,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -1092,19 +1092,19 @@ export default function Jobs() {
                 </div>
                 <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Available to hire{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Immediate</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Experience{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">Fresher</h1>
                   </div>
                   <div>
-                    <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                    <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                       Expected salary{" "}
                     </p>
                     <h1 className="text-[16px] leading-[19.2px]">
@@ -1322,7 +1322,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1330,7 +1330,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1338,7 +1338,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1381,7 +1381,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1389,7 +1389,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1397,7 +1397,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1440,7 +1440,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1448,7 +1448,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1456,7 +1456,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1499,7 +1499,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1507,7 +1507,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1515,7 +1515,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1558,7 +1558,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1566,7 +1566,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1574,7 +1574,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1617,7 +1617,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1625,7 +1625,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1633,7 +1633,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1676,7 +1676,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1684,7 +1684,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1692,7 +1692,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1735,7 +1735,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1743,7 +1743,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1751,7 +1751,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1794,7 +1794,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1802,7 +1802,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1810,7 +1810,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1853,7 +1853,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1861,7 +1861,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1869,7 +1869,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1909,7 +1909,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1917,7 +1917,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1925,7 +1925,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1965,7 +1965,7 @@ export default function Jobs() {
                     </div>
                     <div className="flex gap-[33px] max-hamburger:gap-[20px] max-smallerphone:w-[250px] max-smallphone:flex-wrap">
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Available to hire{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1973,7 +1973,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Experience{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">
@@ -1981,7 +1981,7 @@ export default function Jobs() {
                         </h1>
                       </div>
                       <div>
-                        <p className="mb-[8px] text-[12px] leading-[14.4px]">
+                        <p className="mb-[8px] text-[12px] leading-[14.4px] opacity-80">
                           Expected salary{" "}
                         </p>
                         <h1 className="text-[16px] leading-[19.2px]">

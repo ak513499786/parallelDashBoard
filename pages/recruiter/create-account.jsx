@@ -52,7 +52,7 @@ export default function Signup() {
       setotpcheck(false);
     } else {
       setotpcheck(true);
-      router.push('/recruiter/login')
+      router.push("/recruiter/login");
     }
   };
   const emailcheck = () => {
@@ -157,7 +157,7 @@ export default function Signup() {
                 onClick={BackToSignUp}
                 className="absolute right-0 h-[20px] cursor-pointer border-b-[2px] border-black"
               >
-                Use a different number{" "}
+                Use a different email{" "}
               </strong>
               <div
                 className={
