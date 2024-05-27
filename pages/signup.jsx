@@ -44,14 +44,6 @@ export default function Signup() {
     setSignUp(true);
     setotpcheck(true);
   };
-  const Verify = () => {
-    if (otp === "") {
-      setotpcheck(false);
-    } else {
-      setotpcheck(true);
-      setActiveAndSection("whatsapp");
-    }
-  };
   const emailcheck = () => {
     if (email === "") {
       setemailchecker(false);
@@ -70,13 +62,28 @@ export default function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      phonenumber,
-    };
+    const data = { phonenumber };
+
     try {
       const response = await axios.post("/api/signup", data);
       console.log("Data sent successfully:", response.data);
-      setSignUp(false)
+      setSignUp(false);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    const data = { phonenumber };
+    try {
+      const response = await axios.post("/api/credentials-generator", data);
+      console.log("Data sent successfully:", response.data);
+      if (otp === "") {
+        setotpcheck(false);
+      } else {
+        setotpcheck(true);
+        setActiveAndSection("whatsapp");
+      }
     } catch (error) {
       console.error("Error sending data:", error);
     }
@@ -168,7 +175,7 @@ export default function Signup() {
                 }
               />
               <button
-                onClick={Verify}
+                onClick={handleSubmit2}
                 className="w-full mt-[8px] pt-[19.93px] pb-[20.07px] bg-black text-white rounded-[6px] text-[17.95px] leading-[21.54px]"
               >
                 Verify OTP

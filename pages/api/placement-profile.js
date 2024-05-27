@@ -1,4 +1,4 @@
-import pool from "./pool";
+import pool from "@/pages/api/pool";
 
 const insertDataIntoTable = () => async (req, res) => {
   try {
@@ -8,7 +8,7 @@ const insertDataIntoTable = () => async (req, res) => {
       College_Name,
       College_Email,
       Designation,
-    };
+    };  
 
     pool.query("INSERT INTO user_profile set ?", data, (err, rows, fields) => {
       if (err) {

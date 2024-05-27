@@ -9,7 +9,7 @@ const insertDataIntoTable = () => async (req, res) => {
 
     pool.query("INSERT INTO userinfo set ?", data, (err, rows, fields) => {
       if (err) {
-        console.error(err);
+        console.error(err); 
       } else {
         console.log(rows);
         res.send("added");
