@@ -127,25 +127,25 @@ export default function Navbar() {
         >
           <ul className="list-none max-hamburger:flex-col flex max-hamburger:gap-[20px] gap-[32px]">
             <Link
-              href={"/dashboard"}
+              href={"/class"}
               ref={Menuitems1}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Dashboard
+              Class
             </Link>
             <Link
-              href={"/learn"}
+              href={"/assignment"}
               ref={Menuitems2}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Learn
+              Assignment
             </Link>
             <Link
-              href={"/ranking"}
+              href={"/support"}
               ref={Menuitems3}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Ranking
+              Support
             </Link>
             <Link
               href={"/jobs"}

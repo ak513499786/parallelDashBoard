@@ -17,7 +17,24 @@ input[type="radio"] {
   border-radius: 50%;
   outline: 2px solid #000;
 }
-
+.mixblend {
+  mix-blend-mode: color-dodge;
+}
+.radical-circle {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #1bd44f 0%,
+    rgba(2, 123, 254, 0.4) 100%
+  );
+  position: absolute;
+  z-index: -1;
+  width: 1840.27px;
+  height: 1840.27px;
+  top: -440.63px;
+  left: 324.34px;
+  gap: 0px;
+  opacity: 0.4;
+}
 input[type="radio"]:checked {
   background-color: black;
   border: 3px solid white;
@@ -31,7 +48,9 @@ input[type="checkbox"] {
   border-radius: 2px;
   border: 2px solid #000;
 }
-
+input::placeholder{
+  color: #00000099;
+}
 input[type="checkbox"]:checked {
   background-color: black;
 }

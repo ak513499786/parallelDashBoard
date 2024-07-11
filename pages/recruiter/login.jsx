@@ -195,7 +195,6 @@ export default function Login() {
               </button>
             </div>
           )}
-
           <div className="text-[14px] leading-[16.8px] w-full text-center">
             By signing up you are agreeing to our{" "}
             <strong

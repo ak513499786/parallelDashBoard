@@ -1,13 +1,27 @@
 import Navbar from "@/components/navbar";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Profile() {
   const [Name, setName] = useState("");
-  const [UserName, setUserName] = useState("");
+  const [phonenumber, setphonenumber] = useState("");
+  const [userName, setUserName] = useState("");
   const [College, setCollege] = useState("");
-  const [Location, setLocation] = useState("");
+  const [allLocation, setallLocation] = useState(false);
+  const [remote, setremote] = useState(false);
+  const [bangalore, setbangalore] = useState(false);
+  const [hyderabad, sethyderabad] = useState(false);
+  const [chennai, setchennai] = useState(false);
+  const [delhi, setdelhi] = useState(false);
+  const [mumbai, setmumbai] = useState(false);
+  const [gurgaon, setgurgaon] = useState(false);
+  const [ahmedabad, setahmedabad] = useState(false);
+  const [noida, setnoida] = useState(false);
+  const [pune, setpune] = useState(false);
+  const [nashik, setnashik] = useState(false);
+  const [chattisgarh, setchattisgarh] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedYear, setSelectedYear] = useState("");
   const currentYear = new Date().getFullYear();
@@ -19,6 +33,73 @@ export default function Profile() {
     (_, index) => currentYear - index
   );
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/viewprofiledata");
+        const data = response.data;
+        if (data.length > 0) {
+          const lastData = data[data.length - 1];
+          setPhonenumber(lastData.phonenumber);
+          setName(lastData.Name);
+          setUserName(lastData.userName);
+          setCollege(lastData.College);
+          setAllLocation(lastData.allLocation);
+          setRemote(lastData.remote);
+          setBangalore(lastData.bangalore);
+          setHyderabad(lastData.hyderabad);
+          setChennai(lastData.chennai);
+          setDelhi(lastData.delhi);
+          setMumbai(lastData.mumbai);
+          setGurgaon(lastData.gurgaon);
+          setAhmedabad(lastData.ahmedabad);
+          setNoida(lastData.noida);
+          setPune(lastData.pune);
+          setNashik(lastData.nashik);
+          setChattisgarh(lastData.chattisgarh);
+          setSelectedYear(lastData.selectedYear);
+          setSelectedPassingYear(lastData.selectedPassingYear);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      Name,
+      userName,
+      College,
+      selectedYear,
+      selectedPassingYear,
+      allLocation,
+      remote,
+      bangalore,
+      hyderabad,
+      chennai,
+      delhi,
+      mumbai,
+      gurgaon,
+      ahmedabad,
+      noida,
+      pune,
+      nashik,
+      chattisgarh,
+      phonenumber,
+    };
+
+    try {
+      const response = await axios.post("/api/profile", data);
+      console.log("Data sent successfully:", response.data);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
