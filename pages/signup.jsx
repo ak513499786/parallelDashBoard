@@ -42,7 +42,7 @@ export default function Signup() {
             </p>
             <input
               id="numberedInput"
-              type="number"
+              type="email"
               onChange={(e) => setemail(e.target.value)}
               placeholder="Enter your email"
               className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
