@@ -8,26 +8,31 @@ import jwt from "jsonwebtoken";
 
 
 
-export async function handler(req, res){
+export default async function handler(req, res){
     try {
         await connect();
 
         
-        const reqBody = await req.body()
+        const reqBody = await req.body;
         const {email, password} = reqBody;
         console.log(reqBody);
 
         //check if user exists
         const user = await User.findOne({email})
         if(!user){
-            return res.json({error: "User does not exist"}, {status: 400})
+            return res.json({error: "User does not exist"}, {status: 200})
         }
 
-        //check if password is correct
-        const validPassword = await bcryptjs.compare(password, user.password)
-        if(!validPassword){
-            return res.json({error: "Invalid password"}, {status:400})
+        const Mypassword = await User.findOne({password})
+        if(!Mypassword){
+            return res.json({error: "User does not exist"}, {status: 200})
         }
+        
+        //check if password is correct
+        // const validPassword = await bcryptjs.compare(password, user.password)
+        // if(!validPassword){
+        //     return res.json({error: "Invalid password"}, {status:400})
+        // }
 
         //create token data
         const tokenData = {
@@ -44,6 +49,7 @@ export async function handler(req, res){
         const response = res.json({
             message: "Login successful",
             success: true,
+            tokendata: token,
         })
         res.cookies.set("token", token, {
             httpOnly: true,

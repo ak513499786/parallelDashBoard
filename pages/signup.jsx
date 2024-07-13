@@ -26,11 +26,17 @@ export default function Signup() {
 
     e.preventDefault();
     try {
-      const response = await axios.post("/api/users/signup/route", {email, password})
+      console.log("before response");
+      const response = await axios.post("/api/users/signup/route", {email, password},)
+      console.log("after response");
     
-      if (!response.ok) {
-        throw new Error(`Signup failed: ${response.statusText}`);
+      if (response.data.success) {
+         console.log("registration successfull");        
       }
+      else {
+        console.log("registration failed");
+      }
+      
     
       //const data = await response.json();
       console.log("Signup success", response.data);
