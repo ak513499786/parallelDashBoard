@@ -1,4 +1,6 @@
 "use client";
+
+
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -6,8 +8,12 @@ import axios from "axios";
 import { toast } from 'react-hot-toast';
 import { useRouter } from "next/navigation";
 
+
+
+
 export default function Signup() {
   const router = useRouter();
+  
 
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
@@ -16,7 +22,25 @@ export default function Signup() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
+    
+
     e.preventDefault();
+    try {
+      const response = await axios.post("/api/users/signup/route", {email, password})
+    
+      if (!response.ok) {
+        throw new Error(`Signup failed: ${response.statusText}`);
+      }
+    
+      //const data = await response.json();
+      console.log("Signup success", response.data);
+      router.push('/login');
+    } catch (error) {
+      console.log("Signup failed", error.message);
+      toast.error(error.message);
+      
+
+    }
     if (email === "") {
       setEmailEntered(true);
       return;
@@ -26,14 +50,8 @@ export default function Signup() {
       return;
     }
 
-    try {
-      const response = await axios.post("/pages/api/users/signup/route", { email, password });
-      console.log("Signup success", response.data);
-      router.push('/login');
-    } catch (error) {
-      console.log("Signup failed", error.message);
-      toast.error(error.message);
-    }
+    
+    
   };
 
   return (

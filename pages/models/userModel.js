@@ -3,29 +3,36 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     
-    trim: true
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    trim: true
+    trim: true,
+    match: [
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+      'Please provide a valid email address',
+    ],
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   role: {
     type: String,
-    required: true
+    
   },
   forgotPasswordToken: String,
   forgotPasswordTokenExpiry: Date,
   verifyToken: String,
+  verifyTokenExpiry: Date,
 });
 
-module.exports = mongoose.models.User || mongoose.model('users', userSchema);
+const User = mongoose.models.users || mongoose.model("User", userSchema);
+
+export default User;

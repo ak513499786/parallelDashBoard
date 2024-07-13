@@ -1,15 +1,43 @@
+"use client"
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import {toast} from "react-hot-toast"
 
 export default function Login() {
+  const router = useRouter();
   const [visible, setvisible] = useState(false);
   const [email, setemail] = useState("");
   const [emailentered, setemailentered] = useState(false);
   const [passwordentered, setpasswordentered] = useState(false);
   const [password, setpassword] = useState("");
+
+
   const handleSubmit = async (e) => {
+
+    try {
+      const response = await axios.post('/api/users/login/route', {email, password})
+      console.log(response);
+
+      if(!response.ok){
+        throw new Error(`Signup failed: ${response.statusText}`);
+      }
+      console.log("Signup success", response.data);
+      router.push('/onboarding');
+      
+    } catch (error) {
+      console.log("Signup failed", error.message );
+      toast.error(error.message)
+
+
+
+      
+    }
+
+
+
     e.preventDefault();
     if (email === "") {
       setemailentered(true);

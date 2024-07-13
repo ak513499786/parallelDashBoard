@@ -1,51 +1,49 @@
-import db from '../../../lib/db.js';
-import User from '../../../models/userModel.js';
+"use client"
 
-export default async function handler(req, res) {
-  const {method} = req;
-
-  await db();
-
-  switch (method) {
-    case 'POST':
-      try {
-        const reqBody = await User.create(req.body);
-        const {email, password} = reqBody;
-        console.log (reqBody)
-        res.status(201).json({ success: true, data: reqBody });
-
-        //check if user already exists
-        const user = await User.findOne({email})
-        if (user) {
-          return res.json({error: "User already exists"}, {status: 400})
-        }
-
-        //hashe password
-        const salt = await bcryptjs.genSalt(10)
-        const hashedPassword = await bcryptjs.hash(password, salt)
-
-        const newUser = new User ({
-          email,
-          password: hashedPassword
-        })
-
-        const savedUser = await newUser.save()
-        console.log(savedUser);
+import { connect } from '../../../lib/db';
+import User from '../../../models/userModel';
+import bcryptjs from 'bcrypt';
 
 
-        return res.json({message: "User created successfully",
-          success: true,
-          savedUser
-        })
+export default async function POST(req, res) {
+  //const { method } = req;
 
+  if (req.method !== 'POST') {
+    return res.status(400).json({ success: false, error: 'Invalid request method' });
+  }
 
+  try {
+    await connect();
+    
+    const { email, password } = req.body;
+    console.log("Request body", req.body);
 
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    default:
-      res.status(400).json({ success: false, error: "Invalid request method" });
-      break;
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
+    }
+
+    // Hash password
+    const salt = await bcryptjs.genSalt(10);
+    const hashedPassword = await bcryptjs.hash(password, salt);
+
+    // Create new user
+    const newUser = new User({
+      email,
+      password: hashedPassword,
+    });
+
+    const savedUser = await newUser.save();
+    console.log(savedUser);
+
+    return res.status(201).json({
+      message: 'User created successfully',
+      success: true,
+      data: savedUser
+    });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    return res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
