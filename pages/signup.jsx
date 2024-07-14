@@ -20,6 +20,8 @@ export default function Signup() {
   const [emailEntered, setEmailEntered] = useState(false);
   const [passwordEntered, setPasswordEntered] = useState(false);
   const [password, setPassword] = useState("");
+  const [userExists, setUserExists] = useState(false);
+
 
   const handleSubmit = async (e) => {
     
@@ -27,25 +29,29 @@ export default function Signup() {
     e.preventDefault();
     try {
       console.log("before response");
-      const response = await axios.post("/api/users/signup/route", {email, password},)
+    
+      const response = await axios.post("/api/users/signup/route", { email, password });
       console.log("after response");
     
       if (response.data.success) {
-         console.log("registration successfull");        
+        console.log("registration successful");
+        router.push('/login');
+      } else {
+        if (response.data.error === 'User already exists') {
+          console.log("User already exists");
+          setUserExists(true); // Update state if user exists
+
+          toast.error("User already exists toast");
+        } else {
+          console.log("registration failed");
+          toast.error("Registration failed");
+        }
       }
-      else {
-        console.log("registration failed");
-      }
-      
     
-      //const data = await response.json();
       console.log("Signup success", response.data);
-      router.push('/login');
     } catch (error) {
       console.log("Signup failed", error.message);
       toast.error(error.message);
-      
-
     }
     if (email === "") {
       setEmailEntered(true);
@@ -74,7 +80,7 @@ export default function Signup() {
             height={24}
           />
           <strong className="text-[25px] leading-[30px]">
-            {emailEntered
+            {userExists
               ? "An account with this email already exists. Would you like to log in?"
               : "Register to start upskilling right away!"}
           </strong>

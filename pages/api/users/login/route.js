@@ -8,41 +8,39 @@ import jwt from "jsonwebtoken";
 
 
 
-export default async function handler(req, res){
+export default async function handler(req, res) {
     try {
         await connect();
 
-        
-        const reqBody = await req.body;
-        const {email, password} = reqBody;
-        console.log(reqBody);
+        const { email, password } = req.body;
+        console.log(req.body);
 
-        //check if user exists
-        const user = await User.findOne({email})
-        if(!user){
-            return res.json({error: "User does not exist"}, {status: 200})
+        // Check if user exists
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ error: "User does not exist" });
         }
 
-        const Mypassword = await User.findOne({password})
-        if(!Mypassword){
-            return res.json({error: "User does not exist"}, {status: 200})
+        // Check if password is correct
+        const validPassword = await bcryptjs.compare(password, user.password);
+        if (!validPassword) {
+            return res.status(400).json({ error: "Invalid password" });
         }
-        
-        //check if password is correct
-        // const validPassword = await bcryptjs.compare(password, user.password)
-        // if(!validPassword){
-        //     return res.json({error: "Invalid password"}, {status:400})
-        // }
 
-        //create token data
+        //Notee:create token data by the user's id and email ````````
         const tokenData = {
             id: user._id,
             email: user.email
         }
+        
+        //'keep me signed' in token
+        // const tokenSignedIn = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: keepSignedIn ? '7d' : '1d' });
+
+        // res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=${keepSignedIn ? 7 * 24 * 60 * 60 : 24 * 60 * 60}`);
 
         //creting token
         const token = jwt.sign(tokenData, process.
-        env.TOKEN_SECRET, {expiresIn: "1d"})
+            env.TOKEN_SECRET, { expiresIn: "1d" })
         console.log("generated token", token);
 
 
@@ -57,14 +55,8 @@ export default async function handler(req, res){
         return response;
 
 
-
-
-
-
-
-        
     } catch (error) {
-        return res.json({error: error.message}, {status: 500})
-        
+        return res.json({ error: error.message }, { status: 500 })
+
     }
 }

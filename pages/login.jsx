@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 
 export default function Login() {
   const router = useRouter();
@@ -13,27 +13,38 @@ export default function Login() {
   const [emailentered, setemailentered] = useState(false);
   const [passwordentered, setpasswordentered] = useState(false);
   const [password, setpassword] = useState("");
+  const [invalidPassword, setInvalidPassword] = useState(false);
+
 
 
   const handleSubmit = async (e) => {
 
     try {
-      const response = await axios.post('/api/users/login/route', {email, password})
+      const response = await axios.post('/api/users/login/route', { email, password })
       console.log(response);
 
-      if(!response.ok){
-        throw new Error(`Signup failed: ${response.statusText}`);
+      if (response.data.success) {
+        console.log("login success", response.data);
+        router.push('/onboarding');
+
       }
-      console.log("Signup success", response.data);
-      router.push('/onboarding');
+      else {
+        console.log("login failed", response.error);
+
+      }
       
+      
+
+
     } catch (error) {
-      console.log("Signup failed", error.message );
+      console.log("Incorrect password", error.message);
+      setInvalidPassword(true);
+
       toast.error(error.message)
 
 
 
-      
+
     }
 
 
@@ -83,7 +94,7 @@ export default function Login() {
                   placeholder="Enter your email"
                   className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
-                {passwordentered ? (
+                {invalidPassword ? (
                   <p className="text-[#D21313] text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
                     Password invalid
                   </p>

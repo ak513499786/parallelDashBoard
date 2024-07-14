@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -15,7 +17,26 @@ export default function Login() {
   const [newpassword, setnewpassword] = useState("");
   const [cofirmpassword, setcofirmpassword] = useState("");
   const [samepassword, setsamepassword] = useState(true);
+
+
+
   const handleSubmitEmail = async (e) => {
+    const email = e.target.email.value;
+
+    try {
+      const response = await axios.post('/api/users/forgotPassword/route', { email });
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.error);
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
+
+
+
+
     e.preventDefault();
     if (email === "") {
       setemailentered(true);
@@ -77,7 +98,7 @@ export default function Login() {
                   placeholder="Enter your email"
                   className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
-
+              
                 <button
                   onClick={handleSubmitEmail}
                   className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
