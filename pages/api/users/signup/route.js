@@ -1,6 +1,5 @@
 "use client"
 
-import { log } from 'console';
 import { connect } from '../../../lib/db';
 import User from '../../../models/userModel';
 import bcryptjs from 'bcrypt';
@@ -45,6 +44,7 @@ export default async function handler(req, res) {
 
     console.log('User created:', savedUser);
 
+    
     return res.status(201).json({
       message: 'User created successfully',
       success: true,

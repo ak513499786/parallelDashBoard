@@ -1,64 +1,87 @@
 "use client"
 
-import { log } from 'console';
-import { connect } from '../../../lib/db';
+import Forgot from '../../../models/Forgot';
 import User from '../../../models/userModel';
-import bcryptjs from 'bcrypt';
+import { connect } from '../../../lib/db';
 import nodemailer from 'nodemailer';
+import jwt from 'jsonwebtoken';
 
-const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-  export default async function handler(req, res) {
-    try {
-      await connect();
+
+await connect();
+
+export default async function handler(req, res) {
   
-      if (req.method === 'POST') {
-        const { email } = req.body;
-  
-        // Step 1: Send Reset Link
-        if (email) {
-          const user = await User.findOne({ email });
-          if (!user) {
-            return res.status(400).json({ success: false, error: 'No account found with that email.' });
-          }
-  
-          const token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
-  
-          const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
-          
-          await transporter.sendMail({
-            to: email,
-            subject: 'Password Reset',
-            text: `You requested a password reset. Click here to reset your password: ${resetLink}`,
-          });
-  
-          return res.status(200).json({ success: true, message: 'Reset link sent to your email.' });
-        }
-  
-        // Step 3: Update New Password
-        const { token, newPassword, confirmPassword } = req.body;
-  
-        if (newPassword !== confirmPassword) {
-          return res.status(400).json({ success: false, error: 'Passwords do not match.' });
-        }
-  
-        const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-        const hashedPassword = await bcrypt.hash(newPassword, 10);
-  
-        await User.findByIdAndUpdate(decoded.id, { password: hashedPassword });
-  
-        return res.status(200).json({ success: true, message: 'Password updated successfully.' });
-  
-      } else {
-        return res.status(405).json({ success: false, error: 'Method not allowed.' });
-      }
-    } catch (error) {
-      console.error('Error in forgot password:', error);
-      return res.status(500).json({ success: false, error: 'Internal Server Error' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
   }
+  console.log("before rebody");
+  const { email } = req.body;
+
+  // Check if user exists in the DB
+  console.log("before email find"); //--> for debugging only
+  const user = await User.findOne({ email });
+  console.log('after email find');
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const token =  jwt.sign({ email: email }, process.env.TOKEN_SECRET, { expiresIn: '24h' });
+  console.log("token");
+  // Save the token in the Forgot model
+  const forgot = new Forgot({
+    email: email,
+    token: token,
+  });
+
+  await forgot.save();
+
+  
+
+  // Set up Nodemailer
+  const transporter = nodemailer.createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "911861fe8e32ac",
+      pass: "97f1bffc8f2a64"
+    }
+  });
+
+  const mailOptions = {
+    from: 'pranav@codelinear.com',
+    to: email,
+    subject: 'Password Reset Link',
+    text: `Use this link to reset your password. The link is only valid for 24 hours.
+
+************
+Hi,
+************
+
+You recently requested to reset your password for your account. Use the link below to reset it. This password reset is only valid for the next 24 hours.
+
+Reset your password: http://localhost:3000/forgot-password?token=${token}
+
+For security, this request was received from a device. If you did not request a password reset, please ignore this email or contact support if you have questions.
+
+Thanks,
+The Team
+
+If you’re having trouble with the link above, copy and paste the URL below into your web browser.
+
+http://localhost:3000/forgot-password?token=${token}
+
+Company Name, LLC
+1234 Street Rd.
+Suite 1234`,
+  };
+
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ success: true });
+    console.log("mail sent");
+  } catch (error) {
+    res.status(500).json({ message: 'Error sending email' });
+  }
+}

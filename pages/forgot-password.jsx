@@ -4,8 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import {toast} from 'react-hot-toast';
+import { useRouter } from "next/navigation";
 
-export default function Login() {
+
+export default function forgotPass() {
+  const router = useRouter();
+
   const [visible, setvisible] = useState(false);
   const [visiblenewpassword, setvisiblenewpassword] = useState(false);
   const [visibleconfirmpassword, setvisibleconfirmpassword] = useState(false);
@@ -21,15 +26,26 @@ export default function Login() {
 
 
   const handleSubmitEmail = async (e) => {
-    const email = e.target.email.value;
+    e.preventDefault();
+    //const email = e.target.email.value;
+    
 
     try {
       const response = await axios.post('/api/users/forgotPassword/route', { email });
       if (response.data.success) {
         toast.success(response.data.message);
-      } else {
+
+      }
+      else if(!user) {
+        router.push('/signup')
+
+      }
+      
+      else {
         toast.error(response.data.error);
       }
+
+
     } catch (error) {
       toast.error('An error occurred. Please try again.');
     }
@@ -37,7 +53,7 @@ export default function Login() {
 
 
 
-    e.preventDefault();
+    
     if (email === "") {
       setemailentered(true);
     }
@@ -138,6 +154,7 @@ export default function Login() {
             <strong className="text-[25px] mb-[27px] leading-[30px]">
               Enter new password{" "}
             </strong>
+            {router.query.token &&
             <div className="flex flex-col relative gap-[32px]">
               {samepassword ? (
                 <p className="text-black text-[13px] left-[18px] bg-white top-[-15px] p-[8px] absolute leading-[15.6px]">
@@ -235,7 +252,7 @@ export default function Login() {
                   </p>
                 </div>
               )}
-            </div>
+            </div>}
           </div>
         </div>
       )}

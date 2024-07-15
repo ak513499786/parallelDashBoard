@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 
 
 
+
 export default async function handler(req, res) {
     try {
         await connect();
@@ -33,15 +34,14 @@ export default async function handler(req, res) {
             email: user.email
         }
         
-        //'keep me signed' in token
-        // const tokenSignedIn = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: keepSignedIn ? '7d' : '1d' });
-
-        // res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=${keepSignedIn ? 7 * 24 * 60 * 60 : 24 * 60 * 60}`);
-
+        
         //creting token
         const token = jwt.sign(tokenData, process.
             env.TOKEN_SECRET, { expiresIn: "1d" })
         console.log("generated token", token);
+        
+
+        
 
 
         const response = res.json({
