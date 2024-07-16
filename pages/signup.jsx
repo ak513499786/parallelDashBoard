@@ -1,23 +1,71 @@
+"use client";
+
+
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { toast } from 'react-hot-toast';
+import { useRouter } from "next/navigation";
+
+
+
 
 export default function Signup() {
-  const [visible, setvisible] = useState(false);
-  const [email, setemail] = useState("");
-  const [emailentered, setemailentered] = useState(false);
-  const [passwordentered, setpasswordentered] = useState(false);
-  const [password, setpassword] = useState("");
+  const router = useRouter();
+  
+
+  const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailEntered, setEmailEntered] = useState(false);
+  const [passwordEntered, setPasswordEntered] = useState(false);
+  const [password, setPassword] = useState("");
+  const [userExists, setUserExists] = useState(false);
+
+
   const handleSubmit = async (e) => {
+    
+
     e.preventDefault();
+    try {
+      console.log("before response");
+    
+      const response = await axios.post("/api/users/signup/route", { email, password });
+      console.log("after response");
+    
+      if (response.data.success) {
+        console.log("registration successful");
+        router.push('/login');
+      } else {
+        if (response.data.error === 'User already exists') {
+          console.log("User already exists");
+          setUserExists(true); // Update state if user exists
+
+          toast.error("User already exists toast");
+        } else {
+          console.log("registration failed");
+          toast.error("Registration failed");
+        }
+      }
+    
+      console.log("Signup success", response.data);
+    } catch (error) {
+      console.log("Signup failed", error.message);
+      toast.error(error.message);
+    }
     if (email === "") {
-      setemailentered(true);
+      setEmailEntered(true);
+      return;
     }
     if (password === "") {
-      setpasswordentered(true);
+      setPasswordEntered(true);
+      return;
     }
+
+    
+    
   };
+
   return (
     <main className="flex">
       <div className="w-[595px] max-md:px-[40px] max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[52.16px] pt-[130px] pr-[113px]">
@@ -32,7 +80,7 @@ export default function Signup() {
             height={24}
           />
           <strong className="text-[25px] leading-[30px]">
-            {emailentered
+            {userExists
               ? "An account with this email already exists. Would you like to log in?"
               : "Register to start upskilling right away!"}
           </strong>
@@ -43,11 +91,11 @@ export default function Signup() {
             <input
               id="numberedInput"
               type="email"
-              onChange={(e) => setemail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
             />
-            {passwordentered ? (
+            {passwordEntered ? (
               <p className="text-[#D21313] text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
                 Password invalid
               </p>
@@ -60,9 +108,9 @@ export default function Signup() {
               id="numberedInput"
               type={visible ? "text" : "password"}
               placeholder="Enter your password"
-              onChange={(e) => setpassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className={
-                passwordentered
+                passwordEntered
                   ? "pl-[25.71px] w-[421px] text-[#D21313] border-[1px] border-[#D21313] rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                   : "pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               }
@@ -71,7 +119,7 @@ export default function Signup() {
               <Image
                 src="eye-open.svg"
                 className="absolute cursor-pointer top-[118.13px] left-[378px]"
-                onClick={() => setvisible(!visible)}
+                onClick={() => setVisible(!visible)}
                 width={24}
                 height={24}
               />
@@ -79,7 +127,7 @@ export default function Signup() {
               <Image
                 src="eye.svg"
                 className="absolute cursor-pointer top-[118.13px] left-[378px]"
-                onClick={() => setvisible(!visible)}
+                onClick={() => setVisible(!visible)}
                 width={24}
                 height={24}
               />
@@ -102,7 +150,7 @@ export default function Signup() {
                 </div>
                 <p
                   className={
-                    emailentered
+                    emailEntered
                       ? "underline text-[13px] leading-[15.6px] font-semibold"
                       : "underline hidden text-[13px] leading-[15.6px] font-semibold"
                   }
@@ -110,7 +158,7 @@ export default function Signup() {
                   <Link href={'/forgot-password'}>Forgot password</Link>
                 </p>
               </div>
-              {!emailentered ? (
+              {!emailEntered ? (
                 <>
                   <button
                     onClick={handleSubmit}

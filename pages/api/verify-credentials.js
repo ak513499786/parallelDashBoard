@@ -10,4 +10,6 @@ const DataFromTable = async (req, res) => {
   }
 };
 
+
+
 export default DataFromTable;

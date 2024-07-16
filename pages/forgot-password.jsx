@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import {toast} from 'react-hot-toast';
+import { useRouter } from "next/navigation";
 
-export default function Login() {
+
+export default function forgotPass() {
+  const router = useRouter();
+
   const [visible, setvisible] = useState(false);
   const [visiblenewpassword, setvisiblenewpassword] = useState(false);
   const [visibleconfirmpassword, setvisibleconfirmpassword] = useState(false);
@@ -15,8 +22,38 @@ export default function Login() {
   const [newpassword, setnewpassword] = useState("");
   const [cofirmpassword, setcofirmpassword] = useState("");
   const [samepassword, setsamepassword] = useState(true);
+
+
+
   const handleSubmitEmail = async (e) => {
     e.preventDefault();
+    //const email = e.target.email.value;
+    
+
+    try {
+      const response = await axios.post('/api/users/forgotPassword/route', { email });
+      if (response.data.success) {
+        toast.success(response.data.message);
+
+      }
+      else if(!user) {
+        router.push('/signup')
+
+      }
+      
+      else {
+        toast.error(response.data.error);
+      }
+
+
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
+
+
+
+
+    
     if (email === "") {
       setemailentered(true);
     }
@@ -77,7 +114,7 @@ export default function Login() {
                   placeholder="Enter your email"
                   className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
-
+              
                 <button
                   onClick={handleSubmitEmail}
                   className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
@@ -117,6 +154,7 @@ export default function Login() {
             <strong className="text-[25px] mb-[27px] leading-[30px]">
               Enter new password{" "}
             </strong>
+            {router.query.token &&
             <div className="flex flex-col relative gap-[32px]">
               {samepassword ? (
                 <p className="text-black text-[13px] left-[18px] bg-white top-[-15px] p-[8px] absolute leading-[15.6px]">
@@ -214,7 +252,7 @@ export default function Login() {
                   </p>
                 </div>
               )}
-            </div>
+            </div>}
           </div>
         </div>
       )}
