@@ -24,15 +24,13 @@ export default function Signup() {
 
 
   const handleSubmit = async (e) => {
-    
-
     e.preventDefault();
     try {
       console.log("before response");
-    
+  
       const response = await axios.post("/api/users/signup/route", { email, password });
       console.log("after response");
-    
+  
       if (response.data.success) {
         console.log("registration successful");
         router.push('/login');
@@ -40,14 +38,16 @@ export default function Signup() {
         if (response.data.error === 'User already exists') {
           console.log("User already exists");
           setUserExists(true); // Update state if user exists
-
-          toast.error("User already exists toast");
+          toast.error("User already exists");
+        } else if (response.data.error === 'Invalid email address') {
+          console.log("Invalid email address");
+          toast.error("Invalid email address");
         } else {
           console.log("registration failed");
           toast.error("Registration failed");
         }
       }
-    
+  
       console.log("Signup success", response.data);
     } catch (error) {
       console.log("Signup failed", error.message);
