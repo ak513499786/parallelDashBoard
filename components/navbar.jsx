@@ -95,7 +95,12 @@ export default function Navbar() {
   return (
     <>
       <nav className="px-[60px] sticky top-0 z-[9999999999] relative max-md:px-[40px] max-sm:px-[20px] flex justify-between pt-[40px] pb-[20px] bg-white shadow-nav">
-        <Image src="/Frame 96.svg" width={120.92} height={22} />
+        <div className="flex">
+          <Image src="/Frame 96.svg" width={120.92} height={22} />
+          <p className="text-base text-black opacity-60 ml-[36px] max-sm:hidden">
+            FSD05202432
+          </p>
+        </div>
         <div className="gap-[36px] max-smallerphone:gap-[10px] items-center hidden max-hamburger:flex">
           <Link
             className={openHamburger ? "hidden" : ""}
@@ -126,6 +131,10 @@ export default function Navbar() {
           className="flex max-hamburger:flex-col max-hamburger:absolute max-hamburger:top-[130px] max-hamburger:right-[60px] max-md:right-[40px] max-sm:right-[20px] max-hamburger:hidden gap-[64px]"
         >
           <ul className="list-none max-hamburger:flex-col flex max-hamburger:gap-[20px] gap-[32px]">
+            <p className="text-base text-black opacity-60 hidden max-sm:block text-right ml-0">
+              FSD05202432
+            </p>
+
             <Link
               href={"/class"}
               ref={Menuitems1}

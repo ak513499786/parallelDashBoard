@@ -5,6 +5,8 @@ import axios from "axios";
 
 export default function Login() {
   const [state, setstate] = useState("1/4");
+  const [pan, setpan] = useState("");
+  const [pass, setpass] = useState("");
   return (
     <main className="flex">
       {state === "1/4" && (
@@ -228,15 +230,101 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex flex-col relative">
-              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
-                Current occupation
+            <div className="flex flex-col gap-[32px] relative">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[-14px] p-[8px] absolute leading-[15.6px]">
+                Enter your PAN number
               </p>
-              <div className="flex gap-[20px] w-[434px]"></div>
-
+              <input
+                id="numberedInput"
+                type="text"
+                placeholder="Enter your PAN number"
+                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+              />
+              <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
+                Upload PAN card photo
+              </p>
+              <div className="flex w-[421px]">
+                <input
+                  id="pan"
+                  type="file"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setpan(file.name);
+                    }
+                  }}
+                  className="pt-[21.5px] hidden pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                />
+                <label
+                  htmlFor="pan"
+                  className="cursor-pointer flex justify-between w-[420px]"
+                >
+                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                    <i>{pan === "" ? "Click to upload photo" : pan}</i>
+                    <span className=" text-[13px] leading-[15.6px]">
+                      {pan === "" ? (
+                        "Max file size: 3 MB"
+                      ) : (
+                        <Image src="green-tick.svg" width={16} height={12} />
+                      )}
+                    </span>
+                  </div>
+                  {pan === "" ? (
+                    <Image src="upload-pan.svg" width={62} height={67} />
+                  ) : (
+                    <Image
+                      src="undo.svg"
+                      onClick={() => setpan("")}
+                      width={62}
+                      height={67}
+                    />
+                  )}
+                </label>
+              </div>
+              <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
+                Upload passport sized photo
+              </p>
+              <div className="flex w-[421px]">
+                <input
+                  id="passport"
+                  type="file"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setpass(file.name);
+                    }
+                  }}
+                  className="pt-[21.5px] hidden pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                />
+                <label
+                  htmlFor="passport"
+                  className="cursor-pointer flex justify-between w-[420px]"
+                >
+                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                    <i>{pass === "" ? "Click to upload photo" : pass}</i>
+                    <span className=" text-[13px] leading-[15.6px]">
+                      {pass === "" ? (
+                        "Max file size: 3 MB"
+                      ) : (
+                        <Image src="green-tick.svg" width={16} height={12} />
+                      )}
+                    </span>
+                  </div>
+                  {pass === "" ? (
+                    <Image src="upload-pan.svg" width={62} height={67} />
+                  ) : (
+                    <Image
+                      src="undo.svg"
+                      onClick={() => setpass("")}
+                      width={62}
+                      height={67}
+                    />
+                  )}
+                </label>
+              </div>
               <button
                 onClick={() => setstate("4/4")}
-                className="w-[421px] mt-[32px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
