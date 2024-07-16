@@ -30,6 +30,6 @@ const forgotPasswordSchema = new mongoose.Schema({
   
 });
 
-const forgot = mongoose.models.forgot || mongoose.model("Forgot", forgotPasswordSchema);
+const Forgot = mongoose.models.Forgot || mongoose.model("Forgot", forgotPasswordSchema);
 
-export default forgot;
+export default Forgot;

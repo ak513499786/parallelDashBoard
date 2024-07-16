@@ -1,24 +1,23 @@
 "use client";
 
-import Forgot from '../../../models/Forgot';
 import User from '../../../models/userModel';
+import ResetToken from '../../../models/resetTokenModel';
 import { connect } from '../../../lib/db';
 import nodemailer from 'nodemailer';
 import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
-  await connect();
-
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
   try {
+    await connect();
+
     const { email } = req.body;
 
-    // Check if user exists in the DB
     const user = await User.findOne({ email });
-    console.log('after email find');
+    console.log('after email find'); //->for debug puropose only
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -30,23 +29,19 @@ export default async function handler(req, res) {
       email: user.email,
     };
 
-    // Creating token
-    const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1h" });
     console.log("generated token", token);
 
-    // Create a new instance of the Forgot model
-    const forgot = new Forgot({
-      email: email,
+    // Create a new reset token document
+    const resetToken = new ResetToken({
+      userId: user._id,
       token: token,
+      createdAt: Date.now()
     });
 
-    // Save the token in the Forgot model
-    await forgot.save();    
-    console.log("after forgot save");
+    await resetToken.save();    
+    console.log("Reset token saved");
 
-
-
-    // Set up Nodemailer
     const transporter = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
@@ -60,13 +55,13 @@ export default async function handler(req, res) {
       from: 'pranav.srivastava.1291@gmail.com',
       to: email,
       subject: 'Password Reset Link',
-      text: `Use this link to reset your password. The link is only valid for 24 hours.
+      text: `Use this link to reset your password. The link is only valid for 1 hour.
 
 ************
 Hi,
 ************
 
-You recently requested to reset your password for your account. Use the link below to reset it. This password reset is only valid for the next 24 hours.
+You recently requested to reset your password for your account. Use the link below to reset it. This password reset is only valid for the next 1 hour.
 
 Reset your password: http://localhost:3000/reset-password?token=${token}
 
@@ -75,7 +70,7 @@ For security, this request was received from a device. If you did not request a 
 Thanks,
 The Team
 
-If you’re having trouble with the link above, copy and paste the URL below into your web browser.
+If you're having trouble with the link above, copy and paste the URL below into your web browser.
 
 http://localhost:3000/reset-password?token=${token}
 
@@ -85,22 +80,16 @@ Suite 1234`,
     };
 
     try {
-      // Send the email
       await transporter.sendMail(mailOptions);
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, message: 'Reset link sent to email' });
       console.log("mail sent");
     } catch (error) {
+      console.error('Error sending email:', error);
       res.status(500).json({ message: 'Error sending email' });
     }
-  
 
-
-    
   } catch (error) {
+    console.error('Forgot password error:', error);
     res.status(500).json({ message: 'Forgot password failed' });
-
-
-
-
-}}
-
+  }
+}

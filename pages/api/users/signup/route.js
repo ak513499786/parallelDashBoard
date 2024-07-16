@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     console.log("Request body", req.body);
 
-    // Check if email exists in real-time
+    // Check email exists in realtime
     const apiKey = '3f733834a33525b25ed8d1bd9d5284c1b899cbd2';  // Replace with your Hunter.io API key
     const hunterResponse = await axios.get(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`);
     const emailVerification = hunterResponse.data;

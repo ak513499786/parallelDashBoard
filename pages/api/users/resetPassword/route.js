@@ -1,46 +1,49 @@
-"use client"
-
 import { connect } from '../../../lib/db';
 import User from '../../../models/userModel';
-import bcryptjs from 'bcrypt';
+import ResetToken from '../../../models/resetTokenModel';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {
-  try {
-    await connect();
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
-    if (req.method !== 'POST') {
-      return res.status(405).json({ success: false, error: 'Invalid request method' });
-    }
+  try {
+    await connect(); 
 
     const { token, newPassword } = req.body;
 
-    if (!token || !newPassword) {
-      return res.status(400).json({ success: false, error: 'Token and new password are required' });
+    // Verify the JWT token
+    let decodedToken;
+    try {
+      decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid or expired token' });
     }
 
-    // Find the user by token and ensure the token is not expired
-    const user = await User.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpiry: { $gt: Date.now() },
-    });
+    const resetToken = await ResetToken.findOne({ token: token });
+
+    if (!resetToken) {
+      return res.status(400).json({ error: 'Invalid or expired token' });
+    }
+
+    const user = await User.findById(decodedToken.id);
 
     if (!user) {
-      return res.status(400).json({ success: false, error: 'Invalid or expired token' });
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    // Hash the new password
-    const salt = await bcryptjs.genSalt(10);
-    const hashedNewPassword = await bcryptjs.hash(newPassword, salt);
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    // Update the password and clear the reset token and expiry
-    user.password = hashedNewPassword;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpiry = undefined;
+    user.password = hashedPassword;
     await user.save();
 
-    return res.status(200).json({ success: true, message: 'Password reset successfully' });
+    await ResetToken.deleteOne({ _id: resetToken._id });
+
+    res.status(200).json({ message: 'Password has been reset successfully' });
   } catch (error) {
-    console.error('Error resetting password:', error);
-    return res.status(500).json({ success: false, error: 'Internal Server Error' });
+    console.error('Reset password error:', error);
+    res.status(500).json({ error: 'An error occurred while resetting the password' });
   }
 }
