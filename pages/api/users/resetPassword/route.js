@@ -1,34 +1,49 @@
 import { connect } from '../../../lib/db';
 import User from '../../../models/userModel';
+import ResetToken from '../../../models/resetTokenModel';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
   try {
-    await connect();
+    await connect(); 
 
-    if (req.method === 'POST') {
-      const { token, newPassword, confirmPassword } = req.body;
+    const { token, newPassword } = req.body;
 
-      // Check if passwords match
-      if (newPassword !== confirmPassword) {
-        return res.status(400).json({ success: false, error: 'Passwords do not match.' });
-      }
-
-      // Verify token
-      const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-      const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-      // Update user password
-      await User.findByIdAndUpdate(decoded.id, { password: hashedPassword });
-
-      return res.status(200).json({ success: true, message: 'Password updated successfully.' });
-
-    } else {
-      return res.status(405).json({ success: false, error: 'Method not allowed.' });
+    // Verify the JWT token
+    let decodedToken;
+    try {
+      decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    } catch (error) {
+      return res.status(400).json({ error: 'Invalid or expired token' });
     }
+
+    const resetToken = await ResetToken.findOne({ token: token });
+
+    if (!resetToken) {
+      return res.status(400).json({ error: 'Invalid or expired token' });
+    }
+
+    const user = await User.findById(decodedToken.id);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    await user.save();
+
+    await ResetToken.deleteOne({ _id: resetToken._id });
+
+    res.status(200).json({ message: 'Password has been reset successfully' });
   } catch (error) {
-    console.error('Error in reset password:', error);
-    return res.status(500).json({ success: false, error: 'Internal Server Error' });
+    console.error('Reset password error:', error);
+    res.status(500).json({ error: 'An error occurred while resetting the password' });
   }
 }

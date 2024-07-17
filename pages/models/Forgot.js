@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
-const forgotSchema = new mongoose.Schema({
+
+const forgotPasswordSchema = new mongoose.Schema({
   userid: {
     type: String,
     
@@ -14,7 +15,7 @@ const forgotSchema = new mongoose.Schema({
   },
   password:{
     type: String,
-    required: true,
+    
 
   },
   token :{
@@ -26,12 +27,9 @@ const forgotSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  forgotPasswordToken: String,
-  forgotPasswordTokenExpiry: Date,
-  verifyToken: String,
-  verifyTokenExpiry: Date,
+  
 });
 
-const User = mongoose.models.User || mongoose.model("Forgot", forgotSchema);
+const Forgot = mongoose.models.Forgot || mongoose.model("Forgot", forgotPasswordSchema);
 
-export default User;
+export default Forgot;
