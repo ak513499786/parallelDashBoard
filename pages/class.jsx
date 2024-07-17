@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/navbar";
+import Navbar from "../components/navbar";
 import style from "../styles/style.module.css";
 
 export default function Dashboard() {
@@ -725,7 +725,12 @@ export default function Dashboard() {
               width={44.97}
               height={44.97}
             />
-            <p className="ml-[30px] text-base opacity-60">Class</p>
+            <p
+              className="ml-[30px] text-base opacity-60 cursor-pointer"
+              onClick={() => setFold("")}
+            >
+              Class
+            </p>
             <p className="ml-[5px]">&gt;</p>
             <p className="ml-[5px] text-base underline font-semibold">
               Curriculum
@@ -776,7 +781,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -811,7 +819,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -846,7 +857,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -881,7 +895,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -916,7 +933,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -956,7 +976,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -991,7 +1014,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1026,7 +1052,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1061,7 +1090,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1096,7 +1128,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1136,7 +1171,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1171,7 +1209,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1206,7 +1247,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1241,7 +1285,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1276,7 +1323,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1316,7 +1366,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1351,7 +1404,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1386,7 +1442,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1421,7 +1480,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1456,7 +1518,10 @@ export default function Dashboard() {
                         </p>
                       </div>
                     </div>
-                    <div onClick={() => setFold('video')} className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer">
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
                       Watch Video
                     </div>
                   </div>
@@ -1472,27 +1537,62 @@ export default function Dashboard() {
             <Image
               src="back.svg"
               className="mt-[0.61px] cursor-pointer"
-              onClick={() => setFold("curriclum")}
+              onClick={() => setFold("curriculum")}
               width={44.97}
               height={44.97}
             />
-            <p className="ml-[30px] text-base opacity-60">Class</p>
+            <p
+              className="ml-[30px] text-base opacity-60 cursor-pointer"
+              onClick={() => setFold("")}
+            >
+              Class
+            </p>
             <p className="ml-[5px]">&gt;</p>
-            <p className="ml-[5px] text-base opacity-60">curriculum</p>
+            <p
+              className="ml-[5px] text-base opacity-60 cursor-pointer"
+              onClick={() => setFold("curriculum")}
+            >
+              Curriculum
+            </p>
             <p className="ml-[5px]">&gt;</p>
-            <p className="ml-[5px] text-base underline font-bold">Class Title</p>
+            <p className="ml-[5px] text-base underline font-bold">
+              Class Title
+            </p>
           </div>
 
-          <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
-            <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
-              <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
-                Modules
-              </h1>
-              <div className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px]">
-                View curriculum
+          <div className="mt-[24.62px] h-[543px] rounded-[6px] bg-black rounded-[6.27px]"></div>
+          <div className="mt-[29px] bg-white rounded-[6px] px-[30.14px] pt-[32px] pb-[29px]">
+            <div className="flex justify-between pb-[25px] border-b-[1px] border-[#00000033]">
+              <div>
+                <h1 className="text-base mb-[9px]">Module 03</h1>
+                <p className="text-[24px] leading-[31.2px]">
+                  Bit manipulation and complexity
+                </p>
+              </div>
+              <div className="flex gap-[8px] items-center border-[1px] h-[48px] border-black py-[14.5px] px-[32px] rounded-[4px]">
+                <div>I Have A Doubt</div>
+                <Image src="/open.svg" width={16.53} height={16.67} />
               </div>
             </div>
-          </section>
+            <div className="pt-[25px]">
+              <p className="text-base mb-[9px]">Assignments given</p>
+              <div className="flex gap-[9px] mb-[9px]">
+                <p className="text-[20px] underline leading-[26px]">
+                  Bit manipulation and complexity
+                </p>
+                <Image src="/open.svg" width={16.53} height={16.67} />
+              </div>
+              <div className="flex gap-[9px] mb-[64.54px]">
+                <p className="text-[20px] underline leading-[26px]">
+                  Bit manipulation and complexity
+                </p>
+                <Image src="/open.svg" width={16.53} height={16.67} />
+              </div>
+              <p className="text-black opacity-60">
+                Class taken on : Tuesday 18 June, 11:30AM to 1:00PM{" "}
+              </p>
+            </div>
+          </div>
         </main>
       )}
     </>

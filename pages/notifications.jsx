@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import Navbar from "../components/navbar";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 export default function Notification() {
@@ -17,11 +17,11 @@ export default function Notification() {
         <h1 className="text-[20px] leading-[26px] font-semibold mb-[28.92px]">
           Notifications
         </h1>
-        <div className="flex max-md:flex-col max-md:relative gap-[20px]">
-          <div className="w-[762px] max-xl:w-[50%] max-md:w-full h-[567px] rounded-[5px] bg-[white] pt-[0px] pl-[41px] max-sm:px-[20px] pr-[102.28pxpx]">
+        <div className="max-md:relative">
+          <div className="w-full max-xl:w-[50%] max-md:w-full h-[567px] rounded-[5px] bg-[white] pt-[0px] pl-[41px] max-sm:px-[20px] pr-[102.28pxpx]">
             <div
               ref={scrollRef}
-              className="h-[505px] max-xl:w-[90%] max-sm:w-full max-xl:overflow-x-hidden overflow-y-scroll w-[618.72px] mt-[31px]"
+              className="h-[505px] max-xl:w-[90%] max-sm:w-full max-xl:overflow-x-hidden overflow-y-scroll w-full mt-[31px]"
             >
               <div>
                 {" "}
@@ -30,7 +30,7 @@ export default function Notification() {
                 </h1>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize max-xl:truncate text-[20px] leading-[26px]">
                     Justo est urna pellentesque commodo quis eget.
@@ -41,7 +41,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -52,7 +52,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -63,7 +63,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -74,7 +74,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -90,7 +90,7 @@ export default function Notification() {
                 </h1>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -101,7 +101,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -112,7 +112,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -123,7 +123,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -134,7 +134,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -150,7 +150,7 @@ export default function Notification() {
                 </h1>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -161,7 +161,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -172,7 +172,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -183,7 +183,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -194,7 +194,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -210,7 +210,7 @@ export default function Notification() {
                 </h1>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -221,7 +221,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -232,7 +232,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -243,7 +243,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.
@@ -254,7 +254,7 @@ export default function Notification() {
                 </div>
                 <div
                   onClick={() => setnotification(true)}
-                  className="py-[10px] h-[75px] w-[618.72px] max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
                 >
                   <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
                     Justo est urna pellentesque commodo quis eget.

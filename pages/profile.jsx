@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import Navbar from "../components/navbar";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -122,7 +122,7 @@ export default function Profile() {
         <h1 className="capitalize text-[20px] leading-[26px] font-bold mb-[35.92px]">
           your account
         </h1>
-        <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] h-[292px] pt-[38.5px] pl-[28.5px] bg-white rounded-[5px]">
+        <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] pb-[39px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[38.5px] pl-[28.5px] bg-white rounded-[5px]">
           <h1 className="text-[20px] leading-[26px] font-semibold">
             User Information
           </h1>
@@ -134,117 +134,64 @@ export default function Profile() {
                 name=""
                 id=""
                 onChange={(e) => setName(e.target.value)}
-                className="w-[309px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[1px] border-black"
+                disabled
+                className="w-[309px] bg-[#EDEDED] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] border-[1px] border-[#00000080]"
               />
             </div>
             <div className="max-hamburger:w-[100%]">
-              <p className="text-[14px] leading-[18.2px] mb-[10px]">Username</p>
+              <p className="text-[14px] leading-[18.2px] mb-[10px]">SID</p>
               <input
                 type="text"
                 name=""
                 id=""
                 onChange={(e) => setUserName(e.target.value)}
-                className="w-[309px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[1px] border-black"
+                disabled
+                className="w-[309px] bg-[#EDEDED] border-[#00000080] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[1px] border-black"
+              />
+            </div>
+            <div className="max-hamburger:w-[100%]">
+              <p className="text-[14px] leading-[18.2px] mb-[10px]">Email</p>
+              <input
+                type="text"
+                name=""
+                id=""
+                onChange={(e) => setUserName(e.target.value)}
+                disabled
+                className="w-[309px] bg-[#EDEDED] border-[#00000080] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[1px] border-black"
               />
             </div>
           </div>
           <div className="flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
-            <div className="max-hamburger:w-full">
-              <p className="text-[14px] leading-[15px] mb-[10px]">College</p>
+            <div className="max-hamburger:w-full relative">
+              <p className="text-[14px] leading-[15px] mb-[10px]">Password</p>
+              <Image
+                src="edit.svg"
+                className="mt-[0.61px] absolute top-[35px] right-[14.67px] cursor-pointer"
+                width={18.83}
+                height={18.83}
+              />{" "}
               <input
-                type="text"
+                type="password"
                 name=""
                 id=""
                 onChange={(e) => setCollege(e.target.value)}
                 className="w-[309px] max-hamburger:w-full pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[1px] border-black"
               />
             </div>
-            <div className="flex max-smallerphone:flex-col max-hamburger:w-full gap-[12px] max-">
-              <div
-                onClick={toggleMenu}
-                className="border-[1px] max-hamburger:w-full cursor-pointer border-black w-[205px] h-[41px] rounded-[6px]"
-              >
-                <div className="flex justify-between max-sm:px-[10px] h-[41px] items-center pr-[10px] pl-[16.27px]">
-                  {" "}
-                  <div className="max-sm:text-sm">
-                    {" "}
-                    {selectedYear || "Joining Year"}
-                  </div>
-                  <Image
-                    src="/drop.svg"
-                    className={
-                      isOpen
-                        ? "h-[6.93px] rotate-180 w-[12.88px] cursor-pointer"
-                        : "h-[6.93px] w-[12.88px] cursor-pointer"
-                    }
-                    width={12.88}
-                    height={6.93}
-                    onClick={() => toggleMenu()}
-                  />
-                </div>
-
-                {isOpen && (
-                  <div className="h-[190px] bg-white relative z-20 overflow-y-scroll mt-[10px]">
-                    <ul>
-                      {years.map((year) => (
-                        <li
-                          className="text-[14px] max-hamburger:w-full cursor-pointer leading-[18.2px] bg-[white] py-[10px] pr-[10px] pl-[16.27px]"
-                          key={year}
-                          onClick={() => handleYearSelect(year)}
-                        >
-                          {year}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-              <div
-                onClick={togglePassingMenu}
-                className="border-[1px] max-hamburger:w-full border-black w-[205px] h-[41px] rounded-[6px]"
-              >
-                <div className="flex justify-between max-hamburger:w-full max-sm:px-[10px] cursor-pointer h-[41px] items-center pr-[10px] pl-[16.27px]">
-                  {" "}
-                  <div className="max-sm:text-sm">
-                    {" "}
-                    {selectedPassingYear || "Passing Year"}
-                  </div>
-                  <Image
-                    src="/drop.svg"
-                    className={
-                      isPassingOpen
-                        ? "h-[6.93px] rotate-180 w-[12.88px] cursor-pointer"
-                        : "h-[6.93px] w-[12.88px] cursor-pointer"
-                    }
-                    width={12.88}
-                    height={6.93}
-                    onClick={() => togglePassingMenu()}
-                  />
-                </div>
-
-                {isPassingOpen && (
-                  <div className="h-[190px] overflow-y-scroll mt-[10px]">
-                    <ul>
-                      {years.map((passingyear) => (
-                        <li
-                          className="text-[14px] cursor-pointer leading-[18.2px] bg-[white] py-[10px] pr-[10px] pl-[16.27px]"
-                          key={passingyear}
-                          onClick={() => handlePassingYearSelect(passingyear)}
-                        >
-                          {passingyear}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
+          </div>
+          <div className="border-[1px] w-[134px] mt-[24px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
+            Save Changes
           </div>
         </div>
-        <section className="mt-[25px] max-sm:px-[20px] max-md:pr-[20px] max-hamburger:h-auto max-hamburger:pb-[40px] max-hamburger:pr-[40px] max-xl:w-full bg-white rounded-[5px] w-[1097px] h-[335px] pt-[38.5px] pl-[23.5px]">
-          <h1 className="capitalize text-[20px] leading-[26px] font-semibold mb-[28.5px]">
-            Job preferences{" "}
-          </h1>
+        <section className="mt-[25px] max-sm:px-[20px] pr-[21px] max-hamburger:h-auto max-hamburger:pb-[40px] max-hamburger:pr-[40px] max-xl:w-full bg-white rounded-[5px] w-[1097px] h-[335px] pt-[38.5px] pl-[23.5px]">
+          <div className="flex justify-between mb-[28.5px]">
+            <h1 className="capitalize text-[20px] leading-[26px] font-semibold">
+              Job preferences{" "}
+            </h1>
+            <div className="border-[1px] w-[206px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
+              Update Placement Profile
+            </div>
+          </div>
           <div className="w-[673px] max-md:w-full">
             <p className="text-[14px] leading-[15.4px] mb-[10px]">Resume </p>
             <div className="flex max-sm:flex-col max-sm:items-start gap-[12.5px] items-center">
@@ -398,7 +345,42 @@ export default function Profile() {
             </div>
           </div>
         </section>
-        <section className="w-[1097px] max-sm:px-[20px] max-xl:w-full mt-[25px] pt-[25.4px] border-[2px] border-[#672B094D] rounded-[6px] pb-[36px] pl-[22.32px] h-[131px] bg-[#FFEAC9]">
+        <h1 className="capitalize text-[20px] leading-[26px] font-bold mt-[54px] mb-[25.92px]">
+          Billing information
+        </h1>
+        <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] pb-[67.8px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[33.71px] pl-[23.5px] bg-white rounded-[5px]">
+          <p className="text-base mb-[6px]">Course Opted</p>
+          <h1 className="text-[39px] leading-[46.8px] mb-[11.86px]">
+            Frontend Mastery
+          </h1>
+          <p className="text-base mb-[43.96px]">Total Fee: INR 9,999</p>
+
+          <p className="text-base mb-[6px]">Pending Fees</p>
+          <div className="flex gap-[31.5px] mb-[24px]">
+            <h1 className="text-[39px] leading-[46.8px]">INR 5,000 </h1>
+            <button className="w-[99px] font-semibold h-[43px] max-sm:w-full bg-[#30E29D] rounded-[6px] text-[16px] leading-[19.2px]">
+              Pay now{" "}
+            </button>
+          </div>
+          <table>
+            <tr className="bg-[#D3D3D3]">
+              <td className="text-base w-[142px] pl-[25px] py-[16px]">Date</td>
+              <td className="text-base w-[218px] pl-[25px] py-[16px]">Payment number</td>
+              <td className="text-base w-[184px] pl-[25px] py-[16px]">Payment method</td>
+              <td className="text-base w-[196px] pl-[25px] py-[16px]">Amount</td>
+            </tr>
+            <tbody className="border-b-[0.2px] border-[#00000080]">
+              <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">28/08/23</td>
+              <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">947u60749862766</td>
+              <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">Credit Card</td>
+              <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">INR 5,000</td>
+            </tbody>
+          </table>
+        </div>
+        <button className="w-[96px] font-semibold h-[43px] max-sm:w-full mt-[41px] bg-[#30E29D] rounded-[6px] text-[16px] leading-[19.2px]">
+          Log out{" "}
+        </button>
+        <section className="w-[1097px] mt-[54px] max-sm:px-[20px] max-xl:w-full mt-[25px] pt-[25.4px] border-[2px] border-[#672B094D] rounded-[6px] pb-[36px] pl-[22.32px] h-[131px] bg-[#FFEAC9]">
           <p className="text-[20px] leading-[26px] pl-[2.78px] mb-[27px] max-smallerphone:mb-[7px] font-bold capitalize text-[#672B09]">
             Support{" "}
           </p>
@@ -412,9 +394,6 @@ export default function Profile() {
             </a>
           </p>
         </section>
-        <button className="w-[99px] h-[43px] max-sm:w-full mt-[25px] bg-black text-white rounded-[6px] text-[16px] leading-[19.2px]">
-          Log out{" "}
-        </button>
       </main>
     </>
   );

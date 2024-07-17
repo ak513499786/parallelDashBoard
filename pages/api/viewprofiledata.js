@@ -1,4 +1,4 @@
-import pool from "@/pages/api/pool";
+import pool from "./pool";
 
 const DataFromTable = async (req, res) => {
   try {
