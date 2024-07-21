@@ -154,7 +154,7 @@ export default function forgotPass() {
             <strong className="text-[25px] mb-[27px] leading-[30px]">
               Enter new password{" "}
             </strong>
-            {router.query.token &&
+            
             <div className="flex flex-col relative gap-[32px]">
               {samepassword ? (
                 <p className="text-black text-[13px] left-[18px] bg-white top-[-15px] p-[8px] absolute leading-[15.6px]">
@@ -252,7 +252,7 @@ export default function forgotPass() {
                   </p>
                 </div>
               )}
-            </div>}
+            </div>
           </div>
         </div>
       )}

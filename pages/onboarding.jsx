@@ -7,6 +7,9 @@ export default function Login() {
   const [state, setstate] = useState("1/4");
   const [pan, setpan] = useState("");
   const [pass, setpass] = useState("");
+
+
+  
   return (
     <main className="flex">
       {state === "1/4" && (
@@ -218,6 +221,8 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">3/4</p>
             </div>
+
+            
             <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>

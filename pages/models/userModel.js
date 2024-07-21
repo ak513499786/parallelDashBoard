@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    
+
     trim: true,
   },
   email: {
@@ -25,7 +25,62 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+
+  },
+  name: {
+    type: String,
+    required: true,
     
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+
+  },
+  dateOfBirth: {
+    type: String,
+    required: true,
+
+  },
+  currentOccupation: {
+    type: String,
+    required: true,
+
+  },
+  highestQualification: {
+    type: String,
+    required: true,
+
+  },
+  branchOfDegree: {
+    type: String,
+    required: true,
+
+  },
+  collegeName: {
+    type: String,
+    required: true,
+
+  },
+  panNumber: {
+    type: String,
+    required: true,
+
+  },
+  panPhoto: {
+    type: String,
+    required: true,
+
+  },
+  passportPhoto: {
+    type: String,
+    required: true,
+
+  },
+  enrollCourse :{
+    type: String,
+    required: true,
+
   },
   forgotPasswordToken: String,
   forgotPasswordTokenExpiry: Date,
