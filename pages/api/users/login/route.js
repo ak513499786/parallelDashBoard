@@ -1,13 +1,10 @@
-"use client"
+"use client";
 
 import { connect } from '../../../lib/db';
 import User from '../../../models/userModel';
 import bcryptjs from 'bcrypt';
 import jwt from "jsonwebtoken";
-
-
-
-
+import cookie from 'cookie';
 
 export default async function handler(req, res) {
     try {
@@ -16,47 +13,41 @@ export default async function handler(req, res) {
         const { email, password } = req.body;
         console.log(req.body);
 
-        // Check if user exists
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ error: "User does not exist" });
         }
 
-        // Check if password is correct
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
             return res.status(400).json({ error: "Invalid password" });
         }
 
-        //Notee:create token data by the user's id and email ````````
         const tokenData = {
             id: user._id,
             email: user.email
-        }
+        };
         
-        
-        //creting token
-        const token = jwt.sign(tokenData, process.
-            env.TOKEN_SECRET, { expiresIn: "1d" })
+        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1d" });
         console.log("generated token", token);
-        
 
-        
+        // Set token in cookies
+        res.setHeader('Set-Cookie', cookie.serialize('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== 'development', 
+            maxAge: 60 * 60 * 24, // 1 day
+            sameSite: 'strict',
+            path: '/',
+        }));
 
-
-        const response = res.json({
+        // Send response
+        return res.json({
             message: "Login successful",
             success: true,
             tokendata: token,
-        })
-        res.cookies.set("token", token, {
-            httpOnly: true,
-        })
-        return response;
-
+        });
 
     } catch (error) {
-        return res.json({ error: error.message }, { status: 500 })
-
+        return res.status(500).json({ error: error.message });
     }
 }
