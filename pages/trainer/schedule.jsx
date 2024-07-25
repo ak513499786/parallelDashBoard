@@ -1007,6 +1007,20 @@ export default function Jobs() {
             </div>
           </div>
         )}
+        {active === "done" && (
+          <div className="w-full flex justify-center pt-[55px] h-[630px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
+            <div className="w-[483px] h-[419px] border-[1px] border-[#00000033] rounded-[6px] pt-[30px] flex flex-col items-center">
+              <Image src="/done.svg" width={193.08} height={193.08} />
+              <h1 className="text-[20px] leading-[26px] mt-[36.92px] font-semibold">Schedule Sent to Batch BFSD053AK</h1>
+              <button
+                onClick={() => setactive("schedule")}
+                className="w-[247px] capitalize mt-[44px] h-[37px] max-sm:w-full text-white bg-[#000] rounded-[6px] text-[14px] leading-[16.8px]"
+              >
+                Send schedule to another batch
+              </button>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );
