@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import style from "@/styles/style.module.css";
-import AdminNavbar from "@/components/adminbar";
+import style from "../../styles/style.module.css";
+import AdminNavbar from "../../components/adminbar";
 
 export default function Jobs() {
   const [active, setactive] = useState("");

@@ -50,7 +50,7 @@ export default function Login() {
       setvalidateemail(true);
       setvalidatepassword(true);
       setotpcheck(true);
-      router.push("/admin/students");
+      router.push("/trainer/batches");
     }
   };
   return (

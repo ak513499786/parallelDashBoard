@@ -94,7 +94,7 @@ export default function Login() {
               <Image
                 src="back.svg"
                 onClick={() => setstate("1/4")}
-                className="mb-[0.61px]"
+                className="mb-[0.61px] cursor-pointer"
                 width={44.97}
                 height={44.97}
               />
@@ -215,7 +215,7 @@ export default function Login() {
               <Image
                 src="back.svg"
                 onClick={() => setstate("2/4")}
-                className="mb-[0.61px]"
+                className="mb-[0.61px] cursor-pointer"
                 width={44.97}
                 height={44.97}
               />
@@ -344,7 +344,7 @@ export default function Login() {
               <Image
                 src="back.svg"
                 onClick={() => setstate("3/4")}
-                className="mb-[0.61px]"
+                className="mb-[0.61px] cursor-pointer"
                 width={44.97}
                 height={44.97}
               />
