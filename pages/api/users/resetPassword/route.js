@@ -1,5 +1,5 @@
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
+import User from '../../../models/User';
 import ResetToken from '../../../models/resetTokenModel';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';

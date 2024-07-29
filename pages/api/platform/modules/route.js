@@ -2,6 +2,9 @@ import { connect } from '../../../lib/db';
 import User from '../../../models/User';
 import Class from '../../../models/class';
 import jwt from 'jsonwebtoken';
+import module from '../../../models/Module';
+//import course from '../../../models/Course';
+
 
 export default async function handler(req, res) {
   await connect();
@@ -13,15 +16,17 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'Authorization token is required' });
     }
 
+    
     const token = authHeader.split(' ')[1];
 
     try {
       const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
       const userId = decoded.id;
 
-      const user = await User.findById(userId).populate('selectedCourse');
+      const user = await module.find({}).populate('course');
 
 
+      
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }

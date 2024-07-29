@@ -1,5 +1,5 @@
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
+import User from '../../../models/User';
 import Class from '../../../models/class';
 import jwt from 'jsonwebtoken';
 import schedule from '../../../models/schedule';
@@ -14,6 +14,7 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'Authorization token is required' });
     }
 
+    
     const token = authHeader.split(' ')[1];
 
     try {

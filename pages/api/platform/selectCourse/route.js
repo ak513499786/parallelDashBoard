@@ -1,6 +1,6 @@
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
-import Course from '../../../models/course';
+import User from '../../../models/User';
+import Course from '../../../models/Onboarding/Course';
 import jwt from 'jsonwebtoken';
 
 export default async function handler(req, res) {

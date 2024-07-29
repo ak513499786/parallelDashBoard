@@ -1,21 +1,9 @@
 import mongoose from 'mongoose';
 
 const scheduleSchema = new mongoose.Schema({
-  date:{
-    type: String,
+  classId: { type: mongoose.Schema.Types.ObjectId, ref: 'Class', required: true },
+  date: { type: Date, required: true },
+  time: { type: String, required: true }
+}, { timestamps: true });
 
-  },
-  time:{
-    type: String,
-  },
-  heading :{
-    type: String,
-  },
-  course: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' },
-
-});
-
-
-const schedule = mongoose.models.scheduleSchema || mongoose.model('schedule', scheduleSchema);
-
-export default schedule;
+export default mongoose.models.Schedule || mongoose.model('Schedule', scheduleSchema);

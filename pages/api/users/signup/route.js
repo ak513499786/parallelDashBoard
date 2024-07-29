@@ -1,7 +1,7 @@
 "use client"
 
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
+import User from '../../../models/User';
 import bcryptjs from 'bcrypt';
 import axios from 'axios';
 
