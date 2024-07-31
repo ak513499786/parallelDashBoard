@@ -1,15 +1,88 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 
 export default function Login() {
-  const [state, setstate] = useState("1/4");
-  const [pan, setpan] = useState("");
-  const [pass, setpass] = useState("");
+  const [state, setState] = useState("1/4");
+  const [formData, setFormData] = useState({
+    name: "",
+    phoneNumber: "",
+    email: "",
+    dateOfBirth: "",
+    currentOccupation: "",
+    highestQualification: "",
+    branchOfDegree: "",
+    collegeName: "",
+    panNumber: "",
+    panPhoto: "",
+    passportPhoto: "",
+    course: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.files[0],
+    });
+  };
+
+  const handleNext = async (nextState) => {
+    try {
+      if (state === "1/4") {
+        await axios.post("/api/onboarding/personalInfo/route", {
+          name: formData.name,
+          phoneNumber: formData.phoneNumber,
+          email: formData.email,
+          dateOfBirth: formData.dateOfBirth,
+          userId : '669524190fd311fd0e562816',
+        });
+      } else if (state === "2/4") {
+        await axios.post("/api/onboarding/academics/route", {
+          currentOccupation: formData.currentOccupation,
+          highestQualification: formData.highestQualification,
+          branchOfDegree: formData.branchOfDegree,
+          collegeName: formData.collegeName,
+          userId : '669524190fd311fd0e562816',
+
+        });
+      } else if (state === "3/4") {
+        const formDataKyc = new FormData();
+        formDataKyc.append("panNumber", formData.panNumber);
+        formDataKyc.append("panPhoto", formData.panPhoto);
+        formDataKyc.append("passportPhoto", formData.passportPhoto);
+        formDataKyc.append('userId', '669524190fd311fd0e562816');
+        
 
 
-  
+
+        await axios.post("/api/onboarding/kyc/route", formDataKyc, {
+
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      } else if (state === "4/4") {
+        await axios.post("/api/onboarding/course/route", {
+          currentOccupation: formData.currentOccupation,
+          userId : '669524190fd311fd0e562816',
+
+        });
+      }
+
+      setState(nextState);
+    } catch (error) {
+      console.error("Error submitting form data", error);
+    }
+  };
+
   return (
     <main className="flex">
       {state === "1/4" && (
@@ -41,8 +114,11 @@ export default function Login() {
                 Enter your name
               </p>
               <input
-                id="numberedInput"
+                id="name"
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Enter your name"
                 className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
@@ -52,8 +128,11 @@ export default function Login() {
               <div className="pl-[25.71px] flex w-[421px] border-[1px] border-black rounded-[6px]">
                 <p className="text-base pt-[21px]">+ 91 |</p>
                 <input
-                  id="numberedInput"
+                  id="phoneNumber"
                   type="number"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
                   placeholder="Enter your phone number"
                   className="pt-[21.5px] pl-[9.11px] w-[350px] pb-[16.5px] text-base"
                 />
@@ -62,8 +141,11 @@ export default function Login() {
                 Enter your email
               </p>
               <input
-                id="numberedInput"
+                id="email"
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Enter your email"
                 className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
@@ -71,14 +153,17 @@ export default function Login() {
                 Enter your DOB(DD/MM/YY)
               </p>
               <input
-                id="numberedInput"
-                type="number"
+                id="dateOfBirth"
+                type="text"
+                name="dateOfBirth"
+                value={formData.dateOfBirth}
+                onChange={handleChange}
                 placeholder="DD/MM/YY"
                 className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
-                onClick={() => setstate("2/4")}
+                onClick={() => handleNext("2/4")}
                 className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
@@ -93,7 +178,7 @@ export default function Login() {
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setstate("1/4")}
+                onClick={() => setState("1/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
@@ -118,89 +203,92 @@ export default function Login() {
               </p>
               <div className="flex gap-[20px] w-[434px]">
                 <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="occupation" id="occupation" />
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Employed"
+                    onChange={handleChange}
+                    id="occupation-employed"
+                  />
                   <label
-                    htmlFor="occupation"
+                    htmlFor="occupation-employed"
                     className="text-[14px] leading-[16.8px]"
                   >
                     Employed
+
                   </label>
                 </div>
                 <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="occupation" id="occupation" />
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Unemployed"
+                    onChange={handleChange}
+                    id="occupation-unemployed"
+                  />
                   <label
-                    htmlFor="occupation"
+                    htmlFor="occupation-unemployed"
+                    className="text-[14px] leading-[16.8px]"
+                  >
+                    Unemployed
+                  </label>
+                </div>
+                <div className="flex items-center gap-[4px]">
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Student"
+                    onChange={handleChange}
+                    id="occupation-student"
+                  />
+                  <label
+                    htmlFor="occupation-student"
                     className="text-[14px] leading-[16.8px]"
                   >
                     Student
                   </label>
                 </div>
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="occupation" id="occupation" />
-                  <label
-                    htmlFor="occupation"
-                    className="text-[14px] w-[203px] h-[20px] leading-[16.8px]"
-                  >
-                    Passed out student looking for employment
-                  </label>
-                </div>
               </div>
-              <p className="text-black text-[13px] mb-[13px] mt-[19px] left-[18px] bg-white p-[8px] leading-[15.6px]">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[90px] p-[8px] absolute leading-[15.6px]">
                 Highest qualification
               </p>
-              <div className="flex gap-[20px] w-[434px]">
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="qualification" id="qualification" />
-                  <label
-                    htmlFor="qualification"
-                    className="text-[14px] leading-[16.8px]"
-                  >
-                    Bachelor's Degree
-                  </label>
-                </div>
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="qualification" id="qualification" />
-                  <label
-                    htmlFor="qualification"
-                    className="text-[14px] leading-[16.8px]"
-                  >
-                    Master's Degree
-                  </label>
-                </div>
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="qualification" id="qualification" />
-                  <label
-                    htmlFor="qualification"
-                    className="text-[14px] leading-[16.8px]"
-                  >
-                    PhD
-                  </label>
-                </div>
-              </div>
-              <div className="w-[434px] mt-[38px] border-[1px] border-[#00000033]"></div>
-
-              <p className="text-black text-[13px] left-[18px] bg-white top-[210px] p-[8px] absolute leading-[15.6px]">
-                Enter the branch of your degree
-              </p>
               <input
-                id="numberedInput"
-                type="email"
-                placeholder="Enter the branch of your degree"
-                className="pl-[25.71px] w-[421px] mt-[38px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                id="highestQualification"
+                type="text"
+                name="highestQualification"
+                value={formData.highestQualification}
+                onChange={handleChange}
+                placeholder="Enter your highest qualification"
+                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] left-[18px] bg-white top-[312px] p-[8px] absolute leading-[15.6px]">
-                Enter your college name
+              <p className="text-black text-[13px] left-[18px] bg-white top-[185px] p-[8px] absolute leading-[15.6px]">
+                Branch of degree
               </p>
               <input
-                id="numberedInput"
-                type="number"
+                id="branchOfDegree"
+                type="text"
+                name="branchOfDegree"
+                value={formData.branchOfDegree}
+                onChange={handleChange}
+                placeholder="Enter your branch of degree"
+                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+              />
+              <p className="text-black text-[13px] left-[18px] bg-white top-[280px] p-[8px] absolute leading-[15.6px]">
+                College name
+              </p>
+              <input
+                id="collegeName"
+                type="text"
+                name="collegeName"
+                value={formData.collegeName}
+                onChange={handleChange}
                 placeholder="Enter your college name"
-                className="pl-[25.71px] mt-[38px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
-                onClick={() => setstate("3/4")}
-                className="w-[421px] mt-[32px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                onClick={() => handleNext("3/4")}
+                className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -214,15 +302,13 @@ export default function Login() {
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setstate("2/4")}
+                onClick={() => setState("2/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
               />
               <p className="text-base text-[#00000099]">3/4</p>
             </div>
-
-            
             <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
@@ -235,101 +321,43 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex flex-col gap-[32px] relative">
-              <p className="text-black text-[13px] left-[18px] bg-white top-[-14px] p-[8px] absolute leading-[15.6px]">
-                Enter your PAN number
+            <div className="flex flex-col relative gap-[32px]">
+              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
+                PAN Number
               </p>
               <input
-                id="numberedInput"
+                id="panNumber"
                 type="text"
+                name="panNumber"
+                value={formData.panNumber}
+                onChange={handleChange}
                 placeholder="Enter your PAN number"
                 className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
-                Upload PAN card photo
+              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
+                Upload PAN Photo
               </p>
-              <div className="flex w-[421px]">
-                <input
-                  id="pan"
-                  type="file"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      setpan(file.name);
-                    }
-                  }}
-                  className="pt-[21.5px] hidden pl-[9.11px] w-[350px] pb-[16.5px] text-base"
-                />
-                <label
-                  htmlFor="pan"
-                  className="cursor-pointer flex justify-between w-[420px]"
-                >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
-                    <i>{pan === "" ? "Click to upload photo" : pan}</i>
-                    <span className=" text-[13px] leading-[15.6px]">
-                      {pan === "" ? (
-                        "Max file size: 3 MB"
-                      ) : (
-                        <Image src="green-tick.svg" width={16} height={12} />
-                      )}
-                    </span>
-                  </div>
-                  {pan === "" ? (
-                    <Image src="upload-pan.svg" width={62} height={67} />
-                  ) : (
-                    <Image
-                      src="undo.svg"
-                      onClick={() => setpan("")}
-                      width={62}
-                      height={67}
-                    />
-                  )}
-                </label>
-              </div>
-              <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
-                Upload passport sized photo
+              <input
+                id="panPhoto"
+                type="file"
+                name="panPhoto"
+                onChange={handleFileChange}
+                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+              />
+              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
+                Upload Passport Photo
               </p>
-              <div className="flex w-[421px]">
-                <input
-                  id="passport"
-                  type="file"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      setpass(file.name);
-                    }
-                  }}
-                  className="pt-[21.5px] hidden pl-[9.11px] w-[350px] pb-[16.5px] text-base"
-                />
-                <label
-                  htmlFor="passport"
-                  className="cursor-pointer flex justify-between w-[420px]"
-                >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
-                    <i>{pass === "" ? "Click to upload photo" : pass}</i>
-                    <span className=" text-[13px] leading-[15.6px]">
-                      {pass === "" ? (
-                        "Max file size: 3 MB"
-                      ) : (
-                        <Image src="green-tick.svg" width={16} height={12} />
-                      )}
-                    </span>
-                  </div>
-                  {pass === "" ? (
-                    <Image src="upload-pan.svg" width={62} height={67} />
-                  ) : (
-                    <Image
-                      src="undo.svg"
-                      onClick={() => setpass("")}
-                      width={62}
-                      height={67}
-                    />
-                  )}
-                </label>
-              </div>
+              <input
+                id="passportPhoto"
+                type="file"
+                name="passportPhoto"
+                onChange={handleFileChange}
+                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+              />
+
               <button
-                onClick={() => setstate("4/4")}
-                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                onClick={() => handleNext("4/4")}
+                className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -338,12 +366,12 @@ export default function Login() {
         </div>
       )}
       {state === "4/4" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[167px]">
+        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
           <div className="flex w-[502.43px] flex-col gap-[32px]">
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setstate("3/4")}
+                onClick={() => setState("3/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
@@ -360,58 +388,83 @@ export default function Login() {
               height={24}
             />
             <strong className="text-[25px] mb-[22px] leading-[30px]">
-              Select the course you want to enroll in
+              We’d like to know more about you
             </strong>
-            <div className="flex w-[494px] flex-col relative">
+            <div className="flex flex-col relative gap-[32px]">
               <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
-                Select Course
+                Current occupation
               </p>
-              <div className="flex gap-[20px] w-[494px]">
+              <div className="flex gap-[20px] w-[434px]">
                 <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Employed"
+                    onChange={handleChange}
+                    id="occupation-employed"
+                  />
                   <label
-                    htmlFor="course"
+                    htmlFor="occupation-employed"
                     className="text-[14px] leading-[16.8px]"
                   >
-                    Full Stack Development
+                    Employed
                   </label>
                 </div>
                 <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Unemployed"
+                    onChange={handleChange}
+                    id="occupation-unemployed"
+                  />
                   <label
-                    htmlFor="course"
+                    htmlFor="occupation-unemployed"
                     className="text-[14px] leading-[16.8px]"
                   >
-                    Backend Mastery
+                    Unemployed
                   </label>
                 </div>
                 <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
+                  <input
+                    type="radio"
+                    name="currentOccupation"
+                    value="Student"
+                    onChange={handleChange}
+                    id="occupation-student"
+                  />
                   <label
-                    htmlFor="course"
-                    className="text-[14px] h-[20px] leading-[16.8px]"
+                    htmlFor="occupation-student"
+                    className="text-[14px] leading-[16.8px]"
                   >
-                    Frontend Mastery{" "}
+                    Student
                   </label>
                 </div>
               </div>
-              <Link href={"/class"}>
-                <button className="w-[421px] mt-[32px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
-                  Proceed to payment
-                </button>
-              </Link>
+
+              <button
+                onClick={() => handleNext("complete")}
+                className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </div>
       )}
-      <div className="h-[100vh] w-[calc(100%-710px)] relative overflow-hidden">
-        <Image
-          src="/bg-eclips.svg"
-          className="w-full object-cover mixblend h-auto"
-          width={1024}
-          height={700}
-        />
-      </div>
+      {state === "complete" && (
+        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-center items-center pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <Image src="success.svg" width={100} height={100} />
+          <h1 className="text-[25px] mt-[20px] leading-[30px]">
+            Thank you for submitting your information!
+          </h1>
+          <Link href="/">
+            <a className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
+              Go to Home
+            </a>
+          </Link>
+        </div>
+      )}
     </main>
   );
 }

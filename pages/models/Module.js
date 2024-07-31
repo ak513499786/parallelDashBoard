@@ -1,9 +1,14 @@
 import mongoose from 'mongoose';
 
 const moduleSchema = new mongoose.Schema({
-  classId: { type: mongoose.Schema.Types.ObjectId, ref: 'Class', required: true },
-  title: { type: String, required: true },
-  content: { type: String }
-}, { timestamps: true });
+  _id: ObjectId,
+  title: String,
+  description: String,
+  videoLinks: [{
+    title: String,
+    url: String
+  }],
+  class: { type: ObjectId, ref: 'Class' }
+});
 
 export default mongoose.models.Module || mongoose.model('Module', moduleSchema);

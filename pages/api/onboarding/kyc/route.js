@@ -20,16 +20,15 @@ async function createKyc(kycData) {
 export default async function handler(req, res) {
   await connect();
 
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Authorization token is required' });
-  }
-
-  const token = authHeader.split(' ')[1];
-
   try {
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    const userId = decoded.id;
+    // Uncomment and handle authorization if required
+    // const authHeader = req.headers.authorization;
+    // if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    //   return res.status(401).json({ error: 'Authorization token is required' });
+    // }
+    // const token = authHeader.split(' ')[1];
+    // const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    // const userId = decoded.id;
 
     switch (req.method) {
       case 'GET':
@@ -39,8 +38,15 @@ export default async function handler(req, res) {
         break;
 
       case 'POST':
-        const { panNumber, panPhoto, passportPhoto } = req.body;
+        const { userId,  panPhoto, passportPhoto, panNumber} = req.body;
+        console.log('PAN Number:', panNumber);
+        console.log('user ID: ', userId);
+        // const newKyc = req.body;
+        // const createdKycInfo = await createKyc(newKyc);
+        // res.status(201).json(createdKycInfo);
+        // break;
 
+      
         if (!panNumber) {
           return res.status(400).json({ error: 'PAN number is required' });
         }

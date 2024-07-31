@@ -1,5 +1,6 @@
+"use client"
 import { connect } from '../../../lib/db';
-import PersonalInfo from '../../models/Onboarding/personalInfo';
+import PersonalInfo from '../../../models/Onboarding/PersonalInfo';
 import mongoose from 'mongoose';
 
 await connect();

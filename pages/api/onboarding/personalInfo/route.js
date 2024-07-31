@@ -1,5 +1,6 @@
+"use client"
 import { connect } from '../../../lib/db';
-import PersonalInfo from '../../models/Onboarding/personalInfo';
+import PersonalInfo from '../../../models/Onboarding/PersonalInfo';
 
 async function findAllPersonalInfo() {
   console.log("Find all personal info records");

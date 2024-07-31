@@ -2,9 +2,11 @@
 import mongoose from 'mongoose';
 
 const guestSessionSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  meetLink: { type: String, required: true },
-  // other guest session details...
+  _id: ObjectId,
+  guestName: String,
+  topic: String,
+  date: Date,
+  class: { type: ObjectId, ref: 'Class' }
 });
 
 const GuestSession = mongoose.models.GuestSession || mongoose.model('GuestSession', guestSessionSchema);
