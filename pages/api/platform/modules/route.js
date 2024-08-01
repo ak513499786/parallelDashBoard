@@ -1,6 +1,6 @@
-import {connect} from '../../../../lib/db';
-import Class from '../../../models/Class';
-import Module from '../../../models/Module';
+import {connect} from '../../../lib/db';
+import Class from '../../../models/platform/Class';
+import Module from '../../../models/platform/Module';
 
 export default async function handler(req, res) {
   const {

@@ -1,5 +1,5 @@
 import {connect} from '../../../lib/db';
-import Class from '../../../models/Class';
+import Class from '../../../models/platform/Class';
 
 export default async function handler(req, res) {
   const { method } = req;

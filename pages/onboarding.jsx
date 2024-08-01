@@ -58,7 +58,7 @@ export default function Login() {
         formDataKyc.append("panNumber", formData.panNumber);
         formDataKyc.append("panPhoto", formData.panPhoto);
         formDataKyc.append("passportPhoto", formData.passportPhoto);
-        formDataKyc.append('userId', '669524190fd311fd0e562816');
+        formDataKyc.append('userId', formData.userId);
         
 
 

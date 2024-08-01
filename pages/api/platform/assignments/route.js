@@ -1,6 +1,6 @@
 import {connect} from '../../../lib/db';
-import Class from '../../../models/Class';
-import Assignment from '../../../models/Assignment';
+import Class from '../../../models/platform/Class';
+import Assignment from '../../../models/platform/Assignment';
 
 export default async function handler(req, res) {
   const {

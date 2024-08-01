@@ -1,15 +1,13 @@
 import mongoose from 'mongoose';
 
-const kycSchema = new mongoose.Schema({
+const { Schema, Types } = mongoose;
+const { ObjectId } = Types;
+
+const kycSchema = new Schema({
+  userId: { type: ObjectId, ref: 'User', required: true },
   panNumber: { type: String, required: true },
   panPhoto: { type: String, required: true },
-  passportPhoto: { type: String, required: true },
-  
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+  passportPhoto: { type: String, required: true }
+});
 
-}, 
-{ timestamps: true });
-
-const Kyc = mongoose.models.kycSchema || mongoose.model('Kyc', kycSchema);
-
-export default Kyc;
+export default mongoose.models.Kyc || mongoose.model('Kyc', kycSchema);
