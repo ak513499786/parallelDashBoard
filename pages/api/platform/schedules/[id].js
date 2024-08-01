@@ -1,5 +1,5 @@
-import {connect} from '../../../lib/dbConnect';
-import Schedule from '../../../models/Schedule';
+import {connect} from '../../../lib/db';
+import Schedule from '../../../models/platform/Schedule';
 
 export default async function handler(req, res) {
   const {

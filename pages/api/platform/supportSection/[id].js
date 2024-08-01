@@ -1,5 +1,5 @@
 import {connect} from '../../../lib/dbConnect';
-import SupportSection from '../../../models/SupportSection';
+import SupportSection from '../../../models/platform/SupportSection';
 
 export default async function handler(req, res) {
   const {

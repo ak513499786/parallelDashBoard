@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       }
       break;
 
+      
     case 'POST':
       try {
         const curriculum = await Curriculum.create(req.body);

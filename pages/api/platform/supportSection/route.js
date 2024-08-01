@@ -1,7 +1,7 @@
 // pages/api/classes/[id]/support-section.js
 import {connect} from '../../../lib/db';
 import Class from '../../../models/Class';
-import SupportSection from '../../../models/SupportSection';
+import SupportSection from '../../../models/platform/SupportSection';
 
 export default async function handler(req, res) {
   const {

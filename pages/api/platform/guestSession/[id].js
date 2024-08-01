@@ -1,5 +1,5 @@
-import {connect} from '../../../lib/dbConnect';
-import GuestSession from '../../../models/GuestSession';
+import {connect} from '../../../lib/db';
+import GuestSession from '../../../models/platform/GuestSession';
 
 export default async function handler(req, res) {
   const {
