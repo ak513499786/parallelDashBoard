@@ -10,7 +10,8 @@ const assignmentSchema = new Schema({
   resources: [
     {
       type: String, 
-    }
+    }  
+    
   ],
   submissions: [
     {
