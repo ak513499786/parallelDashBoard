@@ -68,8 +68,8 @@ export default function Jobs() {
         >
           Courses{" "}
         </h1>
-                <Link href={'/admin/batches'}
-
+        <Link
+          href={"/admin/batches"}
           className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
         >
           Batches{" "}
@@ -653,7 +653,7 @@ export default function Jobs() {
                   Enrolled Course
                 </p>
                 <p className="text-[14px] leading-[16.8px] opacity-70 w-[280px]">
-                Current Location | College | passing Year
+                  Current Location | College | passing Year
                 </p>
               </div>
               <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
@@ -1169,37 +1169,36 @@ export default function Jobs() {
                 </div>
               </div>
               <div className="pb-[32px] border-b-[0.5px] border-[#00000033] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[24px]">
-
-              <table className="w-[668px]">
-                <tr className="bg-[#D3D3D3]">
-                  <td className="text-base w-[142px] pl-[25px] py-[16px]">
-                    Date
-                  </td>
-                  <td className="text-base w-[218px] pl-[25px] py-[16px]">
-                    Payment number
-                  </td>
-                  <td className="text-base w-[184px] pl-[25px] py-[16px]">
-                    Payment method
-                  </td>
-                  <td className="text-base w-[196px] pl-[25px] py-[16px]">
-                    Amount
-                  </td>
-                </tr>
-                <tbody className="border-b-[0.2px] border-[#00000080]">
-                  <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
-                    28/08/23
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">
-                    947u60749862766
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">
-                    Credit Card
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
-                    INR 5,000
-                  </td>
-                </tbody>
-              </table>
+                <table className="w-[668px]">
+                  <tr className="bg-[#D3D3D3]">
+                    <td className="text-base w-[142px] pl-[25px] py-[16px]">
+                      Date
+                    </td>
+                    <td className="text-base w-[218px] pl-[25px] py-[16px]">
+                      Payment number
+                    </td>
+                    <td className="text-base w-[184px] pl-[25px] py-[16px]">
+                      Payment method
+                    </td>
+                    <td className="text-base w-[196px] pl-[25px] py-[16px]">
+                      Amount
+                    </td>
+                  </tr>
+                  <tbody className="border-b-[0.2px] border-[#00000080]">
+                    <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
+                      28/08/23
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">
+                      947u60749862766
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">
+                      Credit Card
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
+                      INR 5,000
+                    </td>
+                  </tbody>
+                </table>
               </div>
               <h1 className="mt-[32px] text-[20px] leading-[26px] font-semibold">
                 KYC information
@@ -1298,9 +1297,8 @@ export default function Jobs() {
               </p>
             </div>
             <div className="h-auto pb-[36.88px] w-full bg-white rounded-[8px] pt-[36px] px-[31.48px]">
-              
               <h1 className="text-[20px] leading-[26px] font-semibold">
-              Graduate Information
+                Graduate Information
               </h1>
               <div className="flex gap-[33px] max-sm:flex-col max-xl:flex-wrap max-hamburger:gap-[20px] mt-[18px] mb-[24px]">
                 <div className="max-hamburger:w-[100%]">
@@ -1314,7 +1312,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  SIN
+                    SIN
                   </p>
                   <input
                     type="text"
@@ -1322,7 +1320,7 @@ export default function Jobs() {
                     id=""
                     className="w-[309px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
                   />
-                </div>                
+                </div>
               </div>
               <div className="pb-[32px] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
                 <div className="max-hamburger:w-full">
@@ -1351,7 +1349,7 @@ export default function Jobs() {
               <div className="flex gap-[33px] max-sm:flex-col max-xl:flex-wrap max-hamburger:gap-[20px] mb-[24px]">
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Course enrolled in
+                    Course enrolled in
                   </p>
                   <input
                     type="text"
@@ -1362,7 +1360,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  Enrolled on
+                    Enrolled on
                   </p>
                   <input
                     type="text"
@@ -1373,7 +1371,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  Graduated on
+                    Graduated on
                   </p>
                   <input
                     type="text"
@@ -1386,7 +1384,7 @@ export default function Jobs() {
               <div className="pb-[32px] border-b-[0.5px] border-[#00000033] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Email
+                    Email
                   </p>
                   <input
                     type="text"
@@ -1397,7 +1395,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Phone number
+                    Phone number
                   </p>
                   <input
                     type="text"
@@ -1405,8 +1403,8 @@ export default function Jobs() {
                     id=""
                     className="w-[309px] max-hamburger:w-full pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
                   />
-                </div>                
-              </div>           
+                </div>
+              </div>
               <h1 className="mt-[32px] text-[20px] leading-[26px] font-semibold">
                 Payment Details
               </h1>
@@ -1481,47 +1479,51 @@ export default function Jobs() {
                 </div>
               </div>
               <div className="pb-[32px] border-b-[0.5px] border-[#00000033] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[24px]">
-
-              <table className="w-[668px]">
-                <tr className="bg-[#D3D3D3]">
-                  <td className="text-base w-[142px] pl-[25px] py-[16px]">
-                    Date
-                  </td>
-                  <td className="text-base w-[218px] pl-[25px] py-[16px]">
-                    Payment number
-                  </td>
-                  <td className="text-base w-[184px] pl-[25px] py-[16px]">
-                    Payment method
-                  </td>
-                  <td className="text-base w-[196px] pl-[25px] py-[16px]">
-                    Amount
-                  </td>
-                </tr>
-                <tbody className="border-b-[0.2px] border-[#00000080]">
-                  <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
-                    28/08/23
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">
-                    947u60749862766
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">
-                    Credit Card
-                  </td>
-                  <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
-                    INR 5,000
-                  </td>
-                </tbody>
-              </table>
-              </div>              
+                <table className="w-[668px]">
+                  <tr className="bg-[#D3D3D3]">
+                    <td className="text-base w-[142px] pl-[25px] py-[16px]">
+                      Date
+                    </td>
+                    <td className="text-base w-[218px] pl-[25px] py-[16px]">
+                      Payment number
+                    </td>
+                    <td className="text-base w-[184px] pl-[25px] py-[16px]">
+                      Payment method
+                    </td>
+                    <td className="text-base w-[196px] pl-[25px] py-[16px]">
+                      Amount
+                    </td>
+                  </tr>
+                  <tbody className="border-b-[0.2px] border-[#00000080]">
+                    <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
+                      28/08/23
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">
+                      947u60749862766
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">
+                      Credit Card
+                    </td>
+                    <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
+                      INR 5,000
+                    </td>
+                  </tbody>
+                </table>
+              </div>
               <h1 className="mt-[32px] text-[20px] leading-[26px] font-semibold">
-              Company Information
+                Company Information
               </h1>
               <div className="flex gap-[33px] max-sm:flex-col max-hamburger:gap-[20px] mt-[18px] mb-[24px]">
                 <div className="max-hamburger:w-[100%] relative">
-                <Image src="/edit.svg" className="absolute bottom-[11px] right-[13.48px]" width={18} height={18} />
+                  <Image
+                    src="/edit.svg"
+                    className="absolute bottom-[11px] right-[13.48px]"
+                    width={18}
+                    height={18}
+                  />
 
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Company Name
+                    Company Name
                   </p>
                   <input
                     type="text"
@@ -1531,9 +1533,14 @@ export default function Jobs() {
                   />
                 </div>
                 <div className="max-hamburger:w-[100%] relative">
-                <Image src="/edit.svg" className="absolute bottom-[11px] right-[13.48px]" width={18} height={18} />
+                  <Image
+                    src="/edit.svg"
+                    className="absolute bottom-[11px] right-[13.48px]"
+                    width={18}
+                    height={18}
+                  />
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Current role
+                    Current role
                   </p>
                   <input
                     type="text"
@@ -1544,10 +1551,15 @@ export default function Jobs() {
                 </div>
               </div>
               <div className="flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
-              <div className="max-hamburger:w-[100%] relative">
-                <Image src="/edit.svg" className="absolute bottom-[11px] right-[13.48px]" width={18} height={18} />
+                <div className="max-hamburger:w-[100%] relative">
+                  <Image
+                    src="/edit.svg"
+                    className="absolute bottom-[11px] right-[13.48px]"
+                    width={18}
+                    height={18}
+                  />
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Company URL
+                    Company URL
                   </p>
                   <input
                     type="text"
@@ -1558,10 +1570,15 @@ export default function Jobs() {
                 </div>
               </div>
               <div className="flex gap-[33px] max-sm:flex-col max-hamburger:gap-[20px] mt-[18px] mb-[24px]">
-              <div className="max-hamburger:w-[100%] relative">
-                <Image src="/edit.svg" className="absolute bottom-[11px] right-[13.48px]" width={18} height={18} />
+                <div className="max-hamburger:w-[100%] relative">
+                  <Image
+                    src="/edit.svg"
+                    className="absolute bottom-[11px] right-[13.48px]"
+                    width={18}
+                    height={18}
+                  />
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Placement date
+                    Placement date
                   </p>
                   <input
                     type="text"
@@ -1571,9 +1588,14 @@ export default function Jobs() {
                   />
                 </div>
                 <div className="max-hamburger:w-[100%] relative">
-                <Image src="/edit.svg" className="absolute bottom-[11px] right-[13.48px]" width={18} height={18} />
+                  <Image
+                    src="/edit.svg"
+                    className="absolute bottom-[11px] right-[13.48px]"
+                    width={18}
+                    height={18}
+                  />
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Placement CTC (in LPA)
+                    Placement CTC (in LPA)
                   </p>
                   <input
                     type="text"
@@ -1584,9 +1606,9 @@ export default function Jobs() {
                 </div>
               </div>
             </div>
-            
+
             <h1 className="text-[20px] leading-[26px] font-semibold mt-[24px] w-full">
-            Applied positions
+              Applied positions
             </h1>
             <div className="w-full mt-[22px] relative h-[563px] max-hamburger:h-auto max-hamburger:pb-[100px] max-sm:pb-[110px] max-sm:pt-[5px] max-sm:px-[16px] bg-white rounded-[5px] pt-[29px] pl-[22px] pb-[38px] pb-[108px]">
               <div className="flex max-hamburger:flex-col justify-between py-[16px] max-sm:pr-0 pr-[23.62px] border-b-[1px] border-[#C4C4C4]">
@@ -1744,7 +1766,7 @@ export default function Jobs() {
                   Applied{" "}
                 </button>
               </div>
-              
+
               <div className="flex gap-[16px] absolute right-[38px] bottom-[37px]">
                 <div className="w-[32px] h-[32px] flex pr-[2.98px] justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
                   <Image src="/Group 4.svg" width={14.13} height={14.13} />
@@ -1769,12 +1791,13 @@ export default function Jobs() {
                 </div>
               </div>
             </div>
-            <h1 className="text-center mt-[32px] text-[20px] leading-[26px] font-semibold">Graduate Profile</h1>
+            <h1 className="text-center mt-[32px] text-[20px] leading-[26px] font-semibold">
+              Graduate Profile
+            </h1>
             <div className="w-[874px] mt-[22px] max-hamburger:w-full max-sm:px-[20px] max-hamburger:w-full py-[24px] pl-[25px] max-hamburger:px-[25px] bg-white rounded-[5px]">
               <div className="flex gap-[18px] max-sm:flex-col max-sm:gap-[17px] mb-[17px]">
                 <div className="w-[210px] max-smallerphone:w-full h-[252px] max-md:px-[12px] max-md:justify-center max-md:items-center max-md:py-[17px] max-md:h-auto pl-[34px] flex flex-col justify-center rounded-[14px] border-[1px] border-[#D8D8D8]">
                   <Image src="/profile.png" width={147.1} height={147.1} />
-
                 </div>
                 <div className="w-[588px] max-sm:w-full max-md:py-[17px] max-md:h-auto max-hamburger:px-[18px] max-hamburger:w-[calc(100%-210px)] h-[252px] relative pl-[28px] pt-[17.08px] rounded-[14px] border-[1px] border-[#D8D8D8]">
                   <h1 className="text-[16px] leading-[20.8px] font-bold mb-[31.92px]">
@@ -2074,7 +2097,7 @@ export default function Jobs() {
                 <div>
                   <div className="max-sm:w-full">
                     <p className="text-[14px] leading-[18.2px] mb-[12px]">
-                    Google meet link
+                      Google meet link
                     </p>
                     <input
                       type="text"
@@ -2087,7 +2110,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%] max-md:w-[40%] max-sm:w-full">
                   <p className="text-[14px] leading-[18.2px] mb-[12px]">
-                  Session start time
+                    Session start time
                   </p>
                   <div className="flex relative gap-[8px]">
                     <div className="flex gap-[1px] justify-center items-center w-[100px] rounded-[6px] h-[45px] bg-[white] border-[1px] border-black">
@@ -2147,7 +2170,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%] max-md:w-[40%] max-sm:w-full">
                   <p className="text-[14px] leading-[18.2px] mb-[12px]">
-                  Session end time
+                    Session end time
                   </p>
                   <div className="flex relative gap-[8px]">
                     <div className="flex gap-[1px] justify-center items-center w-[100px] rounded-[6px] h-[45px] bg-[white] border-[1px] border-black">
@@ -2220,15 +2243,17 @@ export default function Jobs() {
                     Slno.
                   </p>
                   <p className="text-[14px] leading-[16.8px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[150px] mr-[14px]">Session end time</p>
+                    Session type
+                  </p>
+                  <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px]">
+                    Session name
+                  </p>
+                  <p className="text-[14px] leading-[16.8px] w-[150px] mr-[27px]">
+                    Session start time
+                  </p>
+                  <p className="text-[14px] leading-[16.8px] w-[150px] mr-[14px]">
+                    Session end time
+                  </p>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
                     Zoom meeting link
                   </p>
@@ -2239,16 +2264,18 @@ export default function Jobs() {
                       01
                     </p>
                     <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2258,19 +2285,17 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1260px]">
                   <div className="flex items-center">
@@ -2278,16 +2303,18 @@ export default function Jobs() {
                       02
                     </p>
                     <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2297,19 +2324,17 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1260px]">
                   <div className="flex items-center">
@@ -2317,16 +2342,18 @@ export default function Jobs() {
                       03
                     </p>
                     <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2336,19 +2363,17 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1260px]">
                   <div className="flex items-center">
@@ -2356,16 +2381,18 @@ export default function Jobs() {
                       04
                     </p>
                     <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2375,19 +2402,17 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1260px]">
                   <div className="flex items-center">
@@ -2395,16 +2420,18 @@ export default function Jobs() {
                       05
                     </p>
                     <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[16px] leading-[19.2px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2414,19 +2441,17 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1260px]">
                   <div className="flex items-center">
@@ -2434,16 +2459,18 @@ export default function Jobs() {
                       06
                     </p>
                     <p className="text-[14px] leading-[16.8px] w-[160px] mr-[7px]">
-                  Session type
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px]">
-                  Session name
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[150px] mr-[27px]">
-                  Session start time
-                </p>
-                <p className="text-[14px] leading-[16.8px] w-[150px] mr-[14px]">Session end time</p>
-                 
+                      Session type
+                    </p>
+                    <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px]">
+                      Session name
+                    </p>
+                    <p className="text-[14px] leading-[16.8px] w-[150px] mr-[27px]">
+                      Session start time
+                    </p>
+                    <p className="text-[14px] leading-[16.8px] w-[150px] mr-[14px]">
+                      Session end time
+                    </p>
+
                     <input
                       type="text"
                       name=""
@@ -2453,63 +2480,61 @@ export default function Jobs() {
                     />
                   </div>
                   <div className="flex gap-[28px] items-center">
-                  <button
-                    className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]"
-                  >
-                    Update
-                  </button>
-                  <Image
-                    src="../../delete.svg"
+                    <button className="w-[75px] py-[5px] bg-white text-black border-black border-[1px] rounded-[4px] text-[16px] leading-[19.2px]">
+                      Update
+                    </button>
+                    <Image
+                      src="../../delete.svg"
                       onClick={() => setRemark(true)}
-                    className="cursor-pointer"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                      className="cursor-pointer"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
             <section className="mt-[16px] max-sm:px-[20px] max-md:pr-[20px] max-hamburger:h-auto max-hamburger:px-[25px] max-hamburger:pb-[40px] max-hamburger:pr-[40px] max-xl:w-full bg-white rounded-[5px] w-full h-[351px] pt-[29.77px] pl-[38px]">
               <h1 className="capitalize text-[20px] leading-[26px] font-semibold mb-[25.88px]">
-              WhatsApp Doubt Clearing Link
+                WhatsApp Doubt Clearing Link
               </h1>
               <div className="flex w-[494px] flex-col relative">
-              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
-                Select Course
-              </p>
-              <div className="flex gap-[20px] w-[494px]">
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
-                  <label
-                    htmlFor="course"
-                    className="text-[14px] leading-[16.8px]"
-                  >
-                    Full Stack Development
-                  </label>
-                </div>
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
-                  <label
-                    htmlFor="course"
-                    className="text-[14px] leading-[16.8px]"
-                  >
-                    Backend Mastery
-                  </label>
-                </div>
-                <div className="flex items-center gap-[4px]">
-                  <input type="radio" name="course" id="course" />
-                  <label
-                    htmlFor="course"
-                    className="text-[14px] h-[20px] leading-[16.8px]"
-                  >
-                    Frontend Mastery{" "}
-                  </label>
+                <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
+                  Select Course
+                </p>
+                <div className="flex gap-[20px] w-[494px]">
+                  <div className="flex items-center gap-[4px]">
+                    <input type="radio" name="course" id="course" />
+                    <label
+                      htmlFor="course"
+                      className="text-[14px] leading-[16.8px]"
+                    >
+                      Full Stack Development
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-[4px]">
+                    <input type="radio" name="course" id="course" />
+                    <label
+                      htmlFor="course"
+                      className="text-[14px] leading-[16.8px]"
+                    >
+                      Backend Mastery
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-[4px]">
+                    <input type="radio" name="course" id="course" />
+                    <label
+                      htmlFor="course"
+                      className="text-[14px] h-[20px] leading-[16.8px]"
+                    >
+                      Frontend Mastery{" "}
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
               <div className="flex mt-[27px] gap-[18px]">
                 <div>
-                <p className="text-[14px] leading-[18.2px] mb-[10px]">
+                  <p className="text-[14px] leading-[18.2px] mb-[10px]">
                     Select batch
                   </p>
                   <div className="w-[407px] max-hamburger:w-[100%] px-[15.71px] rounded-[4px] bg-[white] border-[0.5px] border-[#00000080]">
@@ -2525,7 +2550,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-sm:w-full">
                   <p className="text-[14px] leading-[18.2px] mb-[12px]">
-                  Batch instructor
+                    Batch instructor
                   </p>
                   <input
                     type="text"
@@ -2538,7 +2563,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-sm:w-full">
                   <p className="text-[14px] leading-[18.2px] mb-[12px]">
-                  WhatsApp Link
+                    WhatsApp Link
                   </p>
                   <input
                     type="text"
@@ -2553,7 +2578,6 @@ export default function Jobs() {
                 Add Session{" "}
               </button>
             </section>
-            
           </>
         )}
         {active === "courses" && (
@@ -6302,27 +6326,26 @@ export default function Jobs() {
         )}
         {active === "Trainers" && (
           <>
-          <div className="h-[169px] pl-[22px] pt-[27.12px] bg-white rounded-[8px]">
-            <h1 className="text-[20px] leading-[26px] font-bold mb-[18px]">
+            <div className="h-[169px] pl-[22px] pt-[27.12px] bg-white rounded-[8px]">
+              <h1 className="text-[20px] leading-[26px] font-bold mb-[18px]">
                 Trainer onboarding
               </h1>
               <p className="text-[14px] leading-[16.8px] opacity-80 w-[300px] mr-[50px]">
-              Onboarding link               
-               </p>
-               <div className="flex mt-[8px] gap-[14px]">
-
-              <input
-                type="search"
-                name=""
-                className="w-[407px] max-sm:w-full h-[45px] rounded-[6px] border-[##0000004D] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
-                placeholder=""
-                id=""
-              />
-              <button className="h-[45px] w-[95px] max-smallphone:w-full bg-black text-white rounded-[6px] text-[14px] leading-[16.8px]">
-              Copy Link
-              </button>
-               </div>
-          </div>
+                Onboarding link
+              </p>
+              <div className="flex mt-[8px] gap-[14px]">
+                <input
+                  type="search"
+                  name=""
+                  className="w-[407px] max-sm:w-full h-[45px] rounded-[6px] border-[##0000004D] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
+                  placeholder=""
+                  id=""
+                />
+                <button className="h-[45px] w-[95px] max-smallphone:w-full bg-black text-white rounded-[6px] text-[14px] leading-[16.8px]">
+                  Copy Link
+                </button>
+              </div>
+            </div>
             <div className="my-[14px] bg-white pl-[19.08px] max-sm:flex-col max-sm:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[16px] max-sm:gap-[8px] items-center gap-[27.5px]">
               <input
                 type="search"
@@ -6344,14 +6367,14 @@ export default function Jobs() {
                   Slno.
                 </p>
                 <p className="text-[14px] leading-[16.8px] opacity-70 w-[200px] mr-[85px]">
-                Trainer name
+                  Trainer name
                 </p>
                 <p className="text-[14px] leading-[16.8px] opacity-70 w-[250px] mr-[47px]">
                   Course
                 </p>
-                  <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
+                <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
                   UIN
-                    </span>
+                </span>
                 <p className="text-[14px] leading-[16.8px] opacity-70">
                   | Contact Number &nbsp; | Email
                 </p>
@@ -6362,16 +6385,16 @@ export default function Jobs() {
                     01
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6387,16 +6410,16 @@ export default function Jobs() {
                     02
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6412,16 +6435,16 @@ export default function Jobs() {
                     03
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6437,16 +6460,16 @@ export default function Jobs() {
                     04
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6462,16 +6485,16 @@ export default function Jobs() {
                     05
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6487,16 +6510,16 @@ export default function Jobs() {
                     06
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6512,16 +6535,16 @@ export default function Jobs() {
                     07
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6537,16 +6560,16 @@ export default function Jobs() {
                     08
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6562,16 +6585,16 @@ export default function Jobs() {
                     09
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6587,16 +6610,16 @@ export default function Jobs() {
                     10
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[200px] mr-[85px]">
-                  Bibendum turpis morbi
+                    Bibendum turpis morbi
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[290px] mr-[7px]">
                     No-code, Low-code Development
                   </p>
                   <span className="text-[14px] leading-[16.8px] opacity-70 w-[102px]">
-                  TFSD5202432
+                    TFSD5202432
                   </span>
                   <p className="text-[14px] leading-[16.8px] opacity-70">
-                  | +91 89023 09234 | viosut@gmail.com
+                    | +91 89023 09234 | viosut@gmail.com
                   </p>
                 </div>
                 <button
@@ -6655,7 +6678,7 @@ export default function Jobs() {
                 <Image src="/profile.png" width={147.1} height={147.1} />
               </div>
               <h1 className="text-[20px] leading-[26px] font-semibold">
-              Trainer information
+                Trainer information
               </h1>
               <div className="flex gap-[33px] max-sm:flex-col max-xl:flex-wrap max-hamburger:gap-[20px] mt-[18px] mb-[24px]">
                 <div className="max-hamburger:w-[100%]">
@@ -6669,7 +6692,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  UIN
+                    UIN
                   </p>
                   <input
                     type="text"
@@ -6680,7 +6703,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  Course
+                    Course
                   </p>
                   <input
                     type="text"
@@ -6693,7 +6716,7 @@ export default function Jobs() {
               <div className="pb-[32px] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Email
+                    Email
                   </p>
                   <input
                     type="text"
@@ -6704,7 +6727,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Phone number
+                    Phone number
                   </p>
                   <input
                     type="text"
@@ -6716,8 +6739,17 @@ export default function Jobs() {
               </div>
               <div className="flex gap-[33px] max-sm:flex-col max-xl:flex-wrap max-hamburger:gap-[20px] pb-[32px] border-b-[0.5px] border-[#00000033]">
                 <div className="max-hamburger:w-[100%]">
-                  <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  DOB
+                  <p className="text-[14px] leading-[18.2px] mb-[10px]">DOB</p>
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    className="w-[309px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
+                  />
+                </div>
+                <div className="max-hamburger:w-[100%]">
+                  <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
+                    GitHub profile
                   </p>
                   <input
                     type="text"
@@ -6728,18 +6760,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  GitHub profile
-                  </p>
-                  <input
-                    type="text"
-                    name=""
-                    id=""
-                    className="w-[309px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
-                  />
-                </div>
-                <div className="max-hamburger:w-[100%]">
-                  <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  LinkedIn profile
+                    LinkedIn profile
                   </p>
                   <input
                     type="text"
@@ -6790,12 +6811,12 @@ export default function Jobs() {
                 </div>
               </div>
               <h1 className="mt-[32px] text-[20px] leading-[26px] font-semibold">
-              Address
+                Address
               </h1>
               <div className="pb-[24px] mt-[24px] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[24px]">
-              <div className="max-hamburger:w-[100%]">
+                <div className="max-hamburger:w-[100%]">
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  State
+                    State
                   </p>
                   <input
                     type="text"
@@ -6806,7 +6827,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  City
+                    City
                   </p>
                   <input
                     type="text"
@@ -6817,7 +6838,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-                  Postal ZIP code
+                    Postal ZIP code
                   </p>
                   <input
                     type="text"
@@ -6828,10 +6849,14 @@ export default function Jobs() {
                 </div>
               </div>
               <div className="pb-[32px] border-b-[0.5px] border-[#00000033] max-hamburger:items-start max-hamburger:flex-col gap-[24px]">
-              <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
-              Enter house address
-                  </p>
-              <textarea className="w-[593px] h-[119px] pt-[11.5px] pl-[12.74px] border-[0.5px] border-[#00000080] rounded-[4px] resize-none"  name="" id=""></textarea>
+                <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
+                  Enter house address
+                </p>
+                <textarea
+                  className="w-[593px] h-[119px] pt-[11.5px] pl-[12.74px] border-[0.5px] border-[#00000080] rounded-[4px] resize-none"
+                  name=""
+                  id=""
+                ></textarea>
               </div>
               <h1 className="mt-[32px] text-[20px] leading-[26px] font-semibold">
                 KYC information
@@ -6871,7 +6896,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[14px] leading-[18.2px] mb-[10px]">
-                  Aadhaar number
+                    Aadhaar number
                   </p>
                   <input
                     type="text"
@@ -6882,7 +6907,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  Aadhaar card photo
+                    Aadhaar card photo
                   </p>
                   <div className="flex gap-[10px]">
                     <input
@@ -6903,7 +6928,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  10th Marks card photo
+                    10th Marks card photo
                   </p>
                   <div className="flex gap-[10px]">
                     <input
@@ -6924,7 +6949,7 @@ export default function Jobs() {
                 </div>
                 <div className="max-hamburger:w-[100%]">
                   <p className="text-[#2C2E32] text-[14px] leading-[18.2px] mb-[10px]">
-                  Experience letter
+                    Experience letter
                   </p>
                   <div className="flex gap-[10px]">
                     <input
@@ -6943,7 +6968,7 @@ export default function Jobs() {
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
             </div>
           </>
         )}
@@ -6951,11 +6976,12 @@ export default function Jobs() {
       {remark && (
         <div className="fixed top-0 bg-[#00000066] w-full h-[110vh] z-50 flex justify-center items-center">
           <div className="w-[336px] h-[214px] bg-white relative rounded-[6px] pt-[37.12px] pb-[23px] pl-[31px]">
-            
             <h1 className="text-[20px] capitalize leading-[26px] font-semibold mb-[13.81px]">
-            Delete this live session?
+              Delete this live session?
             </h1>
-            <p className="text-[#EA3535] text-[14px] leaidng-[16.8px]">This action cannot be undone</p>
+            <p className="text-[#EA3535] text-[14px] leaidng-[16.8px]">
+              This action cannot be undone
+            </p>
             <button
               onClick={() => setRemark(false)}
               className="bg-[#EA3535] text-white px-[15px] py-[10px] rounded-[4px] text-[14px] leading-[16.8px]"
