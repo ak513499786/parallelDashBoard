@@ -42,7 +42,7 @@ export default function Login() {
           phoneNumber: formData.phoneNumber,
           email: formData.email,
           dateOfBirth: formData.dateOfBirth,
-          userId : '669524190fd311fd0e562816',
+          //userId : '669524190fd311fd0e562816',
         });
       } else if (state === "2/4") {
         await axios.post("/api/onboarding/academics/route", {
@@ -50,7 +50,7 @@ export default function Login() {
           highestQualification: formData.highestQualification,
           branchOfDegree: formData.branchOfDegree,
           collegeName: formData.collegeName,
-          userId : '669524190fd311fd0e562816',
+          //userId : '669524190fd311fd0e562816',
 
         });
       } else if (state === "3/4") {
@@ -72,7 +72,7 @@ export default function Login() {
       } else if (state === "4/4") {
         await axios.post("/api/onboarding/course/route", {
           currentOccupation: formData.currentOccupation,
-          userId : '669524190fd311fd0e562816',
+          //userId : '669524190fd311fd0e562816',
 
         });
       }
