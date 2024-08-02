@@ -1,66 +1,40 @@
-"use client";
-
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
-import jwt from "jsonwebtoken";
+import Academics from '../../../models/Onboarding/Academics';
 
-console.log("it is working");
+async function findAllAcademics() {
+  console.log("Find all academics");
+  return Academics.find({});
+}
+
+async function createAcademics(academicsData) {
+  const newAcademics = new Academics(academicsData);
+  await newAcademics.save();
+  return newAcademics;
+}
+
 export default async function handler(req, res) {
-    await connect();
-    console.log("DB connected");
+  await connect();
 
-    if (req.method === 'POST') {
-        const { currentoccupation, highestQualification, branchOfDegree, collegeName } = req.body;
+  try {
+    switch (req.method) {
+      case 'GET':
+        console.log("GET request for academics");
+        const academics = await findAllAcademics();
+        res.status(200).json(academics);
+        break;
 
-        
+      case 'POST':
+        console.log("POST request for academics");
+        const newAcademics = req.body;
+        const createdAcademics = await createAcademics(newAcademics);
+        res.status(201).json(createdAcademics);
+        break;
 
-
-        const authHeader = req.headers.authorization;
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ error: 'Authorization token is required' });
-        }
-
-        const token = authHeader.split(' ')[1];
-
-
-        if (!currentoccupation || !highestQualification ||!branchOfDegree || !collegeName) {
-            return res.status(400).json({ error: 'All academics details are required' });
-        }
-
-
-        try {
-
-            const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-            const userId = decoded.id;
-            console.log("Extracted userId from token:", userId);
-            console.log(currentoccupation, "this is the current occupation");
-
-          
-
-            // Save user details in the database
-            const updatedUser = await User.findOneAndUpdate(
-                { _id: userId }, 
-                {
-                    currentoccupation: currentoccupation,
-                    highestQualification:highestQualification,
-                    branchOfDegree:branchOfDegree,
-                    collegeName: collegeName,
-                },
-                { new: true } 
-            );
-
-            if (!updatedUser) {
-                return res.status(404).json({ error: 'User not found' });
-            }
-
-            res.status(201).json({ message: 'academicsc details saved successfully' });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Error saving personal details' });
-        }
-    } else {
-        res.setHeader('Allow', ['POST']);
-        res.status(405).end(`Method ${req.method} Not Allowed`);
+      default:
+        res.status(405).json({ message: 'Method not allowed' });
+        break;
     }
-
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
 }

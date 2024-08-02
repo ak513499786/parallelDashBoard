@@ -1,6 +1,6 @@
 "use client";
 
-import User from '../../../models/userModel';
+import User from '../../../models/User';
 import ResetToken from '../../../models/resetTokenModel';
 import { connect } from '../../../lib/db';
 import nodemailer from 'nodemailer';

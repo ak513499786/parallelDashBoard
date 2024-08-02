@@ -7,6 +7,13 @@ import style from "../styles/style.module.css";
 
 export default function Dashboard() {
   const [fold, setFold] = useState("");
+  const [assignments, setAssignments] = useState([]);
+  const [guestSessions, setGuestSessions] = useState([]);
+  const [modules, setModules] = useState([]);
+  const [schedules, setSchedules] = useState([]);
+  const [supportSection, setSupportSection] = useState([]);
+
+
 
   return (
     <>

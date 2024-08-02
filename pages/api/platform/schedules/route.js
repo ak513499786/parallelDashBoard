@@ -1,48 +1,50 @@
-import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
-import Class from '../../../models/class';
-import jwt from 'jsonwebtoken';
-import schedule from '../../../models/schedule';
+import {connect} from '../../../../lib/db';
+import Class from '../../../models/platform/Class';
+import Schedule from '../../../models/platform/Schedule';
 
 export default async function handler(req, res) {
+  const {
+    query: { id },
+    method,
+  } = req;
+
+
+
+  
+
+
   await connect();
 
-  if (req.method === 'GET') {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Authorization token is required' });
-    }
-
-    const token = authHeader.split(' ')[1];
-
-    try {
-      const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-      const userId = decoded.id;
-
-      const user = await schedule.findById("669d6e40a96e7c145ade29e6").populate('course');
-
-
-      
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+  switch (method) {
+    case 'GET':
+      try {
+        const classObj = await Class.findById(id).populate('schedules');
+        if (!classObj) {
+          return res.status(404).json({ success: false, error: 'Class not found' });
+        }
+        res.status(200).json({ success: true, data: classObj.schedules });
+      } catch (error) {
+        res.status(400).json({ success: false, error: error.message });
       }
-      console.log("user found", user);
+      break;
 
-      
-              
 
-      if (!user) {
-        return res.status(404).json({ error: 'Class details not found' });
+    case 'POST':
+      try {
+        const schedule = await Schedule.create({ ...req.body, class: id });
+        const updatedClass = await Class.findByIdAndUpdate(
+          id,
+          { $push: { schedules: schedule._id } },
+          { new: true }
+        );
+        res.status(201).json({ success: true, data: schedule });
+      } catch (error) {
+        res.status(400).json({ success: false, error: error.message });
       }
+      break;
 
-      res.status(200).json(user);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  } else {
-    res.setHeader('Allow', ['GET']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    default:
+      res.status(405).json({ success: false, error: 'Method not allowed' });
+      break;
   }
 }

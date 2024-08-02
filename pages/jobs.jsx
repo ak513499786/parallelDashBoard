@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+
 export default function Jobs() {
   const [applied, setapplied] = useState(true);
   const [apply, setapply] = useState(false);
@@ -11,6 +12,7 @@ export default function Jobs() {
   const [profile, setprofile] = useState(true);
   const handleapplied = () => {
     setapplied(!applied);
+    
   };
   return (
     <>

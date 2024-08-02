@@ -1,63 +1,63 @@
 "use client";
 
 import { connect } from '../../../lib/db';
-import User from '../../../models/userModel';
-import jwt from "jsonwebtoken";
+import Course from '../../../models/Onboarding/Course';
+import jwt from 'jsonwebtoken';
 
-console.log("it is working");
+async function findAllCourses() {
+  console.log("Find all courses");
+  return Course.find({});
+}
+
+async function createCourse(courseData) {
+  const newCourse = new Course(courseData);
+  await newCourse.save();
+  return newCourse;
+}
+
 export default async function handler(req, res) {
-    await connect();
-    console.log("DB connected");
+  await connect();
 
-    if (req.method === 'POST') {
-        const { enrollCourse } = req.body;
+  try {
+    switch (req.method) {
+      case 'GET':
+        console.log("GET request for courses");
+        const courses = await findAllCourses();
+        res.status(200).json(courses);
+        break;
 
-        
-
+      case 'POST':
+        console.log("POST request for courses");
 
         const authHeader = req.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ error: 'Authorization token is required' });
+          return res.status(401).json({ error: 'Authorization token is required' });
         }
 
         const token = authHeader.split(' ')[1];
 
-
-        if (!enrollCourse) {
-            return res.status(400).json({ error: 'course selection are required' });
-        }
-
-
         try {
+          const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+          const userId = decoded.id;
 
-            const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-            const userId = decoded.id;
-            console.log("Extracted userId from token:", userId);
-            console.log(enrollCourse, "this is the enrolled course");
+          const newCourse = req.body;
+          newCourse.userId = userId;
 
-          
-
-            // Save user details in the database
-            const updatedUser = await User.findOneAndUpdate(
-                { _id: userId }, 
-                {
-                    enrollCourse,
-                },
-                { new: true } 
-            );
-
-            if (!updatedUser) {
-                return res.status(404).json({ error: 'User not found' });
-            }
-
-            res.status(201).json({ message: 'course saved successfully' });
+          const createdCourse = await createCourse(newCourse);
+          res.status(201).json(createdCourse);
         } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: 'Error saving personal details' });
+          return res.status(401).json({ error: 'Invalid token' });
         }
-    } else {
-        res.setHeader('Allow', ['POST']);
-        res.status(405).end(`Method ${req.method} Not Allowed`);
-    }
 
+        break;
+
+      default:
+        res.setHeader('Allow', ['GET', 'POST']);
+        res.status(405).end(`Method ${req.method} Not Allowed`);
+        break;
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+  }
 }
