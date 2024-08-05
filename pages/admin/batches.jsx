@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import style from "../../styles/style.module.css";
-import TrainerNavbar from "../../components/trainerbar";
+import AdminNavbar from "../../components/adminbar";
 
 export default function Jobs() {
   const [active, setactive] = useState("");
@@ -33,7 +33,7 @@ export default function Jobs() {
   };
   return (
     <>
-      <TrainerNavbar />
+      <AdminNavbar />
 
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
         {active === "" && (

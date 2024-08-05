@@ -458,7 +458,7 @@ export default function Login() {
           <h1 className="text-[25px] mt-[20px] leading-[30px]">
             Thank you for submitting your information!
           </h1>
-          <Link href="/">
+          <Link href={"/class"}>
             <a className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
               Go to Home
             </a>

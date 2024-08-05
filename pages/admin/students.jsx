@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import style from "../../styles/style.module.css";
 import AdminNavbar from "../../components/adminbar";
@@ -31,56 +30,7 @@ export default function Jobs() {
   return (
     <>
       <AdminNavbar />
-      <div className="h-[59px] sticky top-[85px] z-[9999] shadow-lg gap-[32px] flex mb-[28px] items-center px-[60px] max-md:px-[40px] max-sm:px-[20px] max-hamburger:gap-[16px] max-hamburger:overflow-scroll bg-[white]">
-        <h1
-          onClick={() => setactive("")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Student info
-        </h1>
-        <h1
-          onClick={() => setactive("kyc")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          KYC info{" "}
-        </h1>
-        <h1
-          onClick={() => setactive("Graduates")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Graduates{" "}
-        </h1>
-        <h1
-          onClick={() => setactive("announcements")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Send Announcement{" "}
-        </h1>
-        <h1
-          onClick={() => setactive("live")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Live session & WhatsApp links{" "}
-        </h1>
-        <h1
-          onClick={() => setactive("courses")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Courses{" "}
-        </h1>
-        <Link
-          href={"/admin/batches"}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Batches{" "}
-        </Link>
-        <h1
-          onClick={() => setactive("Trainers")}
-          className="text-[16px] cursor-pointer leading-[19.2px] pl-[0.5px] max-hamburger:pl-0 max-md:text-[14px] max-md:leading-[16.8px] max-sm:text-[12px] max-sm:leading-[14.4px] max-hamburger:whitespace-nowrap"
-        >
-          Trainers{" "}
-        </h1>
-      </div>
+      
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
         {active === "" && (
           <>
