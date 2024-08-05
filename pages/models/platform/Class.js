@@ -7,11 +7,14 @@ const classSchema = new mongoose.Schema({
   
   name: { type: String, required: true },
   description: String,
-  assignments: [{ type: ObjectId, ref: 'Assignment' }],
-  schedules: [{ type: ObjectId, ref: 'Schedule' }],
-  modules: [{ type: ObjectId, ref: 'Module' }],
-  supportSection: { type: ObjectId, ref: 'SupportSection' },
-  guestSessions: [{ type: ObjectId, ref: 'GuestSession' }]
+  assignments: { type: mongoose.Schema.Types.ObjectId, ref: 'Assignment' },
+
+  schedules: { type: mongoose.Schema.Types.ObjectId, ref: 'Schedule' },
+  modules: { type: mongoose.Schema.Types.ObjectId, ref: 'Module' },
+  supportSections: { type: mongoose.Schema.Types.ObjectId, ref: 'SupportSection' },
+  guestSessions: { type: mongoose.Schema.Types.ObjectId, ref: 'GuestSession' },
+  videos: [{ type: ObjectId, ref: 'Video' }]
+
 })
 
 

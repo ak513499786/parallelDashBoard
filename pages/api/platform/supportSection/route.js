@@ -1,6 +1,5 @@
-// pages/api/classes/[id]/support-section.js
 import {connect} from '../../../lib/db';
-import Class from '../../../models/Class';
+import Class from '../../../models/platform/Class';
 import SupportSection from '../../../models/platform/SupportSection';
 
 export default async function handler(req, res) {
@@ -14,18 +13,18 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.findById(id).populate('supportSection');
+        const classObj = await Class.findById(id).populate('supportSections');
         if (!classObj) {
           return res.status(404).json({ success: false, error: 'Class not found' });
         }
-        res.status(200).json({ success: true, data: classObj.supportSection });
+        res.status(200).json({ success: true, data: classObj });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }
       break;
 
+    
     case 'POST':
-    case 'PUT':
       try {
         let supportSection;
         if (method === 'POST') {
