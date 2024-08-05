@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Login() {
-  const [state, setState] = useState("complete");
+  const [state, setState] = useState("1/4");
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
