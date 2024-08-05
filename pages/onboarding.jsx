@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Login() {
-  const [state, setState] = useState("3/4");
+  const [state, setState] = useState("complete");
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -463,9 +463,9 @@ export default function Login() {
             Thank you for submitting your information!
           </h1>
           <Link href="/class">
-            <a className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
+            <p className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
               Go to Home
-            </a>
+            </p>
           </Link>
         </div>
       )}
