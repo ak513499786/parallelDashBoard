@@ -13,11 +13,11 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.findById(id).populate('modules');
+        const classObj = await Module.find({}); 
         if (!classObj) {
           return res.status(404).json({ success: false, error: 'Class not found' });
         }
-        res.status(200).json({ success: true, data: classObj.modules });
+        res.status(200).json({ success: true, data: classObj });
       } catch (error) {
         res.status(400).json({ success: false, error: error.message });
       }

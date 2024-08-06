@@ -1,9 +1,11 @@
 import {connect} from '../../lib/db';
 import User from '../../models/User';
+import Course from '../../models/Onboarding/Course'
+
 
 async function findAllUsers() {
   console.log("find all user");
-  return User.find({});
+  return User.find({}).populate("selectedCourse");
 }
 
 async function createUser(user) {

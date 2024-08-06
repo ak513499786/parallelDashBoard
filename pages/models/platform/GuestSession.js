@@ -1,9 +1,9 @@
-// models/GuestSession.js
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const guestSessionSchema = new mongoose.Schema({
-  _id: ObjectId,
-  guestName: String,
+  
   topic: String,
   date: Date,
   class: { type: ObjectId, ref: 'Class' }

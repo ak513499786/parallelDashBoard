@@ -3,6 +3,7 @@ import Class from '../../../models/platform/Class';
 import Assignment from '../../../models/platform/Assignment';
 
 export default async function handler(req, res) {
+
   const {
     query: { id },
     method,
@@ -13,11 +14,11 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.findById(id).populate('assignments');
+        const classObj = await Class.find({}).populate("assignments");
         if (!classObj) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: classObj.assignments });
+        res.status(200).json({ success: true, data: classObj });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -25,20 +26,29 @@ export default async function handler(req, res) {
 
     case 'POST':
       try {
-        const assignment = await Assignment.create({ ...req.body, class: id });
-        const updatedClass = await Class.findByIdAndUpdate(
-          id,
-          { $push: { assignments: assignment._id } },
-          { new: true }
-        );
+        const { id, ...assignmentData } = req.body;
+        
+        console.log("Assignment data:", assignmentData);
+    
+        // Ensure assignmentData is an object
+        if (typeof assignmentData !== 'object' || assignmentData === null) {
+          throw new Error('Invalid assignment data format');
+        }
+    
+        // Create a new assignment
+        const assignment = await Assignment.create(assignmentData);
+    
+        console.log('Created assignment:', assignment);
+    
         res.status(201).json({ success: true, data: assignment });
       } catch (error) {
-        res.status(400).json({ success: false });
+        console.error('Error creating assignment:', error);
+        res.status(400).json({ success: false, error: error.message });
       }
       break;
 
     default:
-      res.status(400).json({ success: false });
+      res.status(400).json({ success: false, message: 'Invalid request method' });
       break;
   }
 }

@@ -1,17 +1,38 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import style from "../styles/style.module.css";
+import { fetchAssignments, fetchGuestSession, fetchModules, fetchSchedules, fetchSupportSection, fetchVideos } from '../pages/utils/platformApi';
+
 
 export default function Dashboard() {
+
   const [fold, setFold] = useState("");
+
   const [assignments, setAssignments] = useState([]);
-  const [guestSessions, setGuestSessions] = useState([]);
+  const [guestSession, setGuestSession] = useState([]);
   const [modules, setModules] = useState([]);
   const [schedules, setSchedules] = useState([]);
   const [supportSection, setSupportSection] = useState([]);
+  const [videos, setVideos] = useState([]);
+
+
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const response = await axios.get('/api/platform/assignments/route');
+        setAssignments(response.data);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    };
+
+    fetchAssignments();
+  }, []);
+
+
 
 
 
@@ -622,25 +643,31 @@ export default function Dashboard() {
                 <h1 className="text-[20px] font-bold leadng-[26px] block w-full">
                   Assignments
                 </h1>
+
+
                 <p className="text-[14px] text-white p-[8px] bg-[#0C6926] rounded-[24px] w-[46px]">
                   New
                 </p>
               </div>
-              <div className=" pl-[23px] pr-[38px]">
-                <div className="border-b-[1px] h-[188px] max-xl:h-[150px] max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col">
-                  <div className="w-[268px]">
-                    <p className="text-[16px] leading-[20.8px] opacity-70 max-smallerphone:text-sm">
-                      Friday 07 July{" "}
-                    </p>
-                    <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">
-                      Nec dolor quis pellentesque faucibus viverra. Et consequat
-                      erat faucibus.{" "}
-                    </h1>
-                  </div>
-                  <button className="h-[43px] mt-[14px] w-[168px] max-sm:w-full border-[1px] border-black rounded-[4px] text-base">
-                    View Assignment
-                  </button>{" "}
-                </div>
+
+              <div className="pl-[23px] pr-[38px]">
+                {assignments.length > 0 ? (
+                  assignments.map((assignment) => (
+                    <div key={assignment.id} className="border-b-[1px] h-[188px] max-xl:h-[150px] max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col">
+                      <div className="w-[268px]">
+                        <p className="text-[16px] leading-[20.8px] opacity-70 max-smallerphone:text-sm">{assignment.date}</p>
+                        <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">{assignment.title}</h1>
+                        <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">{assignment.description}</h1>
+
+                      </div>
+                      <button className="h-[43px] mt-[14px] w-[168px] max-sm:w-full border-[1px] border-black rounded-[4px] text-base">
+                        View Assignment
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p>No assignments available</p>
+                )}
               </div>
             </section>
             <section className="w-[100%] mt-[22px] rounded-[6px] h-[404px] bg-white">
