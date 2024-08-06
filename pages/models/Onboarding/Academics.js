@@ -11,4 +11,4 @@ const academicsSchema = new mongoose.Schema({
 }, 
 { timestamps: true });
 
-export default mongoose.models.academicsSchema || mongoose.model('Academics', academicsSchema);
+export default mongoose.models.Academics || mongoose.model('Academics', academicsSchema);

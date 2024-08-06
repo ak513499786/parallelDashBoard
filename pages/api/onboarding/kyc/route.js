@@ -44,11 +44,12 @@ export default async function handler(req, res) {
 
       case 'POST':
         const { panPhoto, passportPhoto, panNumber } = req.body;
+        console.log("request body", req.body);
+        // if (!panNumber || !panPhoto || !passportPhoto) {
+        //   return res.status(400).json({ error: 'All fields are required: panNumber, panPhoto, passportPhoto' });
+        // }
 
-        if (!panNumber || !panPhoto || !passportPhoto) {
-          return res.status(400).json({ error: 'All fields are required: panNumber, panPhoto, passportPhoto' });
-        }
-
+        //converting to base64 
         const base64ToFile = (base64String, filePath) => {
           const base64Data = base64String.replace(/^data:image\/\w+;base64,/, '');
           const buffer = Buffer.from(base64Data, 'base64');

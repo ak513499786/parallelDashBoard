@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import Cookies from 'js-cookie';
+
 
 export default function Login() {
   const [state, setState] = useState("1/4");
@@ -42,7 +44,7 @@ export default function Login() {
           phoneNumber: formData.phoneNumber,
           email: formData.email,
           dateOfBirth: formData.dateOfBirth,
-          userId: '66963586ab1c32d043143128',
+          userId: '6693e0d55bec495a0083f64d',
         });
       } else if (state === "2/4") {
         await axios.post("/api/onboarding/academics/route", {
@@ -50,7 +52,7 @@ export default function Login() {
           highestQualification: formData.highestQualification,
           branchOfDegree: formData.branchOfDegree,
           collegeName: formData.collegeName,
-          userId: '66963586ab1c32d043143128',
+          userId: '6693e0d55bec495a0083f64d',
 
         });
       } else if (state === "3/4") {
@@ -59,14 +61,20 @@ export default function Login() {
         formDataKyc.append("panPhoto", formData.panPhoto);
         formDataKyc.append("passportPhoto", formData.passportPhoto);
         formDataKyc.append('userId', formData.userId);
-      
+
         try {
-          const token = "actual_valid_token"; 
+          const token = Cookies.get('token');
+
+          if (!token) {
+            throw new Error('No token found');
+          }
           const response = await axios.post("/api/onboarding/kyc/route", formDataKyc, {
             headers: {
               "Content-Type": "multipart/form-data",
               "Authorization": `Bearer ${token}`
             },
+            userId: '6693e0d55bec495a0083f64d',
+
           });
           console.log('Response:', response.data);
         } catch (error) {
@@ -79,7 +87,7 @@ export default function Login() {
           }
         }
       }
-      
+
 
 
 
@@ -329,7 +337,7 @@ export default function Login() {
             </strong>
             <div className="flex flex-col gap-[32px] relative">
               <p className="text-black text-[13px] bg-white absolute top-[-12px] left-[18px] p-[8px] leading-[15.6px]">
-              Enter your PAN number
+                Enter your PAN number
               </p>
               <input
                 id="panNumber"
@@ -343,9 +351,9 @@ export default function Login() {
               <p className="text-black text-[13px] bg-white absolute top-[82px] left-[18px] p-[8px] leading-[15.6px]">
                 Upload PAN Photo
               </p>
-              
+
               <label htmlFor="panPhoto" className="pl-[25.71px] h-[62px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base">
-                
+
               </label>
               <input
                 id="panPhoto"
