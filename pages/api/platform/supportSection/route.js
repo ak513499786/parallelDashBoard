@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.findById(id).populate('supportSections');
+        const classObj = await Class.find({}).populate('supportSections');
         if (!classObj) {
           return res.status(404).json({ success: false, error: 'Class not found' });
         }

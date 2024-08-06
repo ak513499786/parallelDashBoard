@@ -30,12 +30,10 @@ export default async function handler(req, res) {
         
         console.log("Assignment data:", assignmentData);
     
-        // Ensure assignmentData is an object
         if (typeof assignmentData !== 'object' || assignmentData === null) {
           throw new Error('Invalid assignment data format');
         }
     
-        // Create a new assignment
         const assignment = await Assignment.create(assignmentData);
     
         console.log('Created assignment:', assignment);

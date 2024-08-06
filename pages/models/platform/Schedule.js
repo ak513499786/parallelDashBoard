@@ -4,8 +4,9 @@ const { ObjectId } = Schema.Types;
 
 const scheduleSchema = new mongoose.Schema({
   _id: ObjectId,
-  date: Date,
+  date: String,
   description: String,
+  course: { type: ObjectId, ref: 'Course' },
   class: { type: ObjectId, ref: 'Class' }
 });
 

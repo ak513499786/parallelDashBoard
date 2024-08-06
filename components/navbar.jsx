@@ -143,11 +143,11 @@ export default function Navbar() {
               Class
             </Link>
             <Link
-              href={"/assignment"}
+              href={"/assignments"}
               ref={Menuitems2}
               className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
             >
-              Assignment
+              Assignments
             </Link>
             <Link
               href={"/support"}

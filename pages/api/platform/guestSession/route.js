@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.find({}).populate('guestSessions');
+        const classObj = await GuestSession.find({});
         if (!classObj) {
           return res.status(404).json({ success: false, error: 'Class not found' });
         }

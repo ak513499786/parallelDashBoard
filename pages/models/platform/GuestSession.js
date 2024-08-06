@@ -5,7 +5,7 @@ const { ObjectId } = Schema.Types;
 const guestSessionSchema = new mongoose.Schema({
   
   topic: String,
-  date: Date,
+  date: String,
   class: { type: ObjectId, ref: 'Class' }
 });
 
