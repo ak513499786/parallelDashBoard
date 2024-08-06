@@ -267,7 +267,7 @@ export default function Login() {
                 placeholder="Enter your highest qualification"
                 className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] left-[18px] bg-white top-[185px] p-[8px] absolute leading-[15.6px]">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[193px] p-[8px] absolute leading-[15.6px]">
                 Branch of degree
               </p>
               <input
@@ -279,7 +279,7 @@ export default function Login() {
                 placeholder="Enter your branch of degree"
                 className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] left-[18px] bg-white top-[280px] p-[8px] absolute leading-[15.6px]">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[295px] p-[8px] absolute leading-[15.6px]">
                 College name
               </p>
               <input
@@ -327,9 +327,9 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex flex-col relative gap-[32px]">
-              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
-                PAN Number
+            <div className="flex flex-col gap-[32px] relative">
+              <p className="text-black text-[13px] bg-white absolute top-[-12px] left-[18px] p-[8px] leading-[15.6px]">
+              Enter your PAN number
               </p>
               <input
                 id="panNumber"
@@ -340,15 +340,19 @@ export default function Login() {
                 placeholder="Enter your PAN number"
                 className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
+              <p className="text-black text-[13px] bg-white absolute top-[82px] left-[18px] p-[8px] leading-[15.6px]">
                 Upload PAN Photo
               </p>
+              
+              <label htmlFor="panPhoto" className="pl-[25.71px] h-[62px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base">
+                
+              </label>
               <input
                 id="panPhoto"
                 type="file"
                 name="panPhoto"
                 onChange={handleFileChange}
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] hidden border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
                 Upload Passport Photo
@@ -358,7 +362,7 @@ export default function Login() {
                 type="file"
                 name="passportPhoto"
                 onChange={handleFileChange}
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] hidden border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
@@ -396,7 +400,7 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex flex-col relative gap-[32px]">
+            <div className="flex flex-col relative">
               <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
                 Current occupation
               </p>
@@ -460,7 +464,7 @@ export default function Login() {
       )}
       {state === "complete" && (
         <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-center items-center pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <Image src="success.svg" width={100} height={100} />
+          <Image src="/success.svg" width={100} height={100} />
           <h1 className="text-[25px] mt-[20px] leading-[30px]">
             Thank you for submitting your information!
           </h1>
