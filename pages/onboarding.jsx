@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Login() {
-  const [state, setState] = useState("1/4");
+  const [state, setState] = useState("3/4");
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
@@ -86,8 +86,8 @@ export default function Login() {
   return (
     <main className="flex">
       {state === "1/4" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
+        <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
@@ -97,7 +97,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">1/4</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -120,12 +120,12 @@ export default function Login() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your name"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
                 Enter your phone number
               </p>
-              <div className="pl-[25.71px] flex w-[421px] border-[1px] border-black rounded-[6px]">
+              <div className="pl-[25.71px] max-md:w-full flex w-[421px] border-[1px] border-black rounded-[6px]">
                 <p className="text-base pt-[21px]">+ 91 |</p>
                 <input
                   id="phoneNumber"
@@ -134,7 +134,7 @@ export default function Login() {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   placeholder="Enter your phone number"
-                  className="pt-[21.5px] pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                  className="pt-[21.5px] max-md:w-full pl-[9.11px] w-[350px] pb-[16.5px] text-base"
                 />
               </div>
               <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
@@ -147,7 +147,7 @@ export default function Login() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[273px] p-[8px] absolute leading-[15.6px]">
                 Enter your DOB(DD/MM/YY)
@@ -159,12 +159,12 @@ export default function Login() {
                 value={formData.dateOfBirth}
                 onChange={handleChange}
                 placeholder="DD/MM/YY"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
                 onClick={() => handleNext("2/4")}
-                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -173,8 +173,8 @@ export default function Login() {
         </div>
       )}
       {state === "2/4" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
+        <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
@@ -185,7 +185,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">2/4</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute max-md:hidden w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -201,7 +201,7 @@ export default function Login() {
               <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
                 Current occupation
               </p>
-              <div className="flex gap-[20px] w-[434px]">
+              <div className="flex gap-[20px] max-md:w-full w-[434px]">
                 <div className="flex items-center gap-[4px]">
                   <input
                     type="radio"
@@ -215,7 +215,6 @@ export default function Login() {
                     className="text-[14px] leading-[16.8px]"
                   >
                     Employed
-
                   </label>
                 </div>
                 <div className="flex items-center gap-[4px]">
@@ -259,7 +258,7 @@ export default function Login() {
                 value={formData.highestQualification}
                 onChange={handleChange}
                 placeholder="Enter your highest qualification"
-                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] mt-[40px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[193px] p-[8px] absolute leading-[15.6px]">
                 Branch of degree
@@ -271,7 +270,7 @@ export default function Login() {
                 value={formData.branchOfDegree}
                 onChange={handleChange}
                 placeholder="Enter your branch of degree"
-                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] mt-[40px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[295px] p-[8px] absolute leading-[15.6px]">
                 College name
@@ -283,12 +282,12 @@ export default function Login() {
                 value={formData.collegeName}
                 onChange={handleChange}
                 placeholder="Enter your college name"
-                className="pl-[25.71px] mt-[40px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] mt-[40px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
                 onClick={() => handleNext("3/4")}
-                className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] mt-[40px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -297,9 +296,9 @@ export default function Login() {
         </div>
       )}
       {state === "3/4" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+        <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
                 onClick={() => setState("2/4")}
@@ -309,7 +308,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">3/4</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -332,7 +331,7 @@ export default function Login() {
                 value={formData.panNumber}
                 onChange={handleChange}
                 placeholder="Enter your PAN number"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] bg-white absolute top-[82px] left-[18px] p-[8px] leading-[15.6px]">
                 Upload PAN Photo
