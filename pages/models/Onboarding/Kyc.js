@@ -4,7 +4,7 @@ const { Schema, Types } = mongoose;
 const { ObjectId } = Types;
 
 const kycSchema = new Schema({
-  userId: { type: ObjectId, ref: 'User', required: true },
+  userId: { type: ObjectId, ref: 'User'},
   panNumber: { type: String, required: true },
   panPhoto: { type: String, required: true },
   passportPhoto: { type: String, required: true }

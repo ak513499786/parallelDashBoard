@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import style from "../styles/style.module.css";
-import { fetchAssignments, fetchGuestSession, fetchModules, fetchSchedules, fetchSupportSection, fetchVideos } from '../pages/utils/platformApi';
+import axios from "axios"
+//import { fetchAssignments, fetchGuestSession, fetchModules, fetchSchedules, fetchSupportSection, fetchVideos } from '../pages/utils/platformApi';
 
 
 export default function Dashboard() {
@@ -18,19 +19,81 @@ export default function Dashboard() {
   const [supportSection, setSupportSection] = useState([]);
   const [videos, setVideos] = useState([]);
 
-
   useEffect(() => {
     const fetchAssignments = async () => {
       try {
         const response = await axios.get('/api/platform/assignments/route');
-        setAssignments(response.data);
+        setAssignments(response.data.data);
+        console.log(assignments);
+        console.log("response assignment", response.data.data);
       } catch (error) {
         console.error('Error fetching assignments:', error);
       }
     };
 
+    const fetchGuestSession = async () => {
+      try {
+        const response = await axios.get('/api/platform/guestSession/route');
+        setGuestSession(response.data.data);
+        console.log(guestSession);
+        console.log("response guestSession", response.data.data);
+      } catch (error) {
+        console.error('Error fetching guestSession:', error);
+      }
+    };
+
+    const fetchModules = async () => {
+      try {
+        const response = await axios.get('/api/platform/modules/route');
+        setModules(response.data.data);
+        console.log(modules);
+        console.log("response modules", response.data.data);
+      } catch (error) {
+        console.error('Error fetching modules:', error);
+      }
+    };
+
+    const fetchSchedules = async () => {
+      try {
+        const response = await axios.get('/api/platform/schedules/route');
+        setSchedules(response.data.data);
+        console.log(schedules);
+        console.log("response schedules", response.data.data);
+      } catch (error) {
+        console.error('Error fetching schedules:', error);
+      }
+    };
+
+    const fetchSupportSection = async () => {
+      try {
+        const response = await axios.get('/api/platform/supportSection/route');
+        setSupportSection(response.data.data);
+        console.log(supportSection);
+        console.log("response supportSection", response.data.data);
+      } catch (error) {
+        console.error('Error fetching supportSection:', error);
+      }
+    };
+
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get('/api/platform/videos/route');
+        setVideos(response.data.data);
+        console.log(videos);
+        console.log("response videos", response.data.data);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
     fetchAssignments();
+    fetchGuestSession();
+    fetchModules();
+    fetchSchedules();
+    fetchSupportSection();
+    fetchVideos();
   }, []);
+
 
 
 
@@ -42,76 +105,20 @@ export default function Dashboard() {
       {fold === "" && (
         <main className="px-[60px] max-md:px-[40px] max-sm:px-[20px] max-hamburger:flex-col pb-[31px] pt-[42px] flex gap-[20px]">
           <div className="w-[58.61%] max-hamburger:w-full">
-            <section className="pl-[25px] bg-white rounded-[6px] pr-[40px] pb-[28px] pt-[27.96px]">
-              <h1 className="pb-[24.04px] text-[20px] border-[#C4C4C4] border-b-[1px] leading-[24px] font-bold">
-                Schedule
-              </h1>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
-                <h1 className="text-base opacity-70">Monday 07</h1>
-                <div className="w-[478.35px]">
-                  <h1 className="text-base opacity-70 mb-[4px]">
-                    Class: 10:00AM to 11:30AM
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                  <h1 className="text-base mt-[20px] opacity-70 mb-[4px]">
-                    Class: 04:00PM to 05:30PM{" "}
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                </div>
-              </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
-                <h1 className="text-base opacity-70">Tuesday 08</h1>
-                <div className="w-[478.35px]">
-                  <h1 className="text-base opacity-70 mb-[4px]">
-                    Class: 10:00AM to 11:30AM
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                  <h1 className="text-base mt-[20px] opacity-70 mb-[4px]">
-                    Class: 04:00PM to 05:30PM{" "}
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                </div>
-              </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
-                <h1 className="text-base opacity-70">Wednesday 09</h1>
-                <div className="w-[478.35px]">
-                  <h1 className="text-base opacity-70 mb-[4px]">
-                    Class: 10:00AM to 11:30AM
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                  <h1 className="text-base mt-[20px] opacity-70 mb-[4px]">
-                    Class: 04:00PM to 05:30PM{" "}
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                </div>
-              </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
-                <h1 className="text-base opacity-70">Thursday 10</h1>
-                <div className="w-[478.35px]">
-                  <h1 className="text-base opacity-70 mb-[4px]">
-                    Class: 10:00AM to 11:30AM
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                  <h1 className="text-base mt-[20px] opacity-70 mb-[4px]">
-                    Class: 04:00PM to 05:30PM{" "}
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                </div>
-              </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
-                <h1 className="text-base opacity-70">Friday 11</h1>
-                <div className="w-[478.35px]">
-                  <h1 className="text-base opacity-70 mb-[4px]">
-                    Class: 10:00AM to 11:30AM
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                  <h1 className="text-base mt-[20px] opacity-70 mb-[4px]">
-                    Class: 04:00PM to 05:30PM{" "}
-                  </h1>
-                  <p className="text-[20px]">Bit manipulation and complexity</p>
-                </div>
-              </div>
-            </section>
+          <section className="pl-[25px] bg-white rounded-[6px] pr-[40px] pb-[28px] pt-[27.96px]">
+      <h1 className="pb-[24.04px] text-[20px] border-[#C4C4C4] border-b-[1px] leading-[24px] font-bold">
+        Schedule
+      </h1>
+      {schedules.map((schedule) => (
+        <div key={schedule._id} className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+          <h1 className="text-base opacity-70">{new Date(schedule.date).toLocaleDateString()}</h1>
+          <div className="w-[478.35px]">
+            
+            <p className="text-[20px]">{schedule.description}</p>
+          </div>
+        </div>
+      ))}
+    </section>
             <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
               <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
                 <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">

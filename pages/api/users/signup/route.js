@@ -3,7 +3,8 @@
 import { connect } from '../../../lib/db';
 import User from '../../../models/User';
 import bcryptjs from 'bcrypt';
-import axios from 'axios';
+
+
 
 export default async function handler(req, res) {
   try {
@@ -21,33 +22,29 @@ export default async function handler(req, res) {
 
     console.log("Request body", req.body);
 
-    // Check email exists in realtime
-    const apiKey = '3f733834a33525b25ed8d1bd9d5284c1b899cbd2';  // Replace with your Hunter.io API key
-    const hunterResponse = await axios.get(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`);
-    const emailVerification = hunterResponse.data;
-    console.log("email verified");
+    // const apiKey = '3f733834a33525b25ed8d1bd9d5284c1b899cbd2';  
+    // const hunterResponse = await axios.get(`https://api.hunter.io/v2/email-verifier?email=${email}&api_key=${apiKey}`);
+    // const emailVerification = hunterResponse.data;
+    // console.log("email verified");
 
-    if (emailVerification.data.status !== 'valid') {
-      return res.status(400).json({ success: false, error: 'Invalid email address' });
+    // if (emailVerification.data.status !== 'valid') {
+    //   return res.status(400).json({ success: false, error: 'Invalid email address' });
 
-    }
+    // }
 
     
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(200).json({ success: false, error: 'User already exists' });
     }
 
-    // Hash password
     console.log("after user exist");
     const salt = await bcryptjs.genSalt(10);
     console.log(salt);
     const hashedPassword = await bcryptjs.hash(password, salt);
     console.log("after hash password");
 
-    // Create new user
     const newUser = new User({
       email: email,
       password: hashedPassword,

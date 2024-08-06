@@ -42,7 +42,7 @@ export default function Login() {
           phoneNumber: formData.phoneNumber,
           email: formData.email,
           dateOfBirth: formData.dateOfBirth,
-          //userId : '669524190fd311fd0e562816',
+          userId: '66963586ab1c32d043143128',
         });
       } else if (state === "2/4") {
         await axios.post("/api/onboarding/academics/route", {
@@ -50,7 +50,7 @@ export default function Login() {
           highestQualification: formData.highestQualification,
           branchOfDegree: formData.branchOfDegree,
           collegeName: formData.collegeName,
-          //userId : '669524190fd311fd0e562816',
+          userId: '66963586ab1c32d043143128',
 
         });
       } else if (state === "3/4") {
@@ -59,23 +59,29 @@ export default function Login() {
         formDataKyc.append("panPhoto", formData.panPhoto);
         formDataKyc.append("passportPhoto", formData.passportPhoto);
         formDataKyc.append('userId', formData.userId);
-        
-
-
-
-        await axios.post("/api/onboarding/kyc/route", formDataKyc, {
-
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-      } else if (state === "4/4") {
-        await axios.post("/api/onboarding/course/route", {
-          currentOccupation: formData.currentOccupation,
-          //userId : '669524190fd311fd0e562816',
-
-        });
+      
+        try {
+          const token = "actual_valid_token"; 
+          const response = await axios.post("/api/onboarding/kyc/route", formDataKyc, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              "Authorization": `Bearer ${token}`
+            },
+          });
+          console.log('Response:', response.data);
+        } catch (error) {
+          if (error.response) {
+            console.error('Error response:', error.response.data);
+          } else if (error.request) {
+            console.error('Error request:', error.request);
+          } else {
+            console.error('Error message:', error.message);
+          }
+        }
       }
+      
+
+
 
       setState(nextState);
     } catch (error) {
@@ -458,10 +464,10 @@ export default function Login() {
           <h1 className="text-[25px] mt-[20px] leading-[30px]">
             Thank you for submitting your information!
           </h1>
-          <Link href="/">
-            <a className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
+          <Link href="/class">
+            <p className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
               Go to Home
-            </a>
+            </p>
           </Link>
         </div>
       )}

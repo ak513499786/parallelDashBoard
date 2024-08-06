@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const classObj = await Class.find({}).populate("assignments");
+        const classObj = await Assignment.find({});
         if (!classObj) {
           return res.status(400).json({ success: false });
         }
