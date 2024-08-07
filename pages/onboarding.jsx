@@ -173,7 +173,7 @@ export default function Login() {
               <Image
                 src="back.svg"
                 onClick={() => setState("1/4")}
-                className="mb-[0.61px]"
+                className="mb-[0.61px] cursor-pointer"
                 width={44.97}
                 height={44.97}
               />
@@ -295,7 +295,7 @@ export default function Login() {
             <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setState("2/4")}
+                onClick={() => setstate("2/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
@@ -435,7 +435,7 @@ export default function Login() {
             <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setState("3/4")}
+                onClick={() => setstate("3/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
@@ -512,6 +512,19 @@ export default function Login() {
               </Link>
             </div>
           </div>
+        </div>
+      )}
+      {state === "complete" && (
+        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-center items-center pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <Image src="/success.svg" width={100} height={100} />
+          <h1 className="text-[25px] mt-[20px] leading-[30px]">
+            Thank you for submitting your information!
+          </h1>
+          <Link href="/class">
+            <p className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
+              Go to Home
+            </p>
+          </Link>
         </div>
       )}
     </main>

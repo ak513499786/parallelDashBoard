@@ -770,7 +770,6 @@ export default function Dashboard() {
               Curriculum
             </p>
           </div>
-
           <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
             <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
               <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
