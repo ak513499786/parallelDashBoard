@@ -4,52 +4,13 @@ import Image from "next/image";
 
 export default function Notification() {
   const scrollRef = useRef(null);
-  const [notification, setNotification] = useState(false);
-  const [notifications, setNotifications] = useState({});
-  const [selectedNotification, setSelectedNotification] = useState(null);
+  const [notification, setnotification] = useState(false);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-    fetchNotifications();
   }, []);
-
-  const fetchNotifications = async () => {
-    try {
-      const res = await fetch('/api/platform/notifications/route');
-      const data = await res.json();
-      if (data.success) {
-        // Group notifications by date
-        const groupedNotifications = groupNotificationsByDate(data.data);
-        setNotifications(groupedNotifications);
-      }
-    } catch (error) {
-      console.error("Failed to fetch notifications:", error);
-    }
-  };
-
-  const groupNotificationsByDate = (notifs) => {
-    return notifs.reduce((acc, notif) => {
-      const date = new Date(notif.time).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-      acc[date].push(notif);
-      return acc;
-    }, {});
-  };
-
-  const handleNotificationClick = (notif) => {
-    setSelectedNotification(notif);
-    setNotification(true);
-  };
-
-  const formatTime = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-  };
-
   return (
     <>
       <Navbar />
@@ -63,45 +24,270 @@ export default function Notification() {
               ref={scrollRef}
               className="h-[505px] max-xl:w-[90%] max-sm:w-full max-xl:overflow-x-hidden overflow-y-scroll w-full mt-[31px]"
             >
-              {Object.entries(notifications).map(([date, notifs]) => (
-                <div key={date} className="mt-[31px]">
-                  <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
-                    {date}
+              <div>
+                {" "}
+                <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
+                  14 April 2024
+                </h1>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize max-xl:truncate text-[20px] leading-[26px]">
+                    Justo est urna pellentesque commodo quis eget.
                   </h1>
-                  {notifs.map((notif) => (
-                    <div
-                      key={notif._id}
-                      onClick={() => handleNotificationClick(notif)}
-                      className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
-                    >
-                      <h1 className="capitalize max-xl:truncate text-[20px] leading-[26px]">
-                        {notif.title}
-                      </h1>
-                      <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
-                        {formatTime(notif.time)}
-                      </p>
-                    </div>
-                  ))}
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
                 </div>
-              ))}
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[31px]">
+                <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
+                  15 April 2024
+                </h1>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[31px]">
+                <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
+                  Yesterday
+                </h1>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[31px] pb-[80px] max-sm:pb-[20px]">
+                <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
+                  Today
+                </h1>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+                <div
+                  onClick={() => setnotification(true)}
+                  className="py-[10px] h-[75px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4] cursor-pointer"
+                >
+                  <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                    Justo est urna pellentesque commodo quis eget.
+                  </h1>
+                  <p className="mt-[11px] text-[14px] leading-[18.2px] opacity-60">
+                    04:30PM
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          {notification && selectedNotification && (
+          {notification && (
             <div className="h-[561px] max-sm:p-[20px] max-xl:w-[50%] max-md:w-full max-md:absolute w-[calc(100%-782px)] bg-[white] rounded-[5px] mt-[6px] pt-[38.5px] pl-[23.5px] pr-[43.5px]">
               <h1 className="capitalize max-hamburger:w-[90%] text-[20px] leading-[26px] font-semibold">
-                {selectedNotification.title}
+                Justo est urna pellentesque commodo quis eget.
               </h1>
-              <div className="mt-[20.16px] max-hamburger:mb-[10px] flex gap-[29.43px] mb-[45.08px]">
+              <div className="mt-[16px] max-hamburger:mb-[10px] flex gap-[29.43px] mb-[42.08px]">
                 <p className="text-[14px] leading-[18.2px] opacity-60">
                   {formatTime(selectedNotification.time)}
                 </p>
               </div>
               <p className="text-base max-hamburger:mb-[20px] mb-[36.61px]">
-                {selectedNotification.title} {/* You might want to add a 'description' field to your schema */}
+                Justo odio a at sed quisque tempus mattis nulla quis.
+                Suspendisse odio donec hendrerit eget. Urna cum eu in aliquet
+                libero non viverra molestie. Dolor morbi maecenas elit nascetur
+                aliquet. Magna consequat risus neque mauris. Porta imperdiet vel
+                augue risus in. Hendrerit tempor libero iaculis mauris rutrum
+                justo interdum semper. Arcu etiam ullamcorper.
               </p>
               <button className="h-[43px] max-sm:w-full w-[134px] bg-[#0559BB] text-white rounded-[6px] text-[17.95px] leading-[21.54px]">
-                <a href={selectedNotification.joinMeetLink} target="_blank" rel="noopener noreferrer">Join in zoom</a>
-              </button>
+                Join in zoom{" "}
+              </button>{" "}
               <span
                 onClick={() => setNotification(false)}
                 className="hidden max-md:block"
@@ -114,8 +300,8 @@ export default function Notification() {
                 />
               </span>
             </div>
-          )}
-        </div>
+          </>
+        )}
       </section>
     </>
   );
