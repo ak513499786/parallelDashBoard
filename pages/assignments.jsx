@@ -2,31 +2,77 @@ import Navbar from "../components/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import style from "../styles/style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios'
+
 export default function Learn() {
   const [remark, setRemark] = useState(false);
   const [assignment, setAssignment] = useState(false);
+  
+  // const [assignmentLink, setAssignmentLink] = useState('');
+
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // const handleSubmit = async () => {
+  //   if (!assignmentLink) {
+  //     alert('Please paste a link before submitting.');
+  //     return;
+  //   }
+
+  //   setIsSubmitting(true);
+
+  
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      try {
+        const response = await axios.get('/api/platform/assignments/route');
+        setAssignment(response.data.data);
+        console.log("assignment ttttt",assignment);
+        console.log("response assignment", response.data.data);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    }
+    const fetchSubmitAssignment = async () => {
+      try {
+        const response = await axios.post('/api/platform/assignments/submitAssignment');
+        setAssignment(response.data.data);
+        console.log(assignment);
+        console.log("response assignment", response.data.data);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    };
+
+    fetchAssignments();
+    fetchSubmitAssignment();
+    
+  }, []);
+  
+
+
+
   return (
     <>
       <Navbar />
       <main className="pt-[63.51px] px-[60px] pb-[85px]">
         <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
+        {assignment.length > 0 ? (
+        assignment.map((assignment, index) => (
+        <div key={index}>
           <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
             New Assignment
           </p>
           <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
-            Faucibus nec adipiscing lacus faucibus rhoncus elit consequat.
-            Suscipit lacus.
+            {assignment.title}
           </h1>
           <p className="mt-[20.14px] w-[587px]">
-            Mi mi morbi molestie integer lacinia arcu leo purus. Fringilla
-            volutpat tellus vitae est. Sapien eget amet elit placerat. Porttitor
-            urna egestas nisi viverra quam magnis lectus scelerisque integer.
-            Est viverra augue pulvinar quisque. Arcu luctus nec duis
-            suspendisse. Sagittis est donec at ut tortor vulputate in. Ut
-            pharetra dis augue duis vitae viverra id. Aliquam aliquet turpis
-            vulputate.
+            {assignment.description}
           </p>
+          </div>
+      ))) : (
+        <p>No assignments found</p>
+      )}
           <button className="py-[10px] px-[24px] border-[1px] border-black rounded-[6px] text-base font-semibold mt-[28.72px] mb-[33.75px]">
             View Resources
           </button>
@@ -43,11 +89,13 @@ export default function Learn() {
                 id=""
               />
             </div>
-            <button className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
+            <button  className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
               Submit Assignment
             </button>
           </div>
         </div>
+
+
         <div className="mt-[54.99px]">
           <h1 className="font-semibold text-[20px] leading-[26px] mb-[19px]">
             Previous assignments

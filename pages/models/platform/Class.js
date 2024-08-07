@@ -13,7 +13,7 @@ const classSchema = new mongoose.Schema({
   modules: { type: mongoose.Schema.Types.ObjectId, ref: 'Module' },
   supportSections: { type: mongoose.Schema.Types.ObjectId, ref: 'SupportSection' },
   guestSessions: { type: mongoose.Schema.Types.ObjectId, ref: 'GuestSession' },
-  videos: [{ type: ObjectId, ref: 'Video' }]
+  videos: [{ type: ObjectId, ref: 'Video' }],
 
 })
 

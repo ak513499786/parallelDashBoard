@@ -5,12 +5,15 @@ const { ObjectId } = Types;
 
 const assignmentSchema = new Schema({
   _id: { type: ObjectId, auto: true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  
-  
-  dueDate: { type: Date, required: true },
-  class: { type: ObjectId, ref: 'Class', required: true }
+  title: { type: String },
+  description: { type: String},
+  submitAssignment : {type: String},
+  dateAssign: {type: String},
+  dateSubmitted :{type: String},
+  dueDate: { type: Date},
+  date : {type:Date},
+  class: { type: ObjectId, ref: 'Class'},
+  userId : {type: ObjectId, ref:'User'}
 });
 
 export default mongoose.models.Assignment || mongoose.model('Assignment', assignmentSchema);

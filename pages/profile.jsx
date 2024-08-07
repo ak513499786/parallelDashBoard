@@ -6,37 +6,41 @@ import { useState, useEffect } from "react";
 
 export default function Profile() {
   const [Name, setName] = useState("");
-  const [phonenumber, setphonenumber] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   const [userName, setUserName] = useState("");
   const [College, setCollege] = useState("");
-  const [allLocation, setallLocation] = useState(false);
-  const [remote, setremote] = useState(false);
-  const [bangalore, setbangalore] = useState(false);
-  const [hyderabad, sethyderabad] = useState(false);
-  const [chennai, setchennai] = useState(false);
-  const [delhi, setdelhi] = useState(false);
-  const [mumbai, setmumbai] = useState(false);
-  const [gurgaon, setgurgaon] = useState(false);
-  const [ahmedabad, setahmedabad] = useState(false);
-  const [noida, setnoida] = useState(false);
-  const [pune, setpune] = useState(false);
-  const [nashik, setnashik] = useState(false);
-  const [chattisgarh, setchattisgarh] = useState(false);
+  const [allLocation, setAllLocation] = useState(false);
+  const [remote, setRemote] = useState(false);
+  const [bangalore, setBangalore] = useState(false);
+  const [hyderabad, setHyderabad] = useState(false);
+  const [chennai, setChennai] = useState(false);
+  const [delhi, setDelhi] = useState(false);
+  const [mumbai, setMumbai] = useState(false);
+  const [gurgaon, setGurgaon] = useState(false);
+  const [ahmedabad, setAhmedabad] = useState(false);
+  const [noida, setNoida] = useState(false);
+  const [pune, setPune] = useState(false);
+  const [nashik, setNashik] = useState(false);
+  const [chattisgarh, setChattisgarh] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedYear, setSelectedYear] = useState("");
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 50 }, (_, index) => currentYear - index);
   const [isPassingOpen, setIsPassingOpen] = useState(false);
   const [selectedPassingYear, setSelectedPassingYear] = useState("");
+  
+
+
   const passingyears = Array.from(
     { length: 50 },
     (_, index) => currentYear - index
   );
 
+//----------=-=----=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=--=-==-=-=-==-=-==
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/viewprofiledata");
+        const response = await axios.get("/api/platform/account/route");
         const data = response.data;
         if (data.length > 0) {
           const lastData = data[data.length - 1];
@@ -94,7 +98,7 @@ export default function Profile() {
     };
 
     try {
-      const response = await axios.post("/api/profile", data);
+      const response = await axios.post("/api/platform/account/route", data);
       console.log("Data sent successfully:", response.data);
     } catch (error) {
       console.error("Error sending data:", error);
@@ -183,6 +187,8 @@ export default function Profile() {
             Save Changes
           </div>
         </div>
+
+
         <section className="mt-[25px] max-sm:px-[20px] pr-[21px] max-hamburger:h-auto max-hamburger:pb-[40px] max-hamburger:pr-[40px] max-xl:w-full bg-white rounded-[5px] w-[1097px] h-[335px] pt-[38.5px] pl-[23.5px]">
           <div className="flex justify-between mb-[28.5px]">
             <h1 className="capitalize text-[20px] leading-[26px] font-semibold">

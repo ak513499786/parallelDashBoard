@@ -13,27 +13,17 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-  try {
-    const { date } = req.query;
-    let classObj;
-
-    if (date) {
-      classObj = await Assignment.find({ date: new Date(date) });
-      
-      if (!classObj || classObj.length === 0) {
-        return res.status(404).json({ success: false, message: 'No data available for the given date' });
+      try {
+        const classObj = await Assignment.find({});
+        if (!classObj) {
+          return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: classObj });
+      } catch (error) {
+        res.status(400).json({ success: false });
       }
-    } else {
-      classObj = await Assignment.find({});
-    }
-
-    res.status(200).json({ success: true, data: classObj });
-  } catch (error) {
-    res.status(400).json({ success: false, error: error.message });
-  }
-  break;
-
-
+      break;
+      
 
     case 'POST':
       try {

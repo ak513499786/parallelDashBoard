@@ -1,71 +1,123 @@
-import { createRouter } from 'next-connect';
-import { connect } from '../../../lib/db';
-import Video from '../../../models/platform/Video';
-import upload from '../../../utils/multerConfig';
+import nextConnect from 'next-connect';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs-extra';
+import {connect} from '../../../lib/db';
+import mongoose from 'mongoose';
+import Grid from 'gridfs-stream';
 
-connect();
+const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+fs.ensureDirSync(uploadDir);
 
-const handler = createRouter();
-
-handler.use(upload.single('video'));
-
-
-handler.get(async (req, res) => {
-  try {
-    const { classId } = req.query; 
-
-    console.log("thisis the classID", classId);
-
-    if (!classId) {
-      return res.status(400).json({ success: false, error: 'Class ID is required' });
-    }
-
-    const videos = await Video.find({ Class: classId });
-
-    if (!videos || videos.length === 0) {
-      return res.status(404).json({ success: false, error: 'No videos found for this class' });
-    }
-
-    res.status(200).json({ success: true, data: videos });
-  } catch (error) {
-    res.status(400).json({ success: false, error: error.message });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
   }
 });
 
+const upload = multer({ storage: storage });
 
+const apiRoute = nextConnect({
+  onError(error, req, res) {
+    res.status(501).json({ error: `Sorry something went wrong! ${error.message}` });
+  },
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+  },
+});
 
-handler.post(async (req, res) => {
-  try {
-    const { id } = req.query;
-    const { title, description, duration } = req.body;
-    const filePath = req.file.path;
+apiRoute.use(upload.single('video'));
 
-    if (!title || !filePath) {
-      return res.status(400).json({ success: false, error: 'Title and video file are required' });
-    }
+apiRoute.post(async (req, res) => {
+  await connect();
+  
+  const conn = mongoose.connection;
+  let gfs;
 
-    const classData = await Class.findById(id);
-    if (!classData) {
-      return res.status(404).json({ success: false, error: 'Class not found' });
-    }
+  conn.once('open', () => {
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('videos');
+  });
 
-    const newVideo = new Video({
-      title,
-      description,
-      url: filePath,
-      duration,
-      classId: id
+  const { file } = req;
+  
+  if (!file) {
+    return res.status(400).json({ error: 'Please upload a file' });
+  }
+
+  console.log(`File saved locally at: ${file.path}`);
+
+  const writeStream = gfs.createWriteStream({
+    filename: file.filename,
+    contentType: file.mimetype,
+  });
+
+  fs.createReadStream(file.path).pipe(writeStream);
+
+  writeStream.on('close', function (savedFile) {
+    res.status(201).json({ 
+      message: 'File uploaded successfully',
+      localPath: file.path,
+      mongoId: savedFile._id
     });
+  });
 
-    const savedVideo = await newVideo.save();
 
-    classData.videos.push(savedVideo._id);
-    await classData.save();
+  writeStream.on('error', (error) => {
+    fs.unlinkSync(file.path);
+    res.status(500).json({ error: 'An error occurred during file upload to MongoDB' });
+  });
+});
 
-    res.status(201).json({ success: true, data: savedVideo });
-  } catch (error) {
-    res.status(400).json({ success: false, error: error.message });
+
+
+apiRoute.get(async (req, res) => {
+  const { filename } = req.query;
+  if (!filename) {
+    return res.status(400).json({ error: 'Filename is required' });
+  }
+
+  const filePath = path.join(uploadDir, filename);
+
+  if (fs.existsSync(filePath)) {
+    const stat = fs.statSync(filePath);
+    const fileSize = stat.size;
+    const range = req.headers.range;
+
+    if (range) {
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
+      const chunksize = (end-start)+1;
+      const file = fs.createReadStream(filePath, {start, end});
+      const head = {
+        'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': 'video/mp4',
+      };
+      res.writeHead(206, head);
+      file.pipe(res);
+    } else {
+      const head = {
+        'Content-Length': fileSize,
+        'Content-Type': 'video/mp4',
+      };
+      res.writeHead(200, head);
+      fs.createReadStream(filePath).pipe(res);
+    }
+  } else {
+    res.status(404).json({ error: 'File not found' });
   }
 });
 
-export default handler.handler();
+export default apiRoute;
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
