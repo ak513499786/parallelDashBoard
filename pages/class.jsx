@@ -5,6 +5,8 @@ import Link from "next/link";
 import Navbar from "../components/navbar";
 import style from "../styles/style.module.css";
 import axios from "axios"
+import NextVideo from "next-video"
+import sample from "../videos/file_example_MP4_640_3MG.mp4"
 //import { fetchAssignments, fetchGuestSession, fetchModules, fetchSchedules, fetchSupportSection, fetchVideos } from '../pages/utils/platformApi';
 
 
@@ -19,6 +21,8 @@ export default function Dashboard() {
   const [schedules, setSchedules] = useState([]);
   const [supportSection, setSupportSection] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [curriculum, setCurriculum] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAssignments = async () => {
@@ -79,25 +83,37 @@ export default function Dashboard() {
       }
     };
 
-    const fetchVideos = async () => {
-      try {
-        const response = await axios.get('/api/platform/videos/route');
-        setVideos(response.data.data);
-        console.log(videos);
-        console.log("response videos", response.data.data);
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-      }
-    };
+    // const fetchVideos = async () => {
+    //   try {
+    //     const response = await axios.get('/api/platform/videos/route');
+    //     setVideos(response.data.data);
+    //     console.log(videos);
+    //     console.log("response videos", response.data.data);
+    //   } catch (error) {
+    //     console.error('Error fetching videos:', error);
+    //   }
+    // };
 
     fetchAssignments();
     fetchGuestSession();
     fetchModules();
     fetchSchedules();
     fetchSupportSection();
-    fetchVideos();
+    // fetchVideos();
   }, []);
 
+  const fetchCurriculum = async () => {
+    try {
+      const response = await axios.get('/api/platform/curriculum/route');
+      setCurriculum(response.data.data);
+    } catch (error) {
+      setError('Failed to fetch curriculum');
+    }
+  };
+
+  useEffect(() => {
+    fetchCurriculum(); 
+  }, []);
 
 
 
@@ -255,803 +271,74 @@ export default function Dashboard() {
             </p>
           </div>
 
+
+{/* curriculum starts here */}
           <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
-            <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
-              <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
-                Modules
-              </h1>
-              <div className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px]">
-                View curriculum
-              </div>
-            </div>
-            <div className={style.module}>
-              <div className="pt-[33px] max-md:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]">
-                <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                  Module 01
-                </p>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
+      <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
+        <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
+          Modules
+        </h1>
+        <div className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer" onClick={fetchCurriculum}>
+          View curriculum
+        </div>
+      </div>
+      <div className={style.module}>
+        {error && <p className="text-red-500">{error}</p>}
+        {curriculum ? (
+          curriculum.map((module, index) => (
+            <div key={module._id} className="pt-[33px] max-md:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]">
+              <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
+                Module {index + 1}
+              </p>
+              <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                <Image
+                  src="/Frame 18.svg"
+                  className="w-[28.64px] h-[28.64px]"
+                  width={28.6}
+                  height={28.64}
+                />
+                <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                  <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <p className="py-[4px] text-[14px] leading-[18.2px]">
+                      {index + 1}
+                    </p>
+                    <div>
+                      <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        {module.title}
+                      </h1>
+                      <p className="w-[840px] mt-[6.8px]">
+                        {module.description}
                       </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
                     </div>
                   </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-[33px] pl-[25px] pr-[41.64px]">
-                <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                  Module 02
-                </p>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-[33px] pl-[25px] pr-[41.64px]">
-                <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                  Module 03
-                </p>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="pt-[33px] pl-[25px] pr-[41.64px]">
-                <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                  Module 04
-                </p>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
-                  </div>
-                </div>
-                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                  <Image
-                    src="/Frame 18.svg"
-                    className="w-[28.64px] h-[28.64px]"
-                    width={28.6}
-                    height={28.64}
-                  />
-                  <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                      <p className="py-[4px] text-[14px] leading-[18.2px]">
-                        01
-                      </p>
-                      <div>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                        <p className="w-[840px] mt-[6.8px]">
-                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
-                          adipiscing vitae sed sed sapien neque morbi. Diam
-                          scelerisque et aenean ac nunc cras. Integer gravida
-                          lobortis sollicitudin dui. Dignissim volutpat felis
-                          diam potenti. Mauris amet pharetra nisl nunc commodo
-                          ultrices nisl nullam aliquam. In tempor volutpat
-                          suspendisse massa a feugiat. Cras sed blandit dolor eu
-                          tempus in in. Arcu lacus vulputate turpis interdum sem
-                          maecenas dui feugiat. Amet neque lorem metus ac quis
-                          vel elit.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      onClick={() => setFold("video")}
-                      className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                    >
-                      Watch Video
-                    </div>
+                  <div
+                    onClick={() => setFold("video")}
+                    className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                  >
+                    Watch Video
                   </div>
                 </div>
               </div>
             </div>
+          ))
+        ) : (
+          <p>Loading curriculum...</p>
+        )}
+      </div>
           </section>
         </main>
       )}
+
+
+
+
+      {/* video section here */}
       {fold === "video" && (
         <main className="px-[60px] pb-[30px] pt-[56.02px]">
+          
+
           <div className="flex items-center">
+          <NextVideo src={sample} />
             <Image
               src="back.svg"
               className="mt-[0.61px] cursor-pointer"

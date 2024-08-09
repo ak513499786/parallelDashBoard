@@ -9,6 +9,8 @@ export default function Learn() {
   const [remark, setRemark] = useState(false);
   const [assignment, setAssignment] = useState(false);
   
+  
+
   // const [assignmentLink, setAssignmentLink] = useState('');
 
   // const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,32 +24,35 @@ export default function Learn() {
   //   setIsSubmitting(true);
 
   
-  useEffect(() => {
+  
     const fetchAssignments = async () => {
       try {
         const response = await axios.get('/api/platform/assignments/route');
         setAssignment(response.data.data);
-        console.log("assignment ttttt",assignment);
-        console.log("response assignment", response.data.data);
-      } catch (error) {
-        console.error('Error fetching assignments:', error);
-      }
-    }
-    const fetchSubmitAssignment = async () => {
-      try {
-        const response = await axios.post('/api/platform/assignments/submitAssignment');
-        setAssignment(response.data.data);
-        console.log(assignment);
-        console.log("response assignment", response.data.data);
+        console.log("Fetched assignments:", response.data.data);
       } catch (error) {
         console.error('Error fetching assignments:', error);
       }
     };
+    useEffect(() => {
+      fetchAssignments();
+    }, []);
 
-    fetchAssignments();
-    fetchSubmitAssignment();
-    
-  }, []);
+    const fetchSubmitAssignment = async () => {
+      try {
+        const response = await axios.post('/api/platform/assignments/submitAssignment');
+        setAssignment(response.data.data);
+        console.log("Submitted assignment:", response.data.data);
+      } catch (error) {
+        console.error('Error submitting assignment:', error);
+      }
+    };
+
+    // useEffect(() => {
+    //   fetchSubmitAssignment();
+    // },[])
+
+  
   
 
 

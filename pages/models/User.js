@@ -27,49 +27,8 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
   role: {
-    type: String,
-
-  },
-  name: {
-    type: String,
-    
-  },
-  phoneNumber: {
-    type: String,
-
-  },
-  dateOfBirth: {
-    type: String,
-
-  },
-  currentOccupation: {
-    type: String,
-    
-  },
-  highestQualification: {
-    type: String,
-
-  },
-  branchOfDegree: {
-    type: String,
-
-  },
-  collegeName: {
-    type: String,
-
-  },
-  panNumber: {
-    type: String,
-
-  },
-  panPhoto: {
-    type: String,
-
-  },
-  passportPhoto: {
-    type: String,
-
-  },
+    type: String},
+  
   enrollCourse :{
     type: String,
 

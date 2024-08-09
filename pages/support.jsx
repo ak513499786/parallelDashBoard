@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Support() {
+  const whatsappNumber = "7275629690"; 
   return (
     <>
       <Navbar />
@@ -14,15 +15,20 @@ export default function Support() {
             </h1>
             <div className="w-full flex items-center pl-[42px] gap-[15.54px] py-[45.27px] border-[1px] border-[#00000033]">
               <Image src="/whatsapp.svg" width={111.46} height={111.46} />
-              <p className="text-[20px] capitalize max-sm:text-sm leading-[26px] underline capitalize">
-                Clear your doubts on whatsApp{" "}
+              <a
+                href={`https://wa.me/${whatsappNumber}`}
+                className="text-[20px] capitalize max-sm:text-sm leading-[26px] underline capitalize"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Clear your doubts on WhatsApp{" "}
                 <Image
                   src="/open.svg"
                   className="inline ml-[9px]"
                   width={27.21}
                   height={27.21}
                 />
-              </p>
+              </a>
             </div>
           </div>
           <div className="w-full bg-white rounded-[6px] pt-[31.5px] pl-[25px] pb-[33px] pr-[29px]">
@@ -51,8 +57,7 @@ export default function Support() {
             Facing issues? Get help at
             <a
               href="mailto:help@parallel.com"
-              className="font-bold border-b-[1px] mr-[8px] ml-[4px] border-[#672B09]"
-            >
+              className="font-bold border-b-[1px] mr-[8px] ml-[4px] border-[#672B09]">
               help@parallel.com
             </a>
             We’ll get back to you within 48 hours.

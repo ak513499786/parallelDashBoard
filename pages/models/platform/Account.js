@@ -1,11 +1,27 @@
 import mongoose from 'mongoose';
-const { Schema, Types } = mongoose;
-const { ObjectId } = Types;
 
 const accountSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  studentId: {
+    type: String,
+    required: true,
+    unique: true, 
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true, 
+  },
+  password: {
+    type: String,
     required: true,
   },
   resume: {

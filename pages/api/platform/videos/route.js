@@ -1,123 +1,47 @@
-import nextConnect from 'next-connect';
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs-extra';
-import {connect} from '../../../lib/db';
-import mongoose from 'mongoose';
-import Grid from 'gridfs-stream';
+import AWS from 'aws-sdk';
+import Video from '../../models/Video';
+import dbConnect from '../../lib/dbConnect';
 
-const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-fs.ensureDirSync(uploadDir);
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
 });
 
-const upload = multer({ storage: storage });
+export default async function handler(req, res) {
+  const { method } = req;
 
-const apiRoute = nextConnect({
-  onError(error, req, res) {
-    res.status(501).json({ error: `Sorry something went wrong! ${error.message}` });
-  },
-  onNoMatch(req, res) {
-    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
-  },
-});
+  await dbConnect();
 
-apiRoute.use(upload.single('video'));
+  switch (method) {
+    case 'POST':
+      const { title, description, file } = req.body;
 
-apiRoute.post(async (req, res) => {
-  await connect();
-  
-  const conn = mongoose.connection;
-  let gfs;
-
-  conn.once('open', () => {
-    gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('videos');
-  });
-
-  const { file } = req;
-  
-  if (!file) {
-    return res.status(400).json({ error: 'Please upload a file' });
-  }
-
-  console.log(`File saved locally at: ${file.path}`);
-
-  const writeStream = gfs.createWriteStream({
-    filename: file.filename,
-    contentType: file.mimetype,
-  });
-
-  fs.createReadStream(file.path).pipe(writeStream);
-
-  writeStream.on('close', function (savedFile) {
-    res.status(201).json({ 
-      message: 'File uploaded successfully',
-      localPath: file.path,
-      mongoId: savedFile._id
-    });
-  });
-
-
-  writeStream.on('error', (error) => {
-    fs.unlinkSync(file.path);
-    res.status(500).json({ error: 'An error occurred during file upload to MongoDB' });
-  });
-});
-
-
-
-apiRoute.get(async (req, res) => {
-  const { filename } = req.query;
-  if (!filename) {
-    return res.status(400).json({ error: 'Filename is required' });
-  }
-
-  const filePath = path.join(uploadDir, filename);
-
-  if (fs.existsSync(filePath)) {
-    const stat = fs.statSync(filePath);
-    const fileSize = stat.size;
-    const range = req.headers.range;
-
-    if (range) {
-      const parts = range.replace(/bytes=/, "").split("-");
-      const start = parseInt(parts[0], 10);
-      const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
-      const chunksize = (end-start)+1;
-      const file = fs.createReadStream(filePath, {start, end});
-      const head = {
-        'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-        'Accept-Ranges': 'bytes',
-        'Content-Length': chunksize,
-        'Content-Type': 'video/mp4',
+      const params = {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: `${Date.now()}_${file.name}`, // Use a unique key for the file
+        Body: Buffer.from(file.data, 'base64'), // Convert file to buffer
+        ContentType: file.type,
       };
-      res.writeHead(206, head);
-      file.pipe(res);
-    } else {
-      const head = {
-        'Content-Length': fileSize,
-        'Content-Type': 'video/mp4',
-      };
-      res.writeHead(200, head);
-      fs.createReadStream(filePath).pipe(res);
-    }
-  } else {
-    res.status(404).json({ error: 'File not found' });
+
+      try {
+        const data = await s3.upload(params).promise();
+        const videoUrl = data.Location;
+
+        const video = await Video.create({
+          title,
+          description,
+          videoUrl,
+        });
+
+        res.status(201).json({ success: true, data: video });
+      } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+      }
+      break;
+
+    default:
+      res.status(405).json({ success: false, message: 'Method Not Allowed' });
+      break;
   }
-});
-
-export default apiRoute;
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+}

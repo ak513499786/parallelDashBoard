@@ -23,7 +23,6 @@ export default async function handler(req, res) {
       try {
         const { userId, resume, locationPreference, courseOpted, paymentInfo } = req.body;
 
-        // Update or create the account document
         const account = await Account.findOneAndUpdate(
           { userId },
           { resume, locationPreference, courseOpted, paymentInfo },
@@ -35,6 +34,21 @@ export default async function handler(req, res) {
         res.status(500).json({ success: false, error: error.message });
       }
       break;
+
+
+    case 'PUT':
+        try {
+            const { password } = req.body;
+            const pass = await Account.findOneAndReplace(
+                {password}
+            );
+            res.status(200).json({ success: true, data: pass });
+
+        } catch (error) {
+            res.status(500).json({ success: false, error: error.message });
+
+        }
+        break;
 
     case 'DELETE':
       try {

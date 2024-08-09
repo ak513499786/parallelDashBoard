@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 
 
 export default function Login() {
-  const [state, setState] = useState("4/4");
+  const [state, setState] = useState("1/4");
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",

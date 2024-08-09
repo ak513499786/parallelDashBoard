@@ -28,15 +28,11 @@ export default function Profile() {
   const years = Array.from({ length: 50 }, (_, index) => currentYear - index);
   const [isPassingOpen, setIsPassingOpen] = useState(false);
   const [selectedPassingYear, setSelectedPassingYear] = useState("");
-  
-
-
-  const passingyears = Array.from(
+  const passingYears = Array.from(
     { length: 50 },
     (_, index) => currentYear - index
   );
 
-//----------=-=----=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-==-=-=--=-==-=-=-==-=-==
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -187,8 +183,6 @@ export default function Profile() {
             Save Changes
           </div>
         </div>
-
-
         <section className="mt-[25px] max-sm:px-[20px] pr-[21px] max-hamburger:h-auto max-hamburger:pb-[40px] max-hamburger:pr-[40px] max-xl:w-full bg-white rounded-[5px] w-[1097px] h-[335px] pt-[38.5px] pl-[23.5px]">
           <div className="flex justify-between mb-[28.5px]">
             <h1 className="capitalize text-[20px] leading-[26px] font-semibold">

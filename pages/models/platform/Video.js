@@ -1,51 +1,24 @@
 import mongoose from 'mongoose';
 
-const VideoSchema = new mongoose.Schema({
+const videoSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, 'Please provide a title for the video'],
-    maxlength: [100, 'Title cannot be more than 100 characters']
+    required: true,
   },
   description: {
     type: String,
-    maxlength: [500, 'Description cannot be more than 500 characters']
+    required: true,
   },
-  fileId: {
-    type: mongoose.Schema.Types.ObjectId,
-    //required: [true, 'FileId is required'],
-    ref: 'uploads.files'  
-  },
-  fileName: {
+  videoUrl: {
     type: String,
-    required: [true, 'FileName is required']
+    required: true,
   },
-  duration: {
-    type: Number,
-    default: 0
-  },
-  format: {
-    type: String,
-    default: 'mp4'
-  },
-  uploadDate: {
+  createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  views: {
-    type: Number,
-    default: 0
-  },
-  uploader: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',  // Assuming you have a User model
-    required: [true, 'Uploader is required']
-  },
-  tags: [{
-    type: String,
-    maxlength: [20, 'Tag cannot be more than 20 characters']
-  }]
-}, {
-  timestamps: true
 });
 
-export default mongoose.models.Video || mongoose.model('Video', VideoSchema);
+const Video = mongoose.models.Video || mongoose.model('Video', videoSchema);
+
+export default Video;
