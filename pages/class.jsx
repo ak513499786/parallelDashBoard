@@ -42,13 +42,13 @@ export default function Dashboard() {
       {fold === "" && (
         <main className="px-[60px] max-md:px-[40px] max-sm:px-[20px] max-hamburger:flex-col pb-[31px] pt-[42px] flex gap-[20px]">
           <div className="w-[58.61%] max-hamburger:w-full">
-            <section className="pl-[25px] bg-white rounded-[6px] pr-[40px] pb-[28px] pt-[27.96px]">
+            <section className="pl-[25px] bg-white rounded-[6px] max-md:px-[20px] max-sm:px-[15px] pr-[40px] pb-[28px] pt-[27.96px]">
               <h1 className="pb-[24.04px] text-[20px] border-[#C4C4C4] border-b-[1px] leading-[24px] font-bold">
                 Schedule
               </h1>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+              <div className="py-[18.5px] max-[500px]:flex-col max-[500px]:gap-[20px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between max-md:px-[0px] max-sm:px-[5px]">
                 <h1 className="text-base opacity-70">Monday 07</h1>
-                <div className="w-[478.35px]">
+                <div className="w-[478.35px] max-[1350px]:w-auto max-[1040px]:w-[210px]">
                   <h1 className="text-base opacity-70 mb-[4px]">
                     Class: 10:00AM to 11:30AM
                   </h1>
@@ -59,9 +59,9 @@ export default function Dashboard() {
                   <p className="text-[20px]">Bit manipulation and complexity</p>
                 </div>
               </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+              <div className="py-[18.5px] max-[500px]:flex-col max-[500px]:gap-[20px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between max-md:px-[0px] max-sm:px-[5px]">
                 <h1 className="text-base opacity-70">Tuesday 08</h1>
-                <div className="w-[478.35px]">
+                <div className="w-[478.35px] max-[1350px]:w-auto max-[1040px]:w-[210px]">
                   <h1 className="text-base opacity-70 mb-[4px]">
                     Class: 10:00AM to 11:30AM
                   </h1>
@@ -72,9 +72,9 @@ export default function Dashboard() {
                   <p className="text-[20px]">Bit manipulation and complexity</p>
                 </div>
               </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+              <div className="py-[18.5px] max-[500px]:flex-col max-[500px]:gap-[20px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between max-md:px-[0px] max-sm:px-[5px]">
                 <h1 className="text-base opacity-70">Wednesday 09</h1>
-                <div className="w-[478.35px]">
+                <div className="w-[478.35px] max-[1350px]:w-auto max-[1040px]:w-[210px]">
                   <h1 className="text-base opacity-70 mb-[4px]">
                     Class: 10:00AM to 11:30AM
                   </h1>
@@ -85,9 +85,9 @@ export default function Dashboard() {
                   <p className="text-[20px]">Bit manipulation and complexity</p>
                 </div>
               </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+              <div className="py-[18.5px] max-[500px]:flex-col max-[500px]:gap-[20px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between max-md:px-[0px] max-sm:px-[5px]">
                 <h1 className="text-base opacity-70">Thursday 10</h1>
-                <div className="w-[478.35px]">
+                <div className="w-[478.35px] max-[1350px]:w-auto max-[1040px]:w-[210px]">
                   <h1 className="text-base opacity-70 mb-[4px]">
                     Class: 10:00AM to 11:30AM
                   </h1>
@@ -98,9 +98,9 @@ export default function Dashboard() {
                   <p className="text-[20px]">Bit manipulation and complexity</p>
                 </div>
               </div>
-              <div className="py-[18.5px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between">
+              <div className="py-[18.5px] max-[500px]:flex-col max-[500px]:gap-[20px] border-b-[1px] border-[#C4C4C4] pl-[18.3px] pr-[15.6px] flex justify-between max-md:px-[0px] max-sm:px-[5px]">
                 <h1 className="text-base opacity-70">Friday 11</h1>
-                <div className="w-[478.35px]">
+                <div className="w-[478.35px] max-[1350px]:w-auto max-[1040px]:w-[210px]">
                   <h1 className="text-base opacity-70 mb-[4px]">
                     Class: 10:00AM to 11:30AM
                   </h1>
@@ -129,54 +129,6 @@ export default function Dashboard() {
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 01
                   </p>
-                  <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                    <Image
-                      src="/Frame 18.svg"
-                      className="w-[28.64px] h-[28.64px]"
-                      width={28.6}
-                      height={28.64}
-                    />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                        <p className="py-[4px] text-[14px] leading-[18.2px]">
-                          01
-                        </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                      </div>
-                      <div
-                        onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
-                      >
-                        Watch Video
-                      </div>
-                    </div>
-                  </div>
-                  <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                    <Image
-                      src="/Frame 18.svg"
-                      className="w-[28.64px] h-[28.64px]"
-                      width={28.6}
-                      height={28.64}
-                    />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                        <p className="py-[4px] text-[14px] leading-[18.2px]">
-                          01
-                        </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                          Justo est urna pellentesque c...
-                        </h1>
-                      </div>
-                      <div
-                        onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
-                      >
-                        Watch Video
-                      </div>
-                    </div>
-                  </div>
                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
@@ -184,441 +136,489 @@ export default function Dashboard() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[550px]:whitespace-normal max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                      >
+                        Watch Video
+                      </div>
+                    </div>
+                  </div>
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                    <Image
+                      src="/Frame 18.svg"
+                      className="w-[28.64px] h-[28.64px]"
+                      width={28.6}
+                      height={28.64}
+                    />
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
+                        <p className="py-[4px] text-[14px] leading-[18.2px]">
+                          01
+                        </p>
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
+                          Justo est urna pellentesque c...
+                        </h1>
+                      </div>
+                      <div
+                        onClick={() => setFold("video")}
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                      >
+                        Watch Video
+                      </div>
+                    </div>
+                  </div>
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                    <Image
+                      src="/Frame 18.svg"
+                      className="w-[28.64px] h-[28.64px]"
+                      width={28.6}
+                      height={28.64}
+                    />
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
+                        <p className="py-[4px] text-[14px] leading-[18.2px]">
+                          01
+                        </p>
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
+                          Justo est urna pellentesque c...
+                        </h1>
+                      </div>
+                      <div
+                        onClick={() => setFold("video")}
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="pt-[33px] pl-[25px] pr-[41.64px]">
+                <div className="pt-[33px] pl-[25px] pr-[41.64px] max-md:px-[20px] max-sm:px-[15px]">
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 02
                   </p>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="pt-[33px] pl-[25px] pr-[41.64px]">
+                <div className="pt-[33px] pl-[25px] pr-[41.64px] max-md:px-[20px] max-sm:px-[15px]">
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 03
                   </p>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="pt-[33px] pl-[25px] pr-[41.64px]">
+                <div className="pt-[33px] pl-[25px] pr-[41.64px] max-md:px-[20px] max-sm:px-[15px]">
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 04
                   </p>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
                     </div>
                   </div>
-                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between gap-[12px] max-sm:w-full">
-                      <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                    <div className="flex justify-between max-[550px]:flex-col gap-[12px] w-full">
+                      <div className="flex gap-[20px] max-smallerphone:gap-[8px]">
                         <p className="py-[4px] text-[14px] leading-[18.2px]">
                           01
                         </p>
-                        <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                        <h1 className="text-[20px] max-[1100px]:w-[200px] max-[550px]:w-full leading-[26px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate max-[550px]:whitespace-normal">
                           Justo est urna pellentesque c...
                         </h1>
                       </div>
                       <div
                         onClick={() => setFold("video")}
-                        className="cursor-pointer border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
+                        className="cursor-pointer max-[550px]:text-center border-[1px] border-black py-[5px] px-[10px] rounded-[4px]"
                       >
                         Watch Video
                       </div>
@@ -629,7 +629,7 @@ export default function Dashboard() {
             </section>
           </div>
           <div className="w-[41.4%] max-hamburger:w-full">
-            <section className="w-[100%] rounded-[6px] max-xl:h-auto max-sm:px-[16px] py-[22.5px] flex justify-between pl-[24px] pr-[26px] h-[77px] bg-white">
+            <section className="w-[100%] rounded-[6px] gap-[20px] max-xl:h-auto max-sm:px-[16px] py-[22.5px] flex justify-between pl-[24px] pr-[26px] h-[77px] bg-white">
               <div className="flex gap-[9px]">
                 <Image src="/whatsapp.svg" width={26.53} height={26.67} />
                 <p className="text-[16px] max-sm:text-sm leading-[20.8px] py-[5.5px] font-bold capitalize">

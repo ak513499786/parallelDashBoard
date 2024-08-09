@@ -82,7 +82,7 @@ export default function Login() {
       {state === "1/4" && (
         <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
           <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
                 className="mt-[0.61px]"
@@ -128,7 +128,7 @@ export default function Login() {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   placeholder="Enter your phone number"
-                  className="pt-[21.5px] max-md:w-full pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                  className="pt-[21.5px] max-md:w-[calc(100%-40px)] pl-[9.11px] w-[350px] pb-[16.5px] text-base"
                 />
               </div>
               <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
@@ -169,7 +169,7 @@ export default function Login() {
       {state === "2/4" && (
         <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
           <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
                 onClick={() => setState("1/4")}
@@ -331,7 +331,7 @@ export default function Login() {
                 Upload PAN Photo
               </p>
 
-              <div className="flex w-[421px]">
+              <div className="flex max-md:w-full w-[421px]">
                 <input
                   id="pan"
                   type="file"
@@ -341,13 +341,13 @@ export default function Login() {
                       handleChange;
                     }
                   }}
-                  className="pt-[21.5px] hidden pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                  className="pt-[21.5px] hidden pl-[9.11px] max-md:w-full w-[350px] pb-[16.5px] text-base"
                 />
                 <label
                   htmlFor="pan"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer flex justify-between max-md:w-full w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] whitespace-nowrap max-md:w-[calc(100%-90px)] w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>
                       {formData.panPhoto === ""
                         ? "Click to upload photo"
@@ -376,7 +376,7 @@ export default function Login() {
               <p className="text-black text-[13px] bg-white absolute top-[177px] left-[18px] p-[8px] leading-[15.6px]">
                 Upload Passport Photo
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="pass"
                   type="file"
@@ -390,9 +390,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="pan"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer flex justify-between max-md:w-full w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] whitespace-nowrap max-md:w-[calc(100%-90px)] w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>
                       {formData.passportPhoto === ""
                         ? "Click to upload photo"
@@ -421,7 +421,7 @@ export default function Login() {
 
               <button
                 onClick={() => handleNext("4/4")}
-                className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] mt-[40px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -430,19 +430,19 @@ export default function Login() {
         </div>
       )}
       {state === "4/4" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+        <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px]">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="back.svg"
-                onClick={() => setstate("3/4")}
+                onClick={() => setState("3/4")}
                 className="mb-[0.61px]"
                 width={44.97}
                 height={44.97}
               />
               <p className="text-base text-[#00000099]">4/4</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -458,7 +458,7 @@ export default function Login() {
               <p className="text-black text-[13px] bg-white mb-[13px] p-[8px] leading-[15.6px]">
                 Current occupation
               </p>
-              <div className="flex gap-[20px] w-[434px]">
+              <div className="flex gap-[20px] max-[380px]:flex-col max-md:w-full w-[434px]">
                 <div className="flex items-center gap-[4px]">
                   <input
                     type="radio"
@@ -506,7 +506,7 @@ export default function Login() {
                 </div>
               </div>
               <Link href={"/class"}>
-                <button className="w-[421px] mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
+                <button className="w-[421px] max-md:w-full mt-[40px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
                   Proceed to payment
                 </button>
               </Link>
@@ -514,19 +514,26 @@ export default function Login() {
           </div>
         </div>
       )}
-      {state === "complete" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-center items-center pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <Image src="/success.svg" width={100} height={100} />
-          <h1 className="text-[25px] mt-[20px] leading-[30px]">
-            Thank you for submitting your information!
-          </h1>
-          <Link href="/class">
-            <p className="w-[200px] mt-[40px] py-[10px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base text-center">
-              Go to Home
-            </p>
-          </Link>
-        </div>
-      )}
+       <div className="h-[100vh] max-md:hidden w-[50%] relative overflow-hidden">
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
+      </div>
     </main>
   );
 }
