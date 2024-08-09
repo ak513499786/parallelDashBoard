@@ -8,8 +8,8 @@ import axios from 'axios'
 export default function Learn() {
   const [remark, setRemark] = useState(false);
   const [assignment, setAssignment] = useState(false);
-  
-  
+  const [assignmentData, setAssignmentData] = useState(false);
+
 
   // const [assignmentLink, setAssignmentLink] = useState('');
 
@@ -37,6 +37,8 @@ export default function Learn() {
     useEffect(() => {
       fetchAssignments();
     }, []);
+
+    
 
     const fetchSubmitAssignment = async () => {
       try {

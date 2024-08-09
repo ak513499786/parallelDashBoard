@@ -51,15 +51,15 @@ export default function Login() {
   };
   return (
     <main className="flex">
-      <div className="w-[595px] max-sm:w-full max-md:px-[40px] max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[52.16px] pt-[130px] pr-[113px]">
+      <div className="w-[595px] max-md:w-full max-md:px-[40px] max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[52.16px] pt-[130px] pr-[113px]">
         <div
           className={
             emailentered
-              ? "flex w-[502.43px] max-sm:w-full flex-col gap-[32px]"
-              : "flex w-[502.43px] max-sm:w-full flex-col gap-[50px]"
+              ? "flex w-[502.43px] max-md:w-full flex-col gap-[32px]"
+              : "flex w-[502.43px] max-md:w-full flex-col gap-[50px]"
           }
         >
-          <div className="absolute w-[calc(100%-40px)] max-sm:hidden z-[-1] top-0 h-full overflow-hidden">
+          <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
             <div className="radical-circle"></div>
           </div>
           <Image
@@ -84,7 +84,7 @@ export default function Login() {
                   type="email"
                   onChange={(e) => setemail(e.target.value)}
                   placeholder="Enter your email"
-                  className="pl-[25.71px] max-sm:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                  className="pl-[25.71px] max-md:w-full w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
                 {invalidPassword ? (
                   <p className="text-[#D21313] text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
@@ -101,15 +101,15 @@ export default function Login() {
                   placeholder="Enter your password"
                   onChange={(e) => setpassword(e.target.value)}
                   className={
-                    passwordentered
-                      ? "pl-[25.71px] w-[421px] max-sm:w-full text-[#D21313] border-[1px] border-[#D21313] rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
-                      : "pl-[25.71px] w-[421px] max-sm:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                    invalidPassword
+                      ? "pl-[25.71px] w-[421px] max-md:w-full text-[#D21313] border-[1px] border-[#D21313] rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                      : "pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                   }
                 />
                 {visible ? (
                   <Image
                     src="eye-open.svg"
-                    className="absolute cursor-pointer top-[118.13px] max-sm:right-[20px] max-sm:left-auto left-[378px]"
+                    className="absolute cursor-pointer top-[118.13px] max-md:right-[20px] max-md:left-auto left-[378px]"
                     onClick={() => setvisible(!visible)}
                     width={24}
                     height={24}
@@ -117,7 +117,7 @@ export default function Login() {
                 ) : (
                   <Image
                     src="eye.svg"
-                    className="absolute cursor-pointer top-[118.13px] max-sm:right-[20px] max-sm:left-auto left-[378px]"
+                    className="absolute cursor-pointer top-[118.13px] max-md:right-[20px] max-md:left-auto left-[378px]"
                     onClick={() => setvisible(!visible)}
                     width={24}
                     height={24}
@@ -125,7 +125,7 @@ export default function Login() {
                 )}
 
                 <div className="flex w-full flex-col gap-[16px]">
-                  <div className="flex w-[421px] max-sm:w-full justify-between">
+                  <div className="flex w-[421px] max-md:w-full justify-between">
                     <div className="flex items-center gap-[8px]">
                       <input
                         type="checkbox"
@@ -146,7 +146,7 @@ export default function Login() {
                   </div>
                   <button
                     onClick={handleSubmit}
-                    className="w-[421px] max-sm:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                    className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
                   >
                     Log In
                   </button>
@@ -157,7 +157,7 @@ export default function Login() {
                     </Link>
                   </p>
                 </div>
-                <div className="text-[13px] max-sm:w-full w-[421px] mt-[52.99px] leading-[19.5px] text-[#00000099]">
+                <div className="text-[13px] max-md:w-full w-[421px] mt-[52.99px] leading-[19.5px] text-[#00000099]">
                   By clicking on Log In you are agreeing to Parallel’s
                   <span className="ml-[4px] cursor-pointer text-black underline">
                     Terms Of Service
@@ -173,7 +173,7 @@ export default function Login() {
           {emailentered && (
             <>
               <Link href={"/signup"}>
-                <button className="w-[421px] max-sm:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
+                <button className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
                   Register
                 </button>
               </Link>
@@ -183,7 +183,7 @@ export default function Login() {
               </p>
               <button
                 onClick={handleSubmit}
-                className="w-[421px] py-[20px] bg-transparent border-black border-[1px] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full py-[20px] bg-transparent border-black border-[1px] text-black font-semibold rounded-[6px] text-base"
               >
                 Contact us
               </button>
@@ -191,7 +191,19 @@ export default function Login() {
           )}
         </div>
       </div>
-      <div className="h-[100vh] w-full max-sm:hidden relative overflow-hidden">
+      <div className="h-[100vh] w-full max-md:hidden relative overflow-hidden">
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
         <Image
           src="/bg-eclips.svg"
           className="w-full object-cover mixblend h-auto"
