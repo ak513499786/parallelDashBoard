@@ -62,8 +62,8 @@ export default function Learn() {
   return (
     <>
       <Navbar />
-      <main className="pt-[63.51px] px-[60px] pb-[85px]">
-        <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
+      <main className="pt-[63.51px] px-[60px] max-sm:px-[20px] max-md:px-[40px] pb-[85px]">
+        <div className="w-full pt-[25.52px] pl-[29.45px] max-md:p-[20px] pb-[52.49px] rounded-[6px] bg-white">
         {assignment.length > 0 ? (
         assignment.map((assignment, index) => (
         <div key={index}>
@@ -73,7 +73,7 @@ export default function Learn() {
           <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
             {assignment.title}
           </h1>
-          <p className="mt-[20.14px] w-[587px]">
+          <p className="mt-[20.14px] max-sm:w-full w-[587px]">
             {assignment.description}
           </p>
           </div>
@@ -83,27 +83,27 @@ export default function Learn() {
           <button className="py-[10px] px-[24px] border-[1px] border-black rounded-[6px] text-base font-semibold mt-[28.72px] mb-[33.75px]">
             View Resources
           </button>
-          <div className="pt-[33.74px] flex gap-[25.55px] border-t-[1px] border-[#00000033]">
+          <div className="pt-[33.74px] max-md:flex-col flex gap-[25.55px] border-t-[1px] border-[#00000033]">
             <div>
               <p className="text-[#2C2E32] mb-[10px] text-[14px]">
                 Paste link to submit assignment
               </p>
               <input
                 type="text"
-                className="border-[0.5px] rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] italic text-[14px] border-[#00000080]"
+                className="border-[0.5px] rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] max-sm:w-full italic text-[14px] border-[#00000080]"
                 placeholder="Click to paste link"
                 name=""
                 id=""
               />
             </div>
-            <button  className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
+            <button  className="bg-[#30E29D] max-sm:w-full mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
               Submit Assignment
             </button>
           </div>
         </div>
 
 
-        <div className="mt-[54.99px]">
+        {/* <div className="mt-[54.99px]">
           <h1 className="font-semibold text-[20px] leading-[26px] mb-[19px]">
             Previous assignments
           </h1>
@@ -575,7 +575,7 @@ export default function Learn() {
               <Image src="/Group 4.svg" width={14.13} height={14.13} />
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
       {assignment && (
         <div className="fixed top-0 bg-[#00000066] w-full h-[100vh] z-50 flex justify-center items-center">

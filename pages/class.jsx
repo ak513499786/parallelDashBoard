@@ -4,15 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import style from "../styles/style.module.css";
-import axios from "axios"
-import NextVideo from "next-video"
-import sample from "../videos/file_example_MP4_640_3MG.mp4"
+import axios from "axios";
+import NextVideo from "next-video";
+import sample from "../videos/file_example_MP4_640_3MG.mp4";
 //import { fetchAssignments, fetchGuestSession, fetchModules, fetchSchedules, fetchSupportSection, fetchVideos } from '../pages/utils/platformApi';
 
-
-
 export default function Dashboard() {
-
   const [fold, setFold] = useState("");
 
   const [assignments, setAssignments] = useState([]);
@@ -27,59 +24,56 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchAssignments = async () => {
       try {
-        const response = await axios.get('/api/platform/assignments/route');
+        const response = await axios.get("/api/platform/assignments/route");
         setAssignments(response.data.data);
         console.log(assignments);
         console.log("response assignment", response.data.data);
       } catch (error) {
-        console.error('Error fetching assignments:', error);
+        console.error("Error fetching assignments:", error);
       }
     };
 
-
-    
-
     const fetchGuestSession = async () => {
       try {
-        const response = await axios.get('/api/platform/guestSession/route');
+        const response = await axios.get("/api/platform/guestSession/route");
         setGuestSession(response.data.data);
         console.log(guestSession);
         console.log("response guestSession", response.data.data);
       } catch (error) {
-        console.error('Error fetching guestSession:', error);
+        console.error("Error fetching guestSession:", error);
       }
     };
 
     const fetchModules = async () => {
       try {
-        const response = await axios.get('/api/platform/modules/route');
+        const response = await axios.get("/api/platform/modules/route");
         setModules(response.data.data);
         console.log(modules);
         console.log("response modules", response.data.data);
       } catch (error) {
-        console.error('Error fetching modules:', error);
+        console.error("Error fetching modules:", error);
       }
     };
 
     const fetchSchedules = async () => {
       try {
-        const response = await axios.get('/api/platform/schedules/route');
+        const response = await axios.get("/api/platform/schedules/route");
         setSchedules(response.data.data);
         console.log(schedules);
         console.log("response schedules", response.data.data);
       } catch (error) {
-        console.error('Error fetching schedules:', error);
+        console.error("Error fetching schedules:", error);
       }
     };
 
     const fetchSupportSection = async () => {
       try {
-        const response = await axios.get('/api/platform/supportSection/route');
+        const response = await axios.get("/api/platform/supportSection/route");
         setSupportSection(response.data.data);
         console.log(supportSection);
         console.log("response supportSection", response.data.data);
       } catch (error) {
-        console.error('Error fetching supportSection:', error);
+        console.error("Error fetching supportSection:", error);
       }
     };
 
@@ -104,20 +98,16 @@ export default function Dashboard() {
 
   const fetchCurriculum = async () => {
     try {
-      const response = await axios.get('/api/platform/curriculum/route');
+      const response = await axios.get("/api/platform/curriculum/route");
       setCurriculum(response.data.data);
     } catch (error) {
-      setError('Failed to fetch curriculum');
+      setError("Failed to fetch curriculum");
     }
   };
 
   useEffect(() => {
-    fetchCurriculum(); 
+    fetchCurriculum();
   }, []);
-
-
-
-
 
   return (
     <>
@@ -197,8 +187,13 @@ export default function Dashboard() {
             </section>
             <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
               <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
-                <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">Modules</h1>
-                <div onClick={() => setFold('curriculum')} className="border-[1px] cursor-pointer border-black py-[5px] px-[10px] rounded-[4px]">
+                <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
+                  Modules
+                </h1>
+                <div
+                  onClick={() => setFold("curriculum")}
+                  className="border-[1px] cursor-pointer border-black py-[5px] px-[10px] rounded-[4px]"
+                >
                   View curriculum
                 </div>
               </div>
@@ -231,7 +226,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -255,7 +250,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -279,7 +274,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -303,7 +298,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -332,7 +327,7 @@ export default function Dashboard() {
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 02
                   </p>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -356,7 +351,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -380,7 +375,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -404,7 +399,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -428,7 +423,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -457,7 +452,7 @@ export default function Dashboard() {
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 03
                   </p>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -481,7 +476,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -505,7 +500,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -529,7 +524,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -553,7 +548,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -582,7 +577,7 @@ export default function Dashboard() {
                   <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
                     Module 04
                   </p>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -606,7 +601,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -630,7 +625,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -654,7 +649,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -678,7 +673,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                   <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <div className="py-[10px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
                     <Image
                       src="/Frame 18.svg"
                       className="w-[28.64px] h-[28.64px]"
@@ -722,7 +717,6 @@ export default function Dashboard() {
                   Assignments
                 </h1>
 
-
                 <p className="text-[14px] text-white p-[8px] bg-[#0C6926] rounded-[24px] w-[46px] ">
                   New
                 </p>
@@ -731,13 +725,16 @@ export default function Dashboard() {
               <div className="pl-[23px] pr-[38px]">
                 {assignments.length > 0 ? (
                   assignments.map((assignment) => (
-                    <div key={assignment.id} className="border-b-[1px] h-[188px] max-xl:h-[150px] max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col">
-                      <div className="w-[268px]">
-                        <p className="text-[16px] leading-[20.8px] opacity-70 max-smallerphone:text-sm">{assignment.dueDate}</p>
-                        <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">{assignment.title}</h1>
-                        {/* <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">{assignment.description}</h1> */}
-
-                      </div>
+                    <div
+                      key={assignment.id}
+                      className="border-b-[1px] pb-[20px] max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col"
+                    >
+                      <p className="text-[16px] leading-[20.8px] opacity-70 max-smallerphone:text-sm">
+                        {assignment.dueDate}
+                      </p>
+                      <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[12px]">
+                        {assignment.title}
+                      </h1>
                       <button className="h-[43px] mt-[14px] w-[168px] max-sm:w-full border-[1px] border-black rounded-[4px] text-base">
                         View Assignment
                       </button>
@@ -754,37 +751,48 @@ export default function Dashboard() {
                   Guest sessions
                 </h1>
               </div>
-              <div className="zoom">
+              <div className="zoom pl-[23px] pr-[38px]">
                 {guestSession.length > 0 ? (
                   guestSession.map((session) => (
-                    <div key={session._id} className="border-b-[1px] h-[108px] flex justify-between items-center max-xl:h-[150px] max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col">
+                    <div
+                      key={session._id}
+                      className="border-b-[1px] py-[13px] flex justify-between items-center max-xl:justify-center max-xl:gap-[12px] max-xl:items-start max-xl:flex-col"
+                    >
                       <div className="w-[268px]">
                         <p className="text-[16px] leading-[20.8px] opacity-70 max-smallerphone:text-sm">
                           {session.date}{" "}
-                          {/* <span className="ml-[17px]">{session.time}</span> */}
+                          <span className="ml-[17px]">{session.time}</span>
                         </p>
                         <h1 className="max-smallerphone:text-base text-[20px] leading-[26px] mt-[11px]">
                           {session.topic}
                         </h1>
                       </div>
-                      <button className="h-[43px] w-[134px] max-sm:w-full border-[1px] border-black rounded-[6px] text-base" onClick={() => window.open("https://meet.google.com/landing", "_blank")}>
+                      <button
+                        className="h-[43px] w-[134px] max-sm:w-full border-[1px] border-black rounded-[6px] text-base"
+                        onClick={() =>
+                          window.open(
+                            "https://meet.google.com/landing",
+                            "_blank"
+                          )
+                        }
+                      >
                         Join in Meet
                       </button>{" "}
                     </div>
                   ))
                 ) : (
-                  <p className="text-center">No guest sessions available</p>
+                  <p className="text-left">No guest sessions available</p>
                 )}
               </div>
             </section>
-            <section className="w-[100%] rounded-[6px] mt-[22px] pt-[25.4px] pb-[36px] pl-[22.32px] h-[189px] bg-white">
+            <section className="w-[100%] rounded-[6px] mt-[22px] pt-[25.4px] pb-[36px] pl-[22.32px] max-sm:p-[20px] max-sm:h-auto h-[189px] bg-white">
               <p className="text-[20px] leading-[26px] pl-[2.78px] mb-[27px] max-sm:mb-[7px] font-bold capitalize">
                 Support{" "}
               </p>
               <p className="text-[16px] leading-[20.8px]">
                 Facing Issues? Get Help At{" "}
               </p>
-              <button className="font-bold mt-[16px] w-[111px] h-[43.07px] rounded-[6px] bg-[#30E29D]">
+              <button className="font-bold max-sm:w-full mt-[16px] w-[111px] h-[43.07px] rounded-[6px] bg-[#30E29D]">
                 Support
               </button>
             </section>
@@ -813,74 +821,74 @@ export default function Dashboard() {
             </p>
           </div>
 
-
-{/* curriculum starts here */}
+          {/* curriculum starts here */}
           <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
-      <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
-        <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
-          Modules
-        </h1>
-        <div className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer" onClick={fetchCurriculum}>
-          View curriculum
-        </div>
-      </div>
-      <div className={style.module}>
-        {error && <p className="text-red-500">{error}</p>}
-        {curriculum ? (
-          curriculum.map((module, index) => (
-            <div key={module._id} className="pt-[33px] max-md:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]">
-              <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                Module {index + 1}
-              </p>
-              <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                <Image
-                  src="/Frame 18.svg"
-                  className="w-[28.64px] h-[28.64px]"
-                  width={28.6}
-                  height={28.64}
-                />
-                <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                  <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                    <p className="py-[4px] text-[14px] leading-[18.2px]">
-                      {index + 1}
-                    </p>
-                    <div>
-                      <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                        {module.title}
-                      </h1>
-                      <p className="w-[840px] mt-[6.8px]">
-                        {module.description}
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => setFold("video")}
-                    className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                  >
-                    Watch Video
-                  </div>
-                </div>
+            <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
+              <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
+                Modules
+              </h1>
+              <div
+                className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer"
+                onClick={fetchCurriculum}
+              >
+                View curriculum
               </div>
             </div>
-          ))
-        ) : (
-          <p>Loading curriculum...</p>
-        )}
-      </div>
+            <div className={style.module}>
+              {error && <p className="text-red-500">{error}</p>}
+              {curriculum ? (
+                curriculum.map((module, index) => (
+                  <div
+                    key={module._id}
+                    className="pt-[33px] max-md:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]"
+                  >
+                    <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
+                      Module {index + 1}
+                    </p>
+                    <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                      <Image
+                        src="/Frame 18.svg"
+                        className="w-[28.64px] h-[28.64px]"
+                        width={28.6}
+                        height={28.64}
+                      />
+                      <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                        <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                          <p className="py-[4px] text-[14px] leading-[18.2px]">
+                            {index + 1}
+                          </p>
+                          <div>
+                            <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                              {module.title}
+                            </h1>
+                            <p className="w-[840px] mt-[6.8px]">
+                              {module.description}
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          onClick={() => setFold("video")}
+                          className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                        >
+                          Watch Video
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>Loading curriculum...</p>
+              )}
+            </div>
           </section>
         </main>
       )}
 
-
-
-
       {/* video section here */}
       {fold === "video" && (
         <main className="px-[60px] pb-[30px] pt-[56.02px]">
-          
-
           <div className="flex items-center">
-          <NextVideo src={sample} />
+            <NextVideo src={sample} />
             <Image
               src="back.svg"
               className="mt-[0.61px] cursor-pointer"
@@ -911,7 +919,7 @@ export default function Dashboard() {
           <div className="mt-[29px] bg-white rounded-[6px] px-[30.14px] pt-[32px] pb-[29px]">
             <div className="flex justify-between pb-[25px] border-b-[1px] border-[#00000033]">
               <div>
-                <h1 className="text-base mb-[9px]">Module { }</h1>
+                <h1 className="text-base mb-[9px]">Module {}</h1>
                 <p className="text-[24px] leading-[31.2px]">
                   Bit manipulation and complexity
                 </p>
