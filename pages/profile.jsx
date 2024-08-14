@@ -68,7 +68,7 @@ export default function Profile() {
     fetchData();
   }, []);
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const data = {
@@ -99,7 +99,7 @@ export default function Profile() {
     } catch (error) {
       console.error("Error sending data:", error);
     }
-  };
+  }
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -381,7 +381,7 @@ export default function Profile() {
                   Amount
                 </td>
               </tr>
-              <tbody className="border-b-[0.2px] border-[#00000080]">
+              <tr className="border-b-[0.2px] border-[#00000080]">
                 <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
                   28/08/23
                 </td>
@@ -394,7 +394,7 @@ export default function Profile() {
                 <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
                   INR 5,000
                 </td>
-              </tbody>
+              </tr>
             </table>
           </div>
         </div>

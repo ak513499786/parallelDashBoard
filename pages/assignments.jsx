@@ -12,41 +12,41 @@ export default function Learn() {
   const [assignmentLink, setAssignmentLink] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [Date, setDate] = useState('Select date');
-  // const handleSubmit = async () => {
-  //   if (!assignmentLink) {
-  //     alert('Please paste a link before submitting.');
-  //     return;
-  //   }}
-  //   setIsSubmitting(true);
+  const handleSubmit = async () => {
+    if (!assignmentLink) {
+      alert('Please paste a link before submitting.');
+      return;
+    }}
+    setIsSubmitting(true);
   
-  //   const fetchAssignments = async () => {
-  //     try {
-  //       const response = await axios.get('/api/platform/assignments/route');
-  //       setAssignment(response.data.data);
-  //       console.log("Fetched assignments:", response.data.data);
-  //     } catch (error) {
-  //       console.error('Error fetching assignments:', error);
-  //     }
-  //   };
-  //   useEffect(() => {
-  //     fetchAssignments();
-  //   }, []);
+    const fetchAssignments = async () => {
+      try {
+        const response = await axios.get('/api/platform/assignments/route');
+        setAssignment(response.data.data);
+        console.log("Fetched assignments:", response.data.data);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    };
+    useEffect(() => {
+      fetchAssignments();
+    }, []);
 
     
 
-  //   const fetchSubmitAssignment = async () => {
-  //     try {
-  //       const response = await axios.post('/api/platform/assignments/submitAssignment');
-  //       setAssignment(response.data.data);
-  //       console.log("Submitted assignment:", response.data.data);
-  //     } catch (error) {
-  //       console.error('Error submitting assignment:', error);
-  //     }
-  //   };
+    const fetchSubmitAssignment = async () => {
+      try {
+        const response = await axios.post('/api/platform/assignments/submitAssignment');
+        setAssignment(response.data.data);
+        console.log("Submitted assignment:", response.data.data);
+      } catch (error) {
+        console.error('Error submitting assignment:', error);
+      }
+    };
 
-  //   useEffect(() => {
-  //     fetchSubmitAssignment();
-  //   },[])
+    useEffect(() => {
+      fetchSubmitAssignment();
+    },[])
 
   return (
     <>
