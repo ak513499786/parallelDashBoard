@@ -7,17 +7,17 @@ export default function Support() {
   return (
     <>
       <Navbar />
-      <main className="px-[60px] pt-[56px] relative h-[calc(100vh-84px)]">
-        <div className="flex gap-[20px]">
-          <div className="w-full bg-white rounded-[6px] pt-[31.5px] pl-[25px] pb-[33px] pr-[29px]">
+      <main className="px-[60px] max-md:px-[40px] max-sm:px-[20px] pt-[56px] relative h-[calc(100vh-84px)] max-[1440px]:h-auto">
+        <div className="flex max-xl:flex-col gap-[20px]">
+          <div className="w-full bg-white rounded-[6px] pt-[31.5px] pl-[25px] pb-[33px] pr-[29px] max-[500px]:p-[20px]">
             <h1 className="text-[20px] leading-[26px] font-semibold mb-[24.5px]">
               I have a doubt
             </h1>
-            <div className="w-full flex items-center pl-[42px] gap-[15.54px] py-[45.27px] border-[1px] border-[#00000033]">
-              <Image src="/whatsapp.svg" width={111.46} height={111.46} />
+            <div className="w-full flex items-center max-[500px]:flex-col pl-[42px] gap-[15.54px] py-[45.27px] max-[500px]:px-[10px] max-[1300px]:pl-[20px] border-[1px] border-[#00000033]">
+              <Image src="/whatsapp.svg" className="max-[500px]:w-[70px]" width={111.46} height={111.46} />
               <a
                 href={`https://wa.me/${whatsappNumber}`}
-                className="text-[20px] capitalize max-sm:text-sm leading-[26px] underline capitalize"
+                className="text-[20px] capitalize max-[500px]:text-center max-sm:text-sm leading-[26px] underline capitalize"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -31,13 +31,13 @@ export default function Support() {
               </a>
             </div>
           </div>
-          <div className="w-full bg-white rounded-[6px] pt-[31.5px] pl-[25px] pb-[33px] pr-[29px]">
+          <div className="w-full bg-white rounded-[6px] pt-[31.5px] pl-[25px] pb-[33px] pr-[29px] max-[500px]:p-[20px]">
             <h1 className="text-[20px] leading-[26px] font-semibold mb-[24.5px]">
               I need help with something else
             </h1>
-            <div className="w-full flex items-center gap-[15.54px] py-[45.27px] pl-[42px] border-[1px] border-[#00000033]">
-              <Image src="/mdi_support.svg" width={111.46} height={111.46} />
-              <p className="text-[20px] capitalize max-sm:text-sm leading-[26px] underline capitalize">
+            <div className="w-full flex items-center max-[500px]:flex-col gap-[15.54px] py-[45.27px] pl-[42px] border-[1px] max-[500px]:pl-0 border-[#00000033]">
+              <Image src="/mdi_support.svg" className="max-[500px]:w-[70px]" width={111.46} height={111.46} />
+              <p className="text-[20px] max-[500px]:text-center capitalize max-sm:text-sm leading-[26px] underline capitalize">
                 Contact support
                 <Image
                   src="/open.svg"
@@ -49,7 +49,7 @@ export default function Support() {
             </div>
           </div>
         </div>
-        <section className="max-sm:px-[20px] w-full pt-[25.14px] pb-[36px] border-[2px] border-[#672B094D] rounded-[6px] pb-[36px] pl-[25.1px] h-[131px] absolute bottom-[60px] w-[calc(100%-120px)] bg-[#FFEAC9]">
+        <section className="max-sm:px-[20px] max-sm:h-auto max-sm:p-[20px] max-[1440px]:w-full max-[1440px]:static max-[1440px]:mt-[60px] pt-[25.14px] pb-[36px] border-[2px] border-[#672B094D] rounded-[6px] pb-[36px] pl-[25.1px] h-[131px] absolute bottom-[60px] w-[calc(100%-120px)] bg-[#FFEAC9]">
           <p className="text-[20px] leading-[26px] pl-[2.78px] mb-[22.86px] max-smallerphone:mb-[7px] font-bold capitalize text-[#672B09]">
             Mail Us
           </p>

@@ -32,7 +32,6 @@ export default function Dashboard() {
         console.error("Error fetching assignments:", error);
       }
     };
-
     const fetchGuestSession = async () => {
       try {
         const response = await axios.get("/api/platform/guestSession/route");
@@ -43,7 +42,6 @@ export default function Dashboard() {
         console.error("Error fetching guestSession:", error);
       }
     };
-
     const fetchModules = async () => {
       try {
         const response = await axios.get("/api/platform/modules/route");
@@ -54,7 +52,6 @@ export default function Dashboard() {
         console.error("Error fetching modules:", error);
       }
     };
-
     const fetchSchedules = async () => {
       try {
         const response = await axios.get("/api/platform/schedules/route");
@@ -65,7 +62,6 @@ export default function Dashboard() {
         console.error("Error fetching schedules:", error);
       }
     };
-
     const fetchSupportSection = async () => {
       try {
         const response = await axios.get("/api/platform/supportSection/route");
@@ -76,24 +72,22 @@ export default function Dashboard() {
         console.error("Error fetching supportSection:", error);
       }
     };
-
-    // const fetchVideos = async () => {
-    //   try {
-    //     const response = await axios.get('/api/platform/videos/route');
-    //     setVideos(response.data.data);
-    //     console.log(videos);
-    //     console.log("response videos", response.data.data);
-    //   } catch (error) {
-    //     console.error('Error fetching videos:', error);
-    //   }
-    // };
-
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get('/api/platform/videos/route');
+        setVideos(response.data.data);
+        console.log(videos);
+        console.log("response videos", response.data.data);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
     fetchAssignments();
     fetchGuestSession();
     fetchModules();
     fetchSchedules();
     fetchSupportSection();
-    // fetchVideos();
+    fetchVideos();
   }, []);
 
   const fetchCurriculum = async () => {
@@ -800,7 +794,7 @@ export default function Dashboard() {
         </main>
       )}
       {fold === "curriculum" && (
-        <main className="px-[60px] pb-[30px] pt-[56.02px]">
+        <main className="px-[60px] pb-[30px] pt-[56.02px] max-md:px-[40px] max-sm:px-[20px]">
           <div className="flex items-center">
             <Image
               src="back.svg"
@@ -810,7 +804,7 @@ export default function Dashboard() {
               height={44.97}
             />
             <p
-              className="ml-[30px] text-base opacity-60 cursor-pointer"
+              className="ml-[30px] max-sm:ml-[10px] text-base opacity-60 cursor-pointer"
               onClick={() => setFold("")}
             >
               Class
@@ -823,61 +817,82 @@ export default function Dashboard() {
 
           {/* curriculum starts here */}
           <section className="mt-[24.62px] h-[659px] rounded-[6px] bg-white">
-            <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
+            <div className="pt-[30px] max-sm:p-[15px] max-sm:items-center pb-[23px] max-lg:px-[20px] pl-[25.1px] pr-[43px] border-b-[1px] flex justify-between">
               <h1 className="py-[1.5px] text-[20px] leading-[24px] font-bold">
                 Modules
               </h1>
-              <div
-                className="border-[1px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer"
-                onClick={fetchCurriculum}
-              >
-                View curriculum
-              </div>
             </div>
             <div className={style.module}>
               {error && <p className="text-red-500">{error}</p>}
               {curriculum ? (
                 curriculum.map((module, index) => (
-                  <div
-                    key={module._id}
-                    className="pt-[33px] max-md:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]"
-                  >
-                    <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
-                      Module {index + 1}
-                    </p>
-                    <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
-                      <Image
-                        src="/Frame 18.svg"
-                        className="w-[28.64px] h-[28.64px]"
-                        width={28.6}
-                        height={28.64}
-                      />
-                      <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
-                        <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
-                          <p className="py-[4px] text-[14px] leading-[18.2px]">
-                            {index + 1}
-                          </p>
-                          <div>
-                            <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
-                              {module.title}
-                            </h1>
-                            <p className="w-[840px] mt-[6.8px]">
-                              {module.description}
-                            </p>
-                          </div>
-                        </div>
-                        <div
-                          onClick={() => setFold("video")}
-                          className="border-[1px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
-                        >
-                          Watch Video
-                        </div>
+              <div
+                key={module._id}
+                className="pt-[33px] max-lg:px-[20px] max-sm:px-[15px] pl-[25px] pr-[73px]"
+              >
+                <p className="text-[16px] w-[100%] pb-[21px] border-b-[1px] leading-[20.8px] text-[#000000]">
+                  {/* Module 1 */}
+                  Module {index + 1}
+                </p>
+                <div className="py-[24px] max-smallerphone:gap-[6px] border-b-[1px] flex gap-[12px]">
+                  <Image
+                    src="/Frame 18.svg"
+                    className="w-[28.64px] h-[28.64px]"
+                    width={28.6}
+                    height={28.64}
+                  />
+                  <div className="flex max-hamburger:flex-col justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex gap-[20px] max-smallerphone:gap-[8px] max-sm:w-full">
+                      <p className="py-[4px] text-[14px] leading-[18.2px]">
+                        {/* 1 */}
+                        {index + 1}
+                      </p>
+                      <div className="">
+                        <h1 className="text-[20px] leading-[26px] w-[514px] max-md:w-full max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          {/* Bit manipulation and complexity  */}
+                          {module.title}
+                        </h1>
+                        <p className="w-[840px] max-[500px]:hidden max-xl:w-[600px] max-hamburger:w-full mt-[6.8px]">
+                          {/* Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.  */}
+                          {module.description}
+                        </p>
                       </div>
                     </div>
+                    <p className="w-[840px] max-[500px]:w-[calc(100%+20px)] max-[500px]:ml-[-40px] max-[500px]:block hidden max-xl:w-[600px] max-hamburger:w-full mt-[6.8px]">
+                      {/* Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                      adipiscing vitae sed sed sapien neque morbi. Diam
+                      scelerisque et aenean ac nunc cras. Integer gravida
+                      lobortis sollicitudin dui. Dignissim volutpat felis diam
+                      potenti. Mauris amet pharetra nisl nunc commodo ultrices
+                      nisl nullam aliquam. In tempor volutpat suspendisse massa
+                      a feugiat. Cras sed blandit dolor eu tempus in in. Arcu
+                      lacus vulputate turpis interdum sem maecenas dui feugiat.
+                      Amet neque lorem metus ac quis vel elit.{" "} */}
+                      {module.description}
+                    </p>
+                    <div
+                      onClick={() => setFold("video")}
+                      className="border-[1px] max-sm:w-[90%] max-[500px]:w-[calc(100%+10px)] max-[500px]:ml-[-40px] max-sm:text-center max-hamburger:w-[117px] max-hamburger:ml-[25px] h-[29px] border-black py-[3px] text-base px-[10px] rounded-[4px] cursor-pointer"
+                    >
+                      Watch Video
+                    </div>
                   </div>
-                ))
+                </div>
+              </div>
+              ))
               ) : (
-                <p>Loading curriculum...</p>
+                <p className="text-[20px] ml-[20px] mt-[40px]">
+                  Loading curriculum...
+                </p>
               )}
             </div>
           </section>
@@ -886,9 +901,9 @@ export default function Dashboard() {
 
       {/* video section here */}
       {fold === "video" && (
-        <main className="px-[60px] pb-[30px] pt-[56.02px]">
+        <main className="px-[60px] pb-[30px] pt-[56.02px] max-md:px-[40px] max-sm:px-[20px]">
           <div className="flex items-center">
-            <NextVideo src={sample} />
+            {/* <NextVideo src={sample} /> */}
             <Image
               src="back.svg"
               className="mt-[0.61px] cursor-pointer"
@@ -897,7 +912,7 @@ export default function Dashboard() {
               height={44.97}
             />
             <p
-              className="ml-[30px] text-base opacity-60 cursor-pointer"
+              className="ml-[30px] max-sm:ml-[10px] text-base opacity-60 cursor-pointer"
               onClick={() => setFold("")}
             >
               Class
@@ -910,34 +925,34 @@ export default function Dashboard() {
               Curriculum
             </p>
             <p className="ml-[5px]">&gt;</p>
-            <p className="ml-[5px] text-base underline font-bold">
+            <p className="ml-[5px] max-sm:truncate text-base underline font-bold">
               Class Title
             </p>
           </div>
 
           <div className="mt-[24.62px] h-[543px] rounded-[6px] bg-black rounded-[6.27px]"></div>
-          <div className="mt-[29px] bg-white rounded-[6px] px-[30.14px] pt-[32px] pb-[29px]">
-            <div className="flex justify-between pb-[25px] border-b-[1px] border-[#00000033]">
+          <div className="mt-[29px] bg-white rounded-[6px] px-[30.14px] max-sm:px-[15px] pt-[32px] pb-[29px]">
+            <div className="flex justify-between max-md:flex-col max-md:gap-[12px] pb-[25px] border-b-[1px] border-[#00000033]">
               <div>
                 <h1 className="text-base mb-[9px]">Module {}</h1>
                 <p className="text-[24px] leading-[31.2px]">
                   Bit manipulation and complexity
                 </p>
               </div>
-              <div className="flex gap-[8px] items-center border-[1px] h-[48px] border-black py-[14.5px] px-[32px] rounded-[4px]">
+              <div className="flex gap-[8px] max-md:justify-center items-center border-[1px] h-[48px] border-black py-[14.5px] px-[32px] rounded-[4px]">
                 <div>I Have A Doubt</div>
                 <Image src="/open.svg" width={16.53} height={16.67} />
               </div>
             </div>
             <div className="pt-[25px]">
               <p className="text-base mb-[9px]">Assignments given</p>
-              <div className="flex gap-[9px] mb-[9px]">
+              <div className="flex gap-[9px] mb-[9px] max-sm:items-start">
                 <p className="text-[20px] underline leading-[26px]">
                   Bit manipulation and complexity
                 </p>
                 <Image src="/open.svg" width={16.53} height={16.67} />
               </div>
-              <div className="flex gap-[9px] mb-[64.54px]">
+              <div className="flex gap-[9px] mb-[64.54px] max-[398px]:items-start">
                 <p className="text-[20px] underline leading-[26px]">
                   Bit manipulation and complexity
                 </p>

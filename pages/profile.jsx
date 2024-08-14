@@ -122,11 +122,11 @@ export default function Profile() {
         <h1 className="capitalize text-[20px] leading-[26px] font-bold mb-[35.92px]">
           your account
         </h1>
-        <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] pb-[39px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[38.5px] pl-[28.5px] bg-white rounded-[5px]">
+        <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-xl:pr-[20px] pb-[39px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[38.5px] pl-[28.5px] bg-white rounded-[5px]">
           <h1 className="text-[20px] leading-[26px] font-semibold">
             User Information
           </h1>
-          <div className="flex gap-[33px] max-sm:flex-col max-hamburger:gap-[20px] mt-[28.5px] mb-[23px]">
+          <div className="flex gap-[33px] max-sm:flex-col max-hamburger:gap-[20px] max-xl:flex-wrap mt-[28.5px] mb-[23px]">
             <div className="max-hamburger:w-[100%]">
               <p className="text-[14px] leading-[18.2px] mb-[10px]">Name</p>
               <input
@@ -188,7 +188,7 @@ export default function Profile() {
             <h1 className="capitalize text-[20px] leading-[26px] font-semibold">
               Job preferences{" "}
             </h1>
-            <div className="border-[1px] w-[206px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
+            <div className="border-[1px] max-sm:hidden w-[206px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
               Update Placement Profile
             </div>
           </div>
@@ -343,6 +343,9 @@ export default function Profile() {
                 </label>
               </div>
             </div>
+            <div className="border-[1px] max-sm:block hidden mt-[32px] w-full text-center h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
+              Update Placement Profile
+            </div>
           </div>
         </section>
         <h1 className="capitalize text-[20px] leading-[26px] font-bold mt-[54px] mb-[25.92px]">
@@ -350,32 +353,50 @@ export default function Profile() {
         </h1>
         <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] pb-[67.8px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[33.71px] pl-[23.5px] bg-white rounded-[5px]">
           <p className="text-base mb-[6px]">Course Opted</p>
-          <h1 className="text-[39px] leading-[46.8px] mb-[11.86px]">
+          <h1 className="text-[39px] max-sm:text-[30px] max-md:leading-[120%] leading-[46.8px] mb-[11.86px]">
             Frontend Mastery
           </h1>
           <p className="text-base mb-[43.96px]">Total Fee: INR 9,999</p>
 
           <p className="text-base mb-[6px]">Pending Fees</p>
-          <div className="flex gap-[31.5px] mb-[24px]">
+          <div className="flex gap-[31.5px] max-sm:flex-col mb-[24px]">
             <h1 className="text-[39px] leading-[46.8px]">INR 5,000 </h1>
             <button className="w-[99px] font-semibold h-[43px] max-sm:w-full bg-[#30E29D] rounded-[6px] text-[16px] leading-[19.2px]">
               Pay now{" "}
             </button>
           </div>
-          <table>
-            <tr className="bg-[#D3D3D3]">
-              <td className="text-base w-[142px] pl-[25px] py-[16px]">Date</td>
-              <td className="text-base w-[218px] pl-[25px] py-[16px]">Payment number</td>
-              <td className="text-base w-[184px] pl-[25px] py-[16px]">Payment method</td>
-              <td className="text-base w-[196px] pl-[25px] py-[16px]">Amount</td>
-            </tr>
-            <tbody className="border-b-[0.2px] border-[#00000080]">
-              <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">28/08/23</td>
-              <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">947u60749862766</td>
-              <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">Credit Card</td>
-              <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">INR 5,000</td>
-            </tbody>
-          </table>
+          <div className="max-lg:overflow-scroll">
+            <table className="max-[850px]:w-[640px]">
+              <tr className="bg-[#D3D3D3]">
+                <td className="text-base w-[142px] pl-[25px] py-[16px]">
+                  Date
+                </td>
+                <td className="text-base w-[218px] pl-[25px] py-[16px]">
+                  Payment number
+                </td>
+                <td className="text-base w-[184px] pl-[25px] py-[16px]">
+                  Payment method
+                </td>
+                <td className="text-base w-[196px] pl-[25px] py-[16px]">
+                  Amount
+                </td>
+              </tr>
+              <tbody className="border-b-[0.2px] border-[#00000080]">
+                <td className="text-base text-[#1D1D1D] w-[142px] pl-[25px] py-[16px]">
+                  28/08/23
+                </td>
+                <td className="text-base text-[#1D1D1D] w-[218px] pl-[25px] py-[16px]">
+                  947u60749862766
+                </td>
+                <td className="text-base text-[#1D1D1D] w-[184px] pl-[25px] py-[16px]">
+                  Credit Card
+                </td>
+                <td className="text-base text-[#1D1D1D] w-[196px] pl-[25px] py-[16px]">
+                  INR 5,000
+                </td>
+              </tbody>
+            </table>
+          </div>
         </div>
         <button className="w-[96px] font-semibold h-[43px] max-sm:w-full mt-[41px] bg-[#30E29D] rounded-[6px] text-[16px] leading-[19.2px]">
           Log out{" "}
