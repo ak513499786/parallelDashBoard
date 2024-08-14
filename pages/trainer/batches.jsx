@@ -38,21 +38,21 @@ export default function Jobs() {
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
         {active === "" && (
           <>
-            <div className="mb-[13px] bg-white pl-[19.08px] max-sm:flex-col max-sm:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
+            <div className="mb-[13px] bg-white pl-[19.08px] max-md:flex-col max-md:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
               <input
                 type="search"
                 name=""
-                className="w-[483px] max-sm:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
+                className="w-[483px] max-lg:w-[350px] max-md:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
                 placeholder="Search student name, instructor, batch ID"
                 id=""
               />
               <Image
                 src="/search.svg"
-                className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:top-[83px] max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
+                className="cursor-pointer max-lg:left-[330px] max-md:right-[24px] max-md:left-auto max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
                 width={24}
                 height={24}
               />
-              <div className="w-[244px] px-[14.28px]  border-[1px] border-[#0000004D] rounded-[8px]">
+              <div className="w-[244px] px-[14.28px] max-md:w-full  border-[1px] border-[#0000004D] rounded-[8px]">
                 <select className="h-[48px] w-full">
                   <option value="Select course" className="py-[18.5px]">
                     Select course
@@ -63,7 +63,7 @@ export default function Jobs() {
                 </select>
               </div>
             </div>
-            <div className="pb-[75px] w-full bg-white rounded-[8px]">
+            <div className="pb-[75px] max-xl:overflow-scroll w-full bg-white rounded-[8px]">
               <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] min-w-[1109px] border-[#00000033]">
                 <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                   Slno.
@@ -400,7 +400,7 @@ export default function Jobs() {
                   />
                 </div>
               </div>
-              <div className="pb-[32px] border-b-[0.5px] border-[#00000033] flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
+              <div className="pb-[32px] border-b-[0.5px] border-[#00000033] max-xl:flex-wrap flex items-end max-hamburger:items-start max-hamburger:flex-col gap-[33px]">
                 <div className="max-hamburger:w-full">
                   <p className="text-[14px] leading-[15px] mb-[10px] text-[#2C2E32]">
                     Instructor 1
@@ -458,7 +458,7 @@ export default function Jobs() {
                     type="text"
                     name=""
                     id=""
-                    className="w-[407px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
+                    className="w-[407px] max-lg:w-[350px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
                   />
                 </div>
                 <div className="max-hamburger:w-[100%]">
@@ -469,7 +469,7 @@ export default function Jobs() {
                     type="text"
                     name=""
                     id=""
-                    className="w-[407px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
+                    className="w-[407px] max-lg:w-[350px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[40px] bg-[white] border-[0.5px] border-[#00000080]"
                   />
                 </div>
               </div>
@@ -487,7 +487,7 @@ export default function Jobs() {
               />
               <Image
                 src="/search.svg"
-                className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:top-[83px] max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
+                className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
                 width={24}
                 height={24}
               />
@@ -503,7 +503,7 @@ export default function Jobs() {
                 <p className="text-[14px] leading-[16.8px] opacity-70 w-[260px] mr-[30px]">
                   Course
                 </p>
-                <p className="text-[14px] leading-[16.8px] opacity-70 w-[472px] mr-[7px]">
+                <p className="text-[14px] leading-[16.8px] opacity-70 mr-[7px]">
                   UIN | College | passing Year | Contact number | Email
                 </p>
               </div>

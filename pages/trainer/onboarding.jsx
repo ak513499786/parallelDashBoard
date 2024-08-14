@@ -35,13 +35,9 @@ export default function Login() {
       {state === "login" && (
         <div className="w-[595px] max-md:px-[40px] max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[52.16px] pt-[130px] pr-[113px]">
           <div
-            className={
-              emailentered
-                ? "flex w-[502.43px] flex-col gap-[32px]"
-                : "flex w-[502.43px] flex-col gap-[50px]"
-            }
+            className={"flex w-[502.43px] flex-col gap-[32px] max-md:w-full"}
           >
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute max-md:hidden w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -54,120 +50,97 @@ export default function Login() {
               Finish this onboarding process to get started as a trainer at
               parallel
             </strong>
-            {!emailentered && (
-              <>
-                <div className="flex flex-col relative gap-[32px]">
-                  <p className="text-black text-[13px] left-[18px] bg-white top-[-14px] p-[8px] absolute leading-[15.6px]">
-                    Enter your email
-                  </p>
-                  <input
-                    id="numberedInput"
-                    type="email"
-                    onChange={(e) => setemail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
-                  />
-                  {invalidPassword ? (
-                    <p className="text-[#D21313] text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
-                      Password invalid
-                    </p>
-                  ) : (
-                    <p className="text-black text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
-                      Enter your password
-                    </p>
-                  )}
-                  <input
-                    id="numberedInput"
-                    type={visible ? "text" : "password"}
-                    placeholder="Enter your password"
-                    onChange={(e) => setpassword(e.target.value)}
-                    className={
-                      passwordentered
-                        ? "pl-[25.71px] w-[421px] text-[#D21313] border-[1px] border-[#D21313] rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
-                        : "pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
-                    }
-                  />
-                  {visible ? (
-                    <Image
-                      src="../../eye-open.svg"
-                      className="absolute cursor-pointer top-[118.13px] left-[378px]"
-                      onClick={() => setvisible(!visible)}
-                      width={24}
-                      height={24}
-                    />
-                  ) : (
-                    <Image
-                      src="../../eye.svg"
-                      className="absolute cursor-pointer top-[118.13px] left-[378px]"
-                      onClick={() => setvisible(!visible)}
-                      width={24}
-                      height={24}
-                    />
-                  )}
+            <div className="flex flex-col relative gap-[32px]">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[-14px] p-[8px] absolute leading-[15.6px]">
+                Enter your email
+              </p>
+              <input
+                id="numberedInput"
+                type="email"
+                onChange={(e) => setemail(e.target.value)}
+                placeholder="Enter your email"
+                className="pl-[25.71px] max-md:w-full w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+              />
+              {invalidPassword ? (
+                <p className="text-[#D21313] text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
+                  Password invalid
+                </p>
+              ) : (
+                <p className="text-black text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
+                  Enter your password
+                </p>
+              )}
+              <input
+                id="numberedInput"
+                type={visible ? "text" : "password"}
+                placeholder="Enter your password"
+                onChange={(e) => setpassword(e.target.value)}
+                className={
+                  passwordentered
+                    ? "pl-[25.71px] w-[421px] max-md:w-full text-[#D21313] border-[1px] border-[#D21313] rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                    : "pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                }
+              />
+              {visible ? (
+                <Image
+                  src="../../eye-open.svg"
+                  className="absolute cursor-pointer top-[118.13px] left-[378px] max-md:right-[20px] max-md:left-auto"
+                  onClick={() => setvisible(!visible)}
+                  width={24}
+                  height={24}
+                />
+              ) : (
+                <Image
+                  src="../../eye.svg"
+                  className="absolute cursor-pointer top-[118.13px] left-[378px] max-md:right-[20px] max-md:left-auto"
+                  onClick={() => setvisible(!visible)}
+                  width={24}
+                  height={24}
+                />
+              )}
 
-                  <div className="flex w-full flex-col gap-[16px]">
-                    <div className="flex w-[421px] justify-between">
-                      <div className="flex items-center gap-[8px]">
-                        <input
-                          type="checkbox"
-                          className="w-[18px] h-[18px]"
-                          name="signin"
-                          id="signin"
-                        />
-                        <label
-                          htmlFor="signin"
-                          className="text-[13px] cursor-pointer leading-[15.6px] font-semibold"
-                        >
-                          Keep me signed in
-                        </label>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setstate("1/5")}
-                      className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+              <div className="flex w-full flex-col gap-[16px]">
+                <div className="flex w-[421px] max-md:w-full justify-between">
+                  <div className="flex items-center gap-[8px]">
+                    <input
+                      type="checkbox"
+                      className="w-[18px] h-[18px]"
+                      name="signin"
+                      id="signin"
+                    />
+                    <label
+                      htmlFor="signin"
+                      className="text-[13px] cursor-pointer leading-[15.6px] font-semibold"
                     >
-                      Register
-                    </button>
-                  </div>
-                  <div className="text-[13px] w-[421px] mt-[52.99px] leading-[19.5px] text-[#00000099]">
-                    By clicking on Log In you are agreeing to Parallel’s
-                    <span className="ml-[4px] cursor-pointer text-black underline">
-                      Terms Of Service
-                    </span>
-                    , and
-                    <span className="ml-[4px] cursor-pointer text-black underline">
-                      Privacy Policy.
-                    </span>
+                      Keep me signed in
+                    </label>
                   </div>
                 </div>
-              </>
-            )}
-            {emailentered && (
-              <>
-                <Link href={"/signup"}>
-                  <button className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base">
-                    Register
-                  </button>
-                </Link>
-
-                <p className="text-[20px] pt-[12px] leading-[24px] font-semibold">
-                  Is this a mistake?
-                </p>
                 <button
-                  onClick={handleSubmit}
-                  className="w-[421px] py-[20px] bg-transparent border-black border-[1px] text-black font-semibold rounded-[6px] text-base"
+                  onClick={() => setstate("1/5")}
+                  className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
                 >
-                  Contact us
+                  Register
                 </button>
-              </>
-            )}
+              </div>
+              <div className="text-[13px] w-[421px] max-md:w-full mt-[52.99px] leading-[19.5px] text-[#00000099]">
+                By clicking on Log In you are agreeing to Parallel’s
+                <span className="ml-[4px] cursor-pointer text-black underline">
+                  Terms Of Service
+                </span>
+                , and
+                <span className="ml-[4px] cursor-pointer text-black underline">
+                  Privacy Policy.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       )}
       {state === "1/5" && (
-        <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+        <div className="w-[710px] max-md:w-full max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
+          <div className="flex w-[502.43px] max-md:w-full flex-col gap-[32px] max-md:w-full">
+            <div className="flex max-md:w-full items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="../../back.svg"
                 className="mt-[0.61px]"
@@ -177,7 +150,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">1/5</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute max-md:hidden w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -197,18 +170,18 @@ export default function Login() {
                 id="numberedInput"
                 type="text"
                 placeholder="Enter your name"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
                 Enter your phone number
               </p>
-              <div className="pl-[25.71px] flex w-[421px] border-[1px] border-black rounded-[6px]">
+              <div className="pl-[25.71px] flex w-[421px] max-md:w-full border-[1px] border-black rounded-[6px]">
                 <p className="text-base pt-[21px]">+ 91 |</p>
                 <input
                   id="numberedInput"
                   type="number"
                   placeholder="Enter your phone number"
-                  className="pt-[21.5px] pl-[9.11px] w-[350px] pb-[16.5px] text-base"
+                  className="pt-[21.5px] pl-[9.11px] max-md:w-[calc(100%-100px)] w-[350px] pb-[16.5px] text-base"
                 />
               </div>
               <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
@@ -218,7 +191,7 @@ export default function Login() {
                 id="numberedInput"
                 type="email"
                 placeholder="Enter your email"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[273px] p-[8px] absolute leading-[15.6px]">
                 Enter your DOB(DD/MM/YY)
@@ -227,12 +200,12 @@ export default function Login() {
                 id="numberedInput"
                 type="number"
                 placeholder="DD/MM/YY"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
 
               <button
                 onClick={() => setstate("2/5")}
-                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -242,8 +215,8 @@ export default function Login() {
       )}
       {state === "2/5" && (
         <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+          <div className="flex w-[502.43px] flex-col gap-[32px] max-md:w-full">
+            <div className="flex max-md:w-full items-center mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="../../back.svg"
                 onClick={() => setstate("1/5")}
@@ -253,7 +226,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">2/5</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -265,9 +238,9 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex flex-col relative">
-              <div className="flex gap-[32px]">
-                <div>
+            <div className="flex max-md:w-full flex-col relative">
+              <div className="flex max-md:w-full  max-md:flex-col gap-[32px]">
+                <div className="max-md:w-full">
                   <p className="text-black text-[13px] left-[18px] bg-white top-[-17px] p-[8px] absolute leading-[15.6px]">
                     State
                   </p>
@@ -275,34 +248,34 @@ export default function Login() {
                     id="numberedInput"
                     type="email"
                     placeholder="Enter the name of state"
-                    className="pl-[25.71px] w-[226px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                    className="pl-[25.71px] max-md:w-full w-[226px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                   />
                 </div>
-                <div>
-                  <p className="text-black text-[13px] left-[276px] bg-white top-[-17px] p-[8px] absolute leading-[15.6px]">
+                <div className="max-md:w-full">
+                  <p className="text-black text-[13px] max-md:left-[18px] max-md:top-[85px]  left-[276px] bg-white top-[-17px] p-[8px] absolute leading-[15.6px]">
                     City
                   </p>
                   <input
                     id="numberedInput"
                     type="email"
                     placeholder="Enter the name of city"
-                    className="pl-[25.71px] w-[226px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                    className="pl-[25.71px] w-[226px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                   />
                 </div>
               </div>
-              <p className="text-black text-[13px] left-[18px] bg-white top-[85px] p-[8px] absolute leading-[15.6px]">
+              <p className="text-black text-[13px] left-[18px] bg-white max-md:top-[187px] top-[85px] p-[8px] absolute leading-[15.6px]">
                 Enter postal ZIP code{" "}
               </p>
               <input
                 id="numberedInput"
                 type="email"
                 placeholder="Enter postal ZIP code"
-                className="pl-[25.71px] w-[421px] mt-[38px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full mt-[38px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
-              <p className="text-black text-[13px] left-[18px] bg-white top-[187px] p-[8px] absolute leading-[15.6px]">
+              <p className="text-black text-[13px] left-[18px] bg-white top-[187px] max-md:top-[284px] p-[8px] absolute leading-[15.6px]">
                 Enter house address
               </p>
-              <p className="text-black text-[13px] right-[88px] bg-white bottom-[100px] p-[8px] absolute leading-[15.6px]">
+              <p className="text-black max-md:right-[20px] text-[13px] right-[88px] bg-white bottom-[100px] p-[8px] absolute leading-[15.6px]">
                 {count} / 100
               </p>
               <textarea
@@ -311,11 +284,11 @@ export default function Login() {
                 placeholder="Enter house address"
                 onChange={handleSubmitText}
                 maxLength={100}
-                className="pl-[25.71px] resize-none h-[224px] mt-[38px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] resize-none h-[224px] mt-[38px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               ></textarea>
               <button
                 onClick={() => setstate("3/5")}
-                className="w-[421px] mt-[32px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full mt-[32px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -325,8 +298,8 @@ export default function Login() {
       )}
       {state === "3/5" && (
         <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+          <div className="flex w-[502.43px] flex-col gap-[32px] max-md:w-full">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="../../back.svg"
                 onClick={() => setstate("2/5")}
@@ -337,7 +310,7 @@ export default function Login() {
               <p className="text-base text-[#00000099]">3/5</p>
             </div>
 
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -357,12 +330,12 @@ export default function Login() {
                 id="numberedInput"
                 type="text"
                 placeholder="Enter your PAN number"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
                 Upload PAN card photo
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="pan"
                   type="file"
@@ -376,9 +349,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="pan"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer max-md:w-full flex justify-between w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] max-md:w-[calc(100%-75px)] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>{pan === "" ? "Click to upload photo" : pan}</i>
                     <span className=" text-[13px] leading-[15.6px]">
                       {pan === "" ? (
@@ -407,7 +380,7 @@ export default function Login() {
               <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
                 Upload passport sized photo
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="passport"
                   type="file"
@@ -421,9 +394,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="passport"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer max-md:w-full flex justify-between w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] max-md:w-[calc(100%-75px)] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>{pass === "" ? "Click to upload photo" : pass}</i>
                     <span className=" text-[13px] leading-[15.6px]">
                       {pass === "" ? (
@@ -451,7 +424,7 @@ export default function Login() {
               </div>
               <button
                 onClick={() => setstate("4/5")}
-                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -461,8 +434,8 @@ export default function Login() {
       )}
       {state === "4/5" && (
         <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[113px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+          <div className="flex w-[502.43px] flex-col gap-[32px] max-md:w-full">
+            <div className="flex items-center mb-[9px] max-md:w-full w-[420.97px] justify-between">
               <Image
                 src="../../back.svg"
                 onClick={() => setstate("3/5")}
@@ -473,7 +446,7 @@ export default function Login() {
               <p className="text-base text-[#00000099]">4/5</p>
             </div>
 
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -493,12 +466,12 @@ export default function Login() {
                 id="numberedInput"
                 type="text"
                 placeholder="Enter your Aadhaar number"
-                className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
               />
               <p className="text-black text-[13px] left-[18px] bg-white top-[81px] p-[8px] absolute leading-[15.6px]">
                 Upload Aadhaar card photo
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="aadhar"
                   type="file"
@@ -512,9 +485,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="pan"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer max-md:w-full flex justify-between w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] max-md:w-[calc(100%-75px)] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>{aadhar === "" ? "Click to upload photo" : aadhar}</i>
                     <span className=" text-[13px] leading-[15.6px]">
                       {aadhar === "" ? (
@@ -543,7 +516,7 @@ export default function Login() {
               <p className="text-black text-[13px] left-[18px] bg-white top-[177px] p-[8px] absolute leading-[15.6px]">
                 Upload 10th marks card photo
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="passport"
                   type="file"
@@ -557,9 +530,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="passport"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer max-md:w-full flex justify-between w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] max-md:w-[calc(100%-75px)] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>{marks === "" ? "Click to upload photo" : marks}</i>
                     <span className=" text-[13px] leading-[15.6px]">
                       {marks === "" ? (
@@ -588,7 +561,7 @@ export default function Login() {
               <p className="text-black text-[13px] left-[18px] bg-white top-[274px] p-[8px] absolute leading-[15.6px]">
                 Upload experience letter
               </p>
-              <div className="flex w-[421px]">
+              <div className="flex w-[421px] max-md:w-full">
                 <input
                   id="passport"
                   type="file"
@@ -602,9 +575,9 @@ export default function Login() {
                 />
                 <label
                   htmlFor="passport"
-                  className="cursor-pointer flex justify-between w-[420px]"
+                  className="cursor-pointer max-md:w-full flex justify-between w-[420px]"
                 >
-                  <div className="pt-[21.5px] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
+                  <div className="pt-[21.5px] max-md:w-[calc(100%-75px)] whitespace-nowrap w-[100px] overflow-scroll flex pl-[25.71px] w-[337px]  border-[1px] border-black rounded-[6px] justify-between items-center text-[#00000099] pr-[11.68px] w-[350px] pb-[16.5px] text-base">
                     <i>{letter === "" ? "Click to upload PDF" : letter}</i>
                     <span className=" text-[13px] leading-[15.6px]">
                       {letter === "" ? (
@@ -632,7 +605,7 @@ export default function Login() {
               </div>
               <button
                 onClick={() => setstate("5/5")}
-                className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
               >
                 Next
               </button>
@@ -642,8 +615,8 @@ export default function Login() {
       )}
       {state === "5/5" && (
         <div className="w-[710px] max-md:px-[40px] overflow-scroll max-sm:px-[20px] max-md:w-full bg-[white] h-[100vh] flex flex-col justify-between pl-[40px] pb-[42.16px] pt-[118.42px] pr-[167px]">
-          <div className="flex w-[502.43px] flex-col gap-[32px]">
-            <div className="flex items-center mb-[9px] w-[420.97px] justify-between">
+          <div className="flex w-[502.43px] flex-col gap-[32px] max-md:w-full">
+            <div className="flex items-center max-md:w-full mb-[9px] w-[420.97px] justify-between">
               <Image
                 src="../../back.svg"
                 onClick={() => setstate("4/5")}
@@ -653,7 +626,7 @@ export default function Login() {
               />
               <p className="text-base text-[#00000099]">5/5</p>
             </div>
-            <div className="absolute w-[calc(100%-40px)] z-[-1] top-0 h-full overflow-hidden">
+            <div className="absolute w-[calc(100%-40px)] max-md:hidden z-[-1] top-0 h-full overflow-hidden">
               <div className="radical-circle"></div>
             </div>
             <Image
@@ -665,7 +638,7 @@ export default function Login() {
             <strong className="text-[25px] mb-[22px] leading-[30px]">
               We’d like to know more about you
             </strong>
-            <div className="flex w-[494px] flex-col relative">
+            <div className="flex w-[494px] max-md:w-full flex-col relative">
               <div className="flex flex-col relative gap-[32px]">
                 <p className="text-black text-[13px] left-[18px] bg-white top-[-14px] p-[8px] absolute leading-[15.6px]">
                   Enter GitHub profile link
@@ -674,7 +647,7 @@ export default function Login() {
                   id="numberedInput"
                   type="email"
                   placeholder="Paste link here"
-                  className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                  className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
                 <p className="text-black text-[13px] left-[18px] bg-white top-[80px] p-[8px] absolute leading-[15.6px]">
                   Enter LinkedIn profile link
@@ -684,12 +657,12 @@ export default function Login() {
                   type="text"
                   placeholder="Paste link here"
                   onChange={(e) => setpassword(e.target.value)}
-                  className="pl-[25.71px] w-[421px] border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
+                  className="pl-[25.71px] w-[421px] max-md:w-full border-[1px] border-black rounded-[6px] pt-[21.5px] pb-[16.5px] text-base"
                 />
                 <div className="flex w-full flex-col gap-[16px]">
                   <button
                     onClick={() => setstate("done")}
-                    className="w-[421px] py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
+                    className="w-[421px] max-md:w-full py-[20px] bg-[#30E29D] text-black font-semibold rounded-[6px] text-base"
                   >
                     Finish
                   </button>
@@ -719,7 +692,19 @@ export default function Login() {
           </p>
         </div>
       )}
-      <div className="h-[100vh] w-[calc(100%-710px)] relative overflow-hidden">
+      <div className="w-[calc(100%-500px)] max-md:hidden h-[100vh] absolute right-0 overflow-hidden">
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
+        <Image
+          src="/bg-eclips.svg"
+          className="w-full object-cover mixblend h-auto"
+          width={1024}
+          height={700}
+        />
         <Image
           src="/bg-eclips.svg"
           className="w-full object-cover mixblend h-auto"

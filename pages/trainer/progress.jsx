@@ -38,21 +38,21 @@ export default function Jobs() {
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
         {active === "progress" && (
           <>
-            <div className="mb-[13px] bg-white pl-[19.08px] max-sm:flex-col max-sm:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
+            <div className="mb-[13px] bg-white pl-[19.08px] max-md:flex-col max-md:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
               <input
                 type="search"
                 name=""
-                className="w-[483px] max-sm:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
+                className="w-[483px] max-lg:w-[350px] max-md:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
                 placeholder="Search student name, instructor, batch ID"
                 id=""
               />
               <Image
                 src="/search.svg"
-                className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:top-[83px] max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
+                className="cursor-pointer max-lg:left-[330px] max-md:right-[24px] max-md:left-auto max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
                 width={24}
                 height={24}
               />
-              <div className="w-[244px] px-[14.28px]  border-[1px] border-[#0000004D] rounded-[8px]">
+              <div className="w-[244px] px-[14.28px] max-md:w-full  border-[1px] border-[#0000004D] rounded-[8px]">
                 <select className="h-[48px] w-full">
                   <option value="Select course" className="py-[18.5px]">
                     Select course
@@ -63,7 +63,7 @@ export default function Jobs() {
                 </select>
               </div>
             </div>
-            <div className="pb-[75px] w-full bg-white rounded-[8px]">
+            <div className="pb-[75px] max-xl:overflow-scroll w-full bg-white rounded-[8px]">
               <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] min-w-[1109px] border-[#00000033]">
                 <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                   Slno.
@@ -363,18 +363,17 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
-
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -387,6 +386,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -396,18 +407,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -420,6 +431,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -429,18 +452,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -453,6 +476,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -462,18 +497,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -486,6 +521,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -495,18 +542,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -519,6 +566,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                 </div>
@@ -533,18 +592,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -557,6 +616,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -566,18 +637,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -590,6 +661,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -599,18 +682,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -623,6 +706,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -632,18 +727,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -656,6 +751,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -665,18 +772,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -689,6 +796,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                 </div>
@@ -703,18 +822,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -727,6 +846,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -736,18 +867,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -760,6 +891,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -769,18 +912,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -793,6 +936,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -802,18 +957,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -826,6 +981,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -835,18 +1002,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -859,6 +1026,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                 </div>
@@ -873,18 +1052,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -897,6 +1076,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -906,18 +1097,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -930,6 +1121,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -939,18 +1142,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -963,6 +1166,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -972,18 +1187,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -996,6 +1211,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                   <div className="py-[24px] max-smallerphone:gap-[16px] border-b-[1px] flex gap-[24px]">
@@ -1005,18 +1232,18 @@ export default function Jobs() {
                       width={28.6}
                       height={28.64}
                     />
-                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full">
+                    <div className="flex justify-between w-full gap-[12px] max-sm:w-full max-md:flex-col">
                       <div>
                         <div className="flex gap-[20px]">
                           <p className="py-[4px] text-[14px] leading-[18.2px]">
                             01
                           </p>
-                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-xl:truncate">
+                          <h1 className="text-[20px] leading-[26px] w-[514px] max-smallphone:text-base max-sm:w-[80%] max-[500px]:w-full max-[500px]:whitespace-normal max-xl:truncate">
                             Justo est urna pellentesque c...
                           </h1>
                         </div>
 
-                        <p className="w-[840px] mt-[6.8px]">
+                        <p className="w-[840px] max-md:hidden mt-[6.8px] max-[1100px]:w-full">
                           Et mauris rutrum phasellus pellentesque. Nisl pulvinar
                           adipiscing vitae sed sed sapien neque morbi. Diam
                           scelerisque et aenean ac nunc cras. Integer gravida
@@ -1029,6 +1256,18 @@ export default function Jobs() {
                           vel elit.
                         </p>
                       </div>
+                      <p className="w-[840px] mt-[6.8px] max-[1100px]:w-full hidden max-md:block ml-[-50px] max-sm:w-[calc(100%+40px)]">
+                          Et mauris rutrum phasellus pellentesque. Nisl pulvinar
+                          adipiscing vitae sed sed sapien neque morbi. Diam
+                          scelerisque et aenean ac nunc cras. Integer gravida
+                          lobortis sollicitudin dui. Dignissim volutpat felis
+                          diam potenti. Mauris amet pharetra nisl nunc commodo
+                          ultrices nisl nullam aliquam. In tempor volutpat
+                          suspendisse massa a feugiat. Cras sed blandit dolor eu
+                          tempus in in. Arcu lacus vulputate turpis interdum sem
+                          maecenas dui feugiat. Amet neque lorem metus ac quis
+                          vel elit.
+                        </p>
                     </div>
                   </div>
                 </div>
