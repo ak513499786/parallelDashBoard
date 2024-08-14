@@ -11,44 +11,42 @@ export default function Learn() {
   const [assignmentData, setAssignmentData] = useState(false);
   const [assignmentLink, setAssignmentLink] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleSubmit = async () => {
-    if (!assignmentLink) {
-      alert('Please paste a link before submitting.');
-      return;
-    }}
-
-    setIsSubmitting(true);
-
+  const [Date, setDate] = useState('Select date');
+  // const handleSubmit = async () => {
+  //   if (!assignmentLink) {
+  //     alert('Please paste a link before submitting.');
+  //     return;
+  //   }}
+  //   setIsSubmitting(true);
   
-  
-    const fetchAssignments = async () => {
-      try {
-        const response = await axios.get('/api/platform/assignments/route');
-        setAssignment(response.data.data);
-        console.log("Fetched assignments:", response.data.data);
-      } catch (error) {
-        console.error('Error fetching assignments:', error);
-      }
-    };
-    useEffect(() => {
-      fetchAssignments();
-    }, []);
+  //   const fetchAssignments = async () => {
+  //     try {
+  //       const response = await axios.get('/api/platform/assignments/route');
+  //       setAssignment(response.data.data);
+  //       console.log("Fetched assignments:", response.data.data);
+  //     } catch (error) {
+  //       console.error('Error fetching assignments:', error);
+  //     }
+  //   };
+  //   useEffect(() => {
+  //     fetchAssignments();
+  //   }, []);
 
     
 
-    const fetchSubmitAssignment = async () => {
-      try {
-        const response = await axios.post('/api/platform/assignments/submitAssignment');
-        setAssignment(response.data.data);
-        console.log("Submitted assignment:", response.data.data);
-      } catch (error) {
-        console.error('Error submitting assignment:', error);
-      }
-    };
+  //   const fetchSubmitAssignment = async () => {
+  //     try {
+  //       const response = await axios.post('/api/platform/assignments/submitAssignment');
+  //       setAssignment(response.data.data);
+  //       console.log("Submitted assignment:", response.data.data);
+  //     } catch (error) {
+  //       console.error('Error submitting assignment:', error);
+  //     }
+  //   };
 
-    useEffect(() => {
-      fetchSubmitAssignment();
-    },[])
+  //   useEffect(() => {
+  //     fetchSubmitAssignment();
+  //   },[])
 
   return (
     <>
@@ -98,18 +96,19 @@ export default function Learn() {
           <h1 className="font-semibold text-[20px] leading-[26px] mb-[19px]">
             Previous assignments
           </h1>
-          <div className="pt-[14px] h-[77px] pb-[15px] pl-[21px] pr-[31px] rounded-[8px] flex justify-between max-md:p-[20px] max-sm:h-auto max-sm:items-start gap-[12px] max-sm:flex-col items-center bg-white">
-            <input
-              type="date"
-              name="calender"
-              className="hidden"
-              id="calender"
-            />
+          <div className="pt-[14px] relative h-[77px] pb-[15px] pl-[21px] pr-[31px] rounded-[8px] flex justify-between max-md:p-[20px] max-sm:h-auto max-sm:items-start gap-[12px] max-sm:flex-col items-center bg-white">
             <label
               htmlFor="calender"
-              className="h-[48px] flex items-center justify-between border-[#0000004D] border-[1px] py-[12px] px-[14.28px] w-[244px] rounded-[6px]"
+              className="h-[48px] flex items-center relative justify-between border-[#0000004D] border-[1px] py-[12px] px-[14.28px] w-[244px] rounded-[6px]"
             >
-              <p className="text-[14px]">Select date</p>
+            <input
+              type="date"
+              onChange={(e) => setDate(e.target.value)}
+              name="calender"
+              className="h-[48px] pl right-0 absolute pl-[80px] opacity-0 flex items-center justify-between border-[#0000004D] border-[1px] py-[12px] pr-[14.28px] rounded-[6px]"
+              id="calender"
+            />
+              <p className="text-[14px]">{Date}</p>
               <Image src="/calender.svg" width={24} height={24} />
             </label>
             <div className="flex items-center gap-[4px]">

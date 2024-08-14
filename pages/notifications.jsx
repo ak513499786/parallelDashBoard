@@ -19,18 +19,18 @@ function Notifications() {
   };
 
   // Fetch notifications from the API
-  // useEffect(() => {
-  //   async function fetchNotifications() {
-  //     try {
-  //       const response = await axios.get('/api/platform/notifications/route'); // Replace with your API endpoint
-  //       setNotifications(response.data.data);
-  //     } catch (error) {
-  //       console.error('Error fetching notifications:', error);
-  //     }
-  //   }
+  useEffect(() => {
+    async function fetchNotifications() {
+      try {
+        const response = await axios.get('/api/platform/notifications/route'); // Replace with your API endpoint
+        setNotifications(response.data.data);
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    }
 
-  //   fetchNotifications();
-  // }, []);
+    fetchNotifications();
+  }, []);
 
   const handleNotificationClick = (notif) => {
     setSelectedNotification(notif);
