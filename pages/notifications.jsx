@@ -46,10 +46,10 @@ function Notifications() {
             <h1 className="text-[20px] leading-[26px] font-semibold mb-[28.92px]">
               Notifications
             </h1>
-            <div className="w-full max-xl:w-[50%] max-md:w-full h-[567px] rounded-[5px] bg-[white] pt-[0px] pl-[37px] max-sm:px-[20px] pr-[61px]">
+            <div className="w-full max-md:w-full h-[567px] rounded-[5px] bg-[white] pt-[0px] pl-[37px] max-sm:px-[20px] pr-[61px]">
               <div
                 ref={scrollRef}
-                className="h-[505px] max-xl:w-[90%] max-sm:w-full max-xl:overflow-x-hidden overflow-y-scroll w-full mt-[31px]"
+                className="h-[505px] max-sm:w-full overflow-y-scroll w-full mt-[31px]"
               >
                 {notifications.map((notif, index) => (
                   <div className="mt-[37px]" key={index}>
@@ -58,14 +58,14 @@ function Notifications() {
                     </h1>
                     <div
                       onClick={() => handleNotificationClick(notif)}
-                      className="py-[10px] flex items-center pr-[15px] justify-between h-[82px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4]"
+                      className="py-[10px] max-hamburger:flex-col max-hamburger:items-start max-hamburger:gap-[12px] max-hamburger:h-auto flex items-center pr-[15px] justify-between h-[82px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4]"
                     >
-                      <div className="flex gap-[24px] items-center">
-                        <div className="w-[645.83px] flex gap-[37px] items-center">
+                      <div className="flex max-hamburger:flex-col max-hamburger:items-start gap-[24px] items-center">
+                        <div className="w-[645.83px] max-[450px]:flex-col max-[450px]:items-start max-[450px]:gap-[12px] max-xl:w-[500px] max-hamburger:w-full max-md:whitespace-normal max-xl:truncate flex gap-[37px] items-center">
                           <div className=" h-[34px] text-[14px] leading-[18.2px] text-white rounded-[24px] bg-[#0C6926] p-[8px]">
                             New
                           </div>
-                          <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
+                          <h1 className="capitalize text-[20px] leading-[26px] max-md:whitespace-normal max-xl:truncate">
                             {notif.title}
                           </h1>
                         </div>
@@ -73,39 +73,18 @@ function Notifications() {
                           {formatTime(notif.time)}
                         </p>
                       </div>
-
                       <div
-                        onClick={() => setnotification(true)}
-                        className="border-[1px] w-[131px] h-[29px] text-[14px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer opacity-1"
+                        onClick={() => setNotification(true)}
+                        className="border-[1px] max-[450px]:w-full max-[450px]:text-center w-[131px] h-[29px] text-[14px] border-black py-[5px] px-[10px] rounded-[4px] cursor-pointer opacity-1"
                       >
                         Join with Meet
                       </div>
                     </div>
                   </div>
                 ))}
-                {/* <div className="mt-[31px]">
-                //   <h1 className="text-[16px] leading-[20.8px] mb-[16px]">
-                //     Older Notifications
-                //   </h1>
-                //   <div className="py-[10px] flex items-center pr-[15px] justify-between h-[82px] w-full max-xl:w-full border-b-[1px] border-[#C4C4C4]">
-                //     <div className="flex gap-[24px] items-center">
-                //       <div className="w-[645.83px] flex gap-[37px] items-center">
-                //         <div className=" h-[34px] text-[14px] leading-[18.2px] text-white rounded-[24px] bg-[#0C6926] p-[8px] opacity-0 cursor-arrow">
-                //           New
-                //         </div>
-                //         <h1 className="capitalize text-[20px] leading-[26px] max-xl:truncate">
-                //           Justo est urna pellentesque commodo quis eget.
-                //         </h1>
-                //       </div>
-                //       <p className="text-[14px] leading-[18.2px] opacity-60">
-                //         13th July
-                //       </p>
-                //     </div>
-                //   </div> */}
-                {/* </div> */}
               </div>
             </div>{" "}
-            <div className="flex gap-[16px] absolute right-[60px] mt-[20px]">
+            <div className="flex gap-[16px] absolute right-[60px] max-sm:right-[20px] mt-[20px]">
               <div className="w-[32px] h-[32px] flex pr-[2.98px] justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
                 <Image src="/Group 4.svg" width={14.13} height={14.13} />
               </div>
@@ -140,8 +119,8 @@ function Notifications() {
               width={44.97}
               height={44.97}
             />
-            <div className="max-sm:p-[20px] w-full bg-[white] rounded-[5px] pt-[48.5px] pl-[50px] pb-[136px] pr-[43.5px]">
-              <h1 className="capitalize text-[31px] leading-[37px]">
+            <div className="max-sm:p-[20px] w-full bg-[white] rounded-[5px] max-hamburger:px-[35px] pt-[48.5px] pl-[50px] pb-[136px] pr-[43.5px]">
+              <h1 className="capitalize text-[31px] max-sm:text-[24px] max-sm:leading-[30px] leading-[37px]">
                 {selectedNotification.title}
               </h1>
               <div className="mt-[16px] max-hamburger:mb-[10px] flex gap-[29.43px] mb-[42.08px]">
@@ -152,7 +131,7 @@ function Notifications() {
                   12th April 2024
                 </p>
               </div>
-              <p className="text-base max-hamburger:mb-[20px] mb-[42px] w-[808px]">
+              <p className="text-base max-hamburger:mb-[20px] max-lg:w-full mb-[42px] w-[808px]">
                 {selectedNotification.description}
               </p>
               <button className="h-[43px] max-sm:w-full w-[134px] bg-[#30E29D] rounded-[6px] text-base font-semibold">
