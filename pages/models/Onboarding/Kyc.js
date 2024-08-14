@@ -5,7 +5,7 @@ const { ObjectId } = Types;
 
 const kycSchema = new Schema({
   userId: { type: ObjectId, ref: 'User'},
-  panNumber: { type: String, required: true },
+  panNumber: { type: String },
   panPhoto: { type: String },
   passportPhoto: { type: String }
 });

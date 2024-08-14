@@ -36,6 +36,7 @@ export default async function handler(req, res) {
     const userId = decoded.id;
 
     switch (req.method) {
+      
       case 'GET':
         console.log("GET request for KYC records");
         const kycRecords = await findAllKyc();
@@ -43,11 +44,14 @@ export default async function handler(req, res) {
         break;
 
       case 'POST':
-        const { panPhoto, passportPhoto, panNumber } = req.body;
+        const { userId, panPhoto, passportPhoto, panNumber } = req.body;
         console.log("request body", req.body);
-        // if (!panNumber || !panPhoto || !passportPhoto) {
-        //   return res.status(400).json({ error: 'All fields are required: panNumber, panPhoto, passportPhoto' });
-        // }
+        if (!userId || !panNumber || !panPhoto || !passportPhoto) {
+          return res.status(400).json({ error: 'All fields are required: userId, panNumber, panPhoto, passportPhoto' });
+        }
+
+
+
 
         //converting to base64 
         const base64ToFile = (base64String, filePath) => {
@@ -56,8 +60,8 @@ export default async function handler(req, res) {
           fs.writeFileSync(filePath, buffer);
         };
 
-        const panPhotoPath = path.join(process.cwd(), 'public', `${userId}_panPhoto.jpg`);
-        const passportPhotoPath = path.join(process.cwd(), 'public', `${userId}_passportPhoto.jpg`);
+        const panPhotoPath = path.join(process.cwd(), 'public', `${userId}_panPhoto10.jpg`);
+        const passportPhotoPath = path.join(process.cwd(), 'public', `${userId}_passportPhoto10.jpg`);
 
         base64ToFile(panPhoto, panPhotoPath);
         base64ToFile(passportPhoto, passportPhotoPath);

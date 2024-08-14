@@ -44,7 +44,7 @@ export default function Login() {
           phoneNumber: formData.phoneNumber,
           email: formData.email,
           dateOfBirth: formData.dateOfBirth,
-          userId: '6693e0d55bec495a0083f64d',
+          userId: '66b5b1ce7d4b70782a978a52',
         });
       } else if (state === "2/4") {
         await axios.post("/api/onboarding/academics/route", {
@@ -52,7 +52,7 @@ export default function Login() {
           highestQualification: formData.highestQualification,
           branchOfDegree: formData.branchOfDegree,
           collegeName: formData.collegeName,
-          userId: '6693e0d55bec495a0083f64d',
+          userId: '66b5b1ce7d4b70782a978a52',
 
         });
       } else if (state === "3/4") {
@@ -69,11 +69,11 @@ export default function Login() {
             throw new Error('No token found');
           }
           const response = await axios.post("/api/onboarding/kyc/route", formDataKyc, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              "Authorization": `Bearer ${token}`
-            },
-            userId: '6693e0d55bec495a0083f64d',
+            // headers: {
+            //   "Content-Type": "multipart/form-data",
+            //   "Authorization": `Bearer ${token}`
+            // },
+            userId: '66b5b1ce7d4b70782a978a52',
 
           });
           console.log('Response:', response.data);

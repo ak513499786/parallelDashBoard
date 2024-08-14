@@ -5,10 +5,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Profile() {
-  const [Name, setName] = useState("");
-  const [phonenumber, setPhonenumber] = useState("");
-  const [userName, setUserName] = useState("");
-  const [College, setCollege] = useState("");
   const [allLocation, setAllLocation] = useState(false);
   const [remote, setRemote] = useState(false);
   const [bangalore, setBangalore] = useState(false);
@@ -22,98 +18,106 @@ export default function Profile() {
   const [pune, setPune] = useState(false);
   const [nashik, setNashik] = useState(false);
   const [chattisgarh, setChattisgarh] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState("");
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 50 }, (_, index) => currentYear - index);
-  const [isPassingOpen, setIsPassingOpen] = useState(false);
-  const [selectedPassingYear, setSelectedPassingYear] = useState("");
-  const passingYears = Array.from(
-    { length: 50 },
-    (_, index) => currentYear - index
-  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/platform/account/route");
-        const data = response.data;
-        if (data.length > 0) {
-          const lastData = data[data.length - 1];
-          setPhonenumber(lastData.phonenumber);
-          setName(lastData.Name);
-          setUserName(lastData.userName);
-          setCollege(lastData.College);
-          setAllLocation(lastData.allLocation);
-          setRemote(lastData.remote);
-          setBangalore(lastData.bangalore);
-          setHyderabad(lastData.hyderabad);
-          setChennai(lastData.chennai);
-          setDelhi(lastData.delhi);
-          setMumbai(lastData.mumbai);
-          setGurgaon(lastData.gurgaon);
-          setAhmedabad(lastData.ahmedabad);
-          setNoida(lastData.noida);
-          setPune(lastData.pune);
-          setNashik(lastData.nashik);
-          setChattisgarh(lastData.chattisgarh);
-          setSelectedYear(lastData.selectedYear);
-          setSelectedPassingYear(lastData.selectedPassingYear);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("/api/platform/account/route");
+  //       const data = response.data;
+  //       if (data.length > 0) {
+  //         const lastData = data[data.length - 1];
+  //         setAllLocation(lastData.allLocation || false);
+  //         setRemote(lastData.remote || false);
+  //         setBangalore(lastData.bangalore || false);
+  //         setHyderabad(lastData.hyderabad || false);
+  //         setChennai(lastData.chennai || false);
+  //         setDelhi(lastData.delhi || false);
+  //         setMumbai(lastData.mumbai || false);
+  //         setGurgaon(lastData.gurgaon || false);
+  //         setAhmedabad(lastData.ahmedabad || false);
+  //         setNoida(lastData.noida || false);
+  //         setPune(lastData.pune || false);
+  //         setNashik(lastData.nashik || false);
+  //         setChattisgarh(lastData.chattisgarh || false);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const data = {
-      Name,
-      userName,
-      College,
-      selectedYear,
-      selectedPassingYear,
-      allLocation,
-      remote,
-      bangalore,
-      hyderabad,
-      chennai,
-      delhi,
-      mumbai,
-      gurgaon,
-      ahmedabad,
-      noida,
-      pune,
-      nashik,
-      chattisgarh,
-      phonenumber,
-    };
-
-    try {
-      const response = await axios.post("/api/platform/account/route", data);
-      console.log("Data sent successfully:", response.data);
-    } catch (error) {
-      console.error("Error sending data:", error);
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    switch (name) {
+      case "all":
+        setAllLocation(checked);
+        break;
+      case "Remote":
+        setRemote(checked);
+        break;
+      case "Bangalore":
+        setBangalore(checked);
+        break;
+      case "Hyderbad":
+        setHyderabad(checked);
+        break;
+      case "Chennai":
+        setChennai(checked);
+        break;
+      case "Delhi":
+        setDelhi(checked);
+        break;
+      case "Mumbai":
+        setMumbai(checked);
+        break;
+      case "Gurgaon":
+        setGurgaon(checked);
+        break;
+      case "Ahmedabad":
+        setAhmedabad(checked);
+        break;
+      case "Noida":
+        setNoida(checked);
+        break;
+      case "Pune":
+        setPune(checked);
+        break;
+      case "Nashik":
+        setNashik(checked);
+        break;
+      case "Chhattisgarh":
+        setChattisgarh(checked);
+        break;
+      default:
+        break;
     }
   };
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-  const togglePassingMenu = () => {
-    setIsPassingOpen(!isPassingOpen);
-  };
 
-  const handleYearSelect = (year) => {
-    setSelectedYear(year);
-    setIsOpen(false);
-  };
-  const handlePassingYearSelect = (passingyear) => {
-    setSelectedPassingYear(passingyear);
-    setIsPassingOpen(false);
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        allLocation,
+        remote,
+        bangalore,
+        hyderabad,
+        chennai,
+        delhi,
+        mumbai,
+        gurgaon,
+        ahmedabad,
+        noida,
+        pune,
+        nashik,
+        chattisgarh,
+      };
+      console.log("payload data", payload);
+      const response = await axios.post("/api/platform/account/route", payload);
+      console.log("Preferences updated:", response.data);
+    } catch (error) {
+      console.error("Error updating preferences:", error);
+    }
   };
   return (
     <>
@@ -188,9 +192,12 @@ export default function Profile() {
             <h1 className="capitalize text-[20px] leading-[26px] font-semibold">
               Job preferences{" "}
             </h1>
-            <div className="border-[1px] w-[206px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer">
+            <button
+              className="border-[1px] w-[206px] h-[41px] text-[14px] border-black py-[12px] px-[19px] rounded-[4px] cursor-pointer"
+              onClick={handleSubmit}
+            >
               Update Placement Profile
-            </div>
+            </button>
           </div>
           <div className="w-[673px] max-md:w-full">
             <p className="text-[14px] leading-[15.4px] mb-[10px]">Resume </p>
@@ -213,133 +220,169 @@ export default function Profile() {
             </p>
             <div className="flex flex-wrap gap-[11px]">
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="all" id="all" />
+                <input
+                  type="checkbox"
+                  name="all"
+                  id="all"
+                  checked={allLocation}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="all"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   All Locations
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Remote" id="Remote" />
+                <input
+                  type="checkbox"
+                  name="Remote"
+                  id="Remote"
+                  checked={remote}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Remote"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Remote
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Bangalore" id="Bangalore" />
+                <input
+                  type="checkbox"
+                  name="Bangalore"
+                  id="Bangalore"
+                  checked={bangalore}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Bangalore"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Bangalore
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Hyderbad" id="Hyderbad" />
+                <input
+                  type="checkbox"
+                  name="Hyderbad"
+                  id="Hyderbad"
+                  checked={hyderabad}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Hyderbad"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Hyderbad
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Chennai" id="Chennai" />
+                <input
+                  type="checkbox"
+                  name="Chennai"
+                  id="Chennai"
+                  checked={chennai}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Chennai"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Chennai
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Delhi" id="Delhi" />
-                <label
-                  htmlFor="Delhi"
-                  onChange={(e) => setLocation(e.target.value)}
+                <input
+                  type="checkbox"
+                  name="Delhi"
+                  id="Delhi"
+                  checked={delhi}
+                  onChange={handleCheckboxChange}
                   className="text-[14px] leading-[16.8px] h-[17px]"
-                >
-                  Delhi
-                </label>
-              </div>
-              <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Mumbai" id="Mumbai" />
-                <label
-                  htmlFor="Mumbai"
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="text-[14px] leading-[16.8px] h-[17px]"
-                >
-                  Mumbai
-                </label>
-              </div>
-              <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Gurgaon" id="Gurgaon" />
+                />
                 <label
                   htmlFor="Gurgaon"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Gurgaon
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Ahmedabad" id="Ahmedabad" />
+                <input
+                  type="checkbox"
+                  name="Ahmedabad"
+                  id="Ahmedabad"
+                  checked={ahmedabad}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Ahmedabad"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Ahmedabad
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Noida" id="Noida" />
+                <input
+                  type="checkbox"
+                  name="Noida"
+                  id="Noida"
+                  checked={noida}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Noida"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Noida
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Pune" id="Pune" />
+                <input
+                  type="checkbox"
+                  name="Pune"
+                  id="Pune"
+                  checked={pune}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Pune"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Pune
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Nashik" id="Nashik" />
+                <input
+                  type="checkbox"
+                  name="Nashik"
+                  id="Nashik"
+                  checked={nashik}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Nashik"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
                   Nashik
                 </label>
               </div>
               <div className="flex gap-[6.5px] items-center">
-                <input type="checkbox" name="Chhattisgarh" id="Chhattisgarh" />
+                <input
+                  type="checkbox"
+                  name="Chhattisgarh"
+                  id="Chhattisgarh"
+                  checked={chattisgarh}
+                  onChange={handleCheckboxChange}
+                />
                 <label
                   htmlFor="Chhattisgarh"
-                  onChange={(e) => setLocation(e.target.value)}
                   className="text-[14px] leading-[16.8px] h-[17px]"
                 >
-                  Chattisgarh
+                  Chhattisgarh
                 </label>
               </div>
             </div>

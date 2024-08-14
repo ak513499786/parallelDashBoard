@@ -1,12 +1,16 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
-const { ObjectId } = Schema.Types;
+const { Schema, Types } = mongoose;
+const { ObjectId } = Types;
 
 const scheduleSchema = new mongoose.Schema({
-  _id: ObjectId,
-  date: String,
-  description: String,
-  course: { type: ObjectId, ref: 'Course' },
+  //_id: ObjectId,
+  date: Date,
+  title: String,
+  startTime: String,
+  endTime: String,
+  time: String,
+  day: String,
+  user: { type: ObjectId, ref: 'User' },
   class: { type: ObjectId, ref: 'Class' }
 });
 

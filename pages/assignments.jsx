@@ -2,60 +2,31 @@ import Navbar from "../components/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import style from "../styles/style.module.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios'
 
 export default function Learn() {
   const [remark, setRemark] = useState(false);
-  const [assignment, setAssignment] = useState(false);
+  const [assignment, setAssignment] = useState([]);
   const [assignmentData, setAssignmentData] = useState(false);
 
+  const fetchAssignments = async () => {
+    try {
+      const response = await axios.get('/api/platform/assignments/route');
+      setAssignment(response.data);
+      console.log("Fetched assignments:", response.data);
 
-  // const [assignmentLink, setAssignmentLink] = useState('');
+    } catch (error) {
+      console.error('Error fetching assignments:', error);
+    }
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
 
-  // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // const handleSubmit = async () => {
-  //   if (!assignmentLink) {
-  //     alert('Please paste a link before submitting.');
-  //     return;
-  //   }
 
-  //   setIsSubmitting(true);
 
-  
-  
-    const fetchAssignments = async () => {
-      try {
-        const response = await axios.get('/api/platform/assignments/route');
-        setAssignment(response.data.data);
-        console.log("Fetched assignments:", response.data.data);
-      } catch (error) {
-        console.error('Error fetching assignments:', error);
-      }
-    };
-    useEffect(() => {
-      fetchAssignments();
-    }, []);
-
-    
-
-    const fetchSubmitAssignment = async () => {
-      try {
-        const response = await axios.post('/api/platform/assignments/submitAssignment');
-        setAssignment(response.data.data);
-        console.log("Submitted assignment:", response.data.data);
-      } catch (error) {
-        console.error('Error submitting assignment:', error);
-      }
-    };
-
-    // useEffect(() => {
-    //   fetchSubmitAssignment();
-    // },[])
-
-  
-  
 
 
 
@@ -64,22 +35,21 @@ export default function Learn() {
       <Navbar />
       <main className="pt-[63.51px] px-[60px] pb-[85px]">
         <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
-        {assignment.length > 0 ? (
-        assignment.map((assignment, index) => (
-        <div key={index}>
-          <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
-            New Assignment
-          </p>
-          <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
-            {assignment.title}
-          </h1>
-          <p className="mt-[20.14px] w-[587px]">
-            {assignment.description}
-          </p>
-          </div>
-      ))) : (
-        <p>No assignments found</p>
-      )}
+          {assignment ? (
+            <div>
+              <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
+                New Assignment
+              </p>
+              <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
+                {assignment.title}
+              </h1>
+              <p className="mt-[20.14px] w-[587px]">
+                {assignment.description}
+              </p>
+            </div>
+          ) : (
+            <p>No assignments found</p>
+          )}
           <button className="py-[10px] px-[24px] border-[1px] border-black rounded-[6px] text-base font-semibold mt-[28.72px] mb-[33.75px]">
             View Resources
           </button>
@@ -96,11 +66,14 @@ export default function Learn() {
                 id=""
               />
             </div>
-            <button  className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
+            <button className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
               Submit Assignment
             </button>
           </div>
+
+
         </div>
+
 
 
         <div className="mt-[54.99px]">
@@ -652,5 +625,5 @@ export default function Learn() {
         </div>
       )}
     </>
-  );
-}
+    
+    )}

@@ -4,25 +4,25 @@ const accountSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    //required: true,
   },
   name: {
     type: String,
-    required: true,
+    //required: true,
   },
   studentId: {
     type: String,
-    required: true,
+    //required: true,
     unique: true, 
   },
   email: {
     type: String,
-    required: true,
+    //required: true,
     unique: true, 
   },
   password: {
     type: String,
-    required: true,
+    //required: true,
   },
   resume: {
     type: String, 

@@ -1,4 +1,4 @@
-import {connect} from '../../../lib/db';
+import { connect } from '../../../lib/db';
 import Account from '../../../models/platform/Account';
 
 export default async function handler(req, res) {
@@ -23,9 +23,14 @@ export default async function handler(req, res) {
       try {
         const { userId, resume, locationPreference, courseOpted, paymentInfo } = req.body;
 
+        let resumeBase64 = null;
+        if (resume && resume.startsWith('data:application/pdf;base64,')) {
+          resumeBase64 = resume.split(',')[1];
+        }
+
         const account = await Account.findOneAndUpdate(
           { userId },
-          { resume, locationPreference, courseOpted, paymentInfo },
+          { resume: resumeBase64, locationPreference, courseOpted, paymentInfo },
           { new: true, upsert: true }
         );
 
@@ -35,25 +40,36 @@ export default async function handler(req, res) {
       }
       break;
 
-
     case 'PUT':
-        try {
-            const { password } = req.body;
-            const pass = await Account.findOneAndReplace(
-                {password}
-            );
-            res.status(200).json({ success: true, data: pass });
+      try {
+        const { userId, password } = req.body;
 
-        } catch (error) {
-            res.status(500).json({ success: false, error: error.message });
+        // Ensure you include the filter for the document to be updated
+        const account = await Account.findOneAndUpdate(
+          { userId },
+          { password },
+          { new: true }
+        );
 
+        if (!account) {
+          return res.status(404).json({ success: false, message: 'Account not found' });
         }
-        break;
+
+        res.status(200).json({ success: true, data: account });
+      } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+      }
+      break;
 
     case 'DELETE':
       try {
         const { userId } = req.body;
-        await Account.findOneAndDelete({ userId });
+        const result = await Account.findOneAndDelete({ userId });
+
+        if (!result) {
+          return res.status(404).json({ success: false, message: 'Account not found' });
+        }
+
         res.status(200).json({ success: true, message: 'Account deleted' });
       } catch (error) {
         res.status(500).json({ success: false, error: error.message });
@@ -61,7 +77,7 @@ export default async function handler(req, res) {
       break;
 
     default:
-      res.setHeader('Allow', ['GET', 'POST', 'DELETE']);
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
