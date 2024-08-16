@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
-import Video from '../../models/Video';
-import dbConnect from '../../lib/dbConnect';
+import Video from '../../../models/platform/Video';
+import {connect} from '../../../lib/db';
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -11,7 +11,7 @@ const s3 = new AWS.S3({
 export default async function handler(req, res) {
   const { method } = req;
 
-  await dbConnect();
+  await connect();
 
   switch (method) {
     case 'POST':

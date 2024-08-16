@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
 export default function Jobs() {
   const [applied, setapplied] = useState(true);
   const [apply, setapply] = useState(false);
@@ -12,22 +11,21 @@ export default function Jobs() {
   const [profile, setprofile] = useState(true);
   const handleapplied = () => {
     setapplied(!applied);
-    
   };
   return (
     <>
       <Navbar />
-      <div
+      {/* <div
         style={{ backdropFilter: "blur(17px)" }}
-        className="w-full h-full fixed top-0 flex flex-col items-center justify-center left-0 bg-[#FFFFFF0D] z-50"
+        className="w-full h-full fixed top-0 max-[500px]:text-center flex flex-col items-center justify-center left-0 bg-[#FFFFFF0D] z-50"
       >
-        <h1 className="text-[39px]">Finish the course to unlock jobs</h1>
-        <Link href={"/class"}>
-          <button className="bg-[#30E29D] mt-[28.53px] rounded-[4px] font-semibold w-[159px] h-[43px]">
+        <h1 className="text-[39px] max-sm:text-center">Finish the course to unlock jobs</h1>
+        <Link className="max-sm:w-full px-[20px]" href={"/class"}>
+          <button className="bg-[#30E29D] max-sm:w-full mt-[28.53px] rounded-[4px] font-semibold w-[159px] h-[43px]">
             Back to classes
           </button>
         </Link>
-      </div>
+      </div> */}
       <section className="px-[60px] max-hamburger:px-[60px] max-md:px-[40px] max-sm:px-[20px] pb-[65px] pt-[51.08px]">
         <h1 className="text-[20px] leading-[26px] font-semibold mb-[28.92px]">
           Job Opportunities
@@ -49,18 +47,20 @@ export default function Jobs() {
               </button>{" "}
             </div>
             {profile && (
-              <div className="bg-[#F0DEC9] items-start absolute right-[60px] rounded-[7px] py-[14.96px] pl-[15px] pr-[19px] flex gap-[17px] h-[73px] w-[588px] top-[153.93px]">
-                <Image
-                  src="/info.svg"
-                  className="mt-[0.54px]"
-                  width={28.71}
-                  height={28.71}
-                />
-                <p className="text-[14px] w-[202.57px] py-[0.54px] capitalize leading-[21px] font-bold text-[#970B0B]">
-                  Set up your placement profile before applying for jobs
-                </p>
-                <Link href={"/placement-profile"}>
-                  <button className="h-[43.07px] capitalize ml-[106.72px] max-smallphone:text-sm w-[182px] bg-black text-white rounded-[6px] border-[1px] border-black text-[16px] leading-[19.2px]">
+              <div className="bg-[#F0DEC9] justify-between max-hamburger:mb-[50px] max-[500px]:flex-col max-[500px]:h-auto max-hamburger:static max-hamburger:w-full items-start absolute right-[60px] rounded-[7px] py-[14.96px] pl-[15px] pr-[19px] flex gap-[17px] h-[73px] w-[588px] max-[1170px]:w-[500px] top-[153.93px]">
+                <div className="flex items-center gap-[17px]">
+                  <Image
+                    src="/info.svg"
+                    className="mt-[0.54px]"
+                    width={28.71}
+                    height={28.71}
+                  />
+                  <p className="text-[14px] w-[202.57px] max-[500px]:w-full py-[0.54px] capitalize leading-[21px] font-bold text-[#970B0B]">
+                    Set up your placement profile before applying for jobs
+                  </p>
+                </div>
+                <Link className=" max-[500px]:w-full" href={"/placement-profile"}>
+                  <button className="h-[43.07px] max-[500px]:w-full capitalize max-smallphone:text-sm w-[182px] max-[1170px]:w-[140px] bg-black text-white rounded-[6px] border-[1px] border-black text-[16px] leading-[19.2px]">
                     Set up profile{" "}
                   </button>
                 </Link>
@@ -589,7 +589,7 @@ export default function Jobs() {
               </button>{" "}
             </div>{" "}
             {progress && (
-              <div className="bg-[#F0DEC9] items-start absolute right-[60px] rounded-[7px] py-[15.5px] pl-[15px] pr-[35.71px] flex gap-[17px] h-[73px] w-[538px] top-[153.93px]">
+              <div className="bg-[#F0DEC9] items-start absolute right-[60px] rounded-[7px] py-[15.5px] pl-[15px] pr-[35.71px] flex gap-[17px] h-[73px] w-[538px] max-lg:w-[470px] max-hamburger:static max-hamburger:w-full max-hamburger:mb-[50px] max-hamburger:h-auto max-hamburger:items-center max-sm:items-start max-lg:gap-[7px] max-lg:px-[15px] top-[153.93px]">
                 <Image src="/info.svg" width={28.71} height={28.71} />
                 <p className="text-[14px] capitalize leading-[21px] font-bold text-[#970B0B]">
                   Your profile is under review. Please allow us up to 48 hours.

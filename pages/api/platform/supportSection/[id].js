@@ -1,4 +1,4 @@
-import {connect} from '../../../lib/dbConnect';
+import {connect} from '../../../lib/db';
 import SupportSection from '../../../models/platform/SupportSection';
 
 export default async function handler(req, res) {

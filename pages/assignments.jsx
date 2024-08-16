@@ -9,32 +9,78 @@ export default function Learn() {
   const [remark, setRemark] = useState(false);
   const [assignment, setAssignment] = useState([]);
   const [assignmentData, setAssignmentData] = useState(false);
+  const [assignmentLink, setAssignmentLink] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [date, setDate] = useState('');
+  const [unsubmittedOnly, setUnsubmittedOnly] = useState(false);
+
 
   const fetchAssignments = async () => {
     try {
       const response = await axios.get('/api/platform/assignments/route');
-      setAssignment(response.data);
-      console.log("Fetched assignments:", response.data);
-
+      setAssignment(response.data.data);
+      console.log("Fetched assignments:", response.data.data);
     } catch (error) {
       console.error('Error fetching assignments:', error);
     }
   };
+
   useEffect(() => {
     fetchAssignments();
   }, []);
 
+  const fetchAssignmentsByDate = async (selectedDate) => {
+    try {
+      const response = await axios.get('/api/platform/assignmentsByDate/route', {
+        params: {
+          date: selectedDate,
+          unsubmitted: unsubmittedOnly
+        }
+      });
+      setAssignment(response.data.data);
+      console.log("Fetched assignments:", response.data.data);
+    } catch (error) {
+      console.error('Error fetching assignments:', error);
+    }
+  };
 
+  useEffect(() => {
+    if (date) {
+      fetchAssignmentsByDate(date);
+    }
+  }, [date, unsubmittedOnly]);
 
+  const handleSubmit = async () => {
+    if (!assignmentLink) {
+      alert('Please paste a link before submitting.');
+      return;
+    }
+    setIsSubmitting(true);
+    
+    
+    try {
+      const response = await axios.post('/api/platform/assignments/submitAssignment', {
+        link: assignmentLink,
+        assignmentId: assignment._id,  
+        submittedAt: new Date()  
+      });
 
+      console.log("Submitted assignment:", response.data);
+      alert('Assignment submitted successfully!');
+      setAssignmentLink('');  
+    } catch (error) {
+      console.error('Error submitting assignment:', error);
+      alert('There was an error submitting the assignment. Please try again.');
+    }
 
-
+    setIsSubmitting(false);
+  };
 
   return (
     <>
       <Navbar />
       <main className="pt-[63.51px] px-[60px] pb-[85px]">
-        <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
+      <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
           {assignment ? (
             <div>
               <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
@@ -53,518 +99,132 @@ export default function Learn() {
           <button className="py-[10px] px-[24px] border-[1px] border-black rounded-[6px] text-base font-semibold mt-[28.72px] mb-[33.75px]">
             View Resources
           </button>
-          <div className="pt-[33.74px] flex gap-[25.55px] border-t-[1px] border-[#00000033]">
+          <div className="pt-[33.74px] max-md:flex-col flex gap-[25.55px] border-t-[1px] border-[#00000033]">
             <div>
               <p className="text-[#2C2E32] mb-[10px] text-[14px]">
                 Paste link to submit assignment
               </p>
               <input
                 type="text"
-                className="border-[0.5px] rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] italic text-[14px] border-[#00000080]"
+                className="border-[0.5px] rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] max-sm:w-full italic text-[14px] border-[#00000080]"
                 placeholder="Click to paste link"
-                name=""
-                id=""
+                value={assignmentLink}
+                onChange={(e) => setAssignmentLink(e.target.value)}
               />
             </div>
-            <button className="bg-[#30E29D] mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]">
-              Submit Assignment
+            <button 
+              onClick={handleSubmit}
+              className="bg-[#30E29D] max-sm:w-full mt-[37.46px] py-[10px] px-[24px] rounded-[6px] text-base font-semibold h-[43.07px]"
+              disabled={isSubmitting}  
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit Assignment'}
             </button>
           </div>
-
-
         </div>
 
 
 
-        <div className="mt-[54.99px]">
+         <div className="mt-[54.99px]">
           <h1 className="font-semibold text-[20px] leading-[26px] mb-[19px]">
             Previous assignments
           </h1>
-          <div className="pt-[14px] h-[77px] pb-[15px] pl-[21px] pr-[31px] rounded-[8px] flex justify-between items-center bg-white">
-            <input
-              type="date"
-              name="calender"
-              className="hidden"
-              id="calender"
-            />
+          <div className="pt-[14px] relative h-[77px] pb-[15px] pl-[21px] pr-[31px] rounded-[8px] flex justify-between max-md:p-[20px] max-sm:h-auto max-sm:items-start gap-[12px] max-sm:flex-col items-center bg-white">
             <label
               htmlFor="calender"
-              className="h-[48px] flex items-center justify-between border-[#0000004D] border-[1px] py-[12px] px-[14.28px] w-[244px] rounded-[6px]"
+              className="h-[48px] flex items-center relative justify-between border-[#0000004D] border-[1px] py-[12px] px-[14.28px] w-[244px] rounded-[6px]"
             >
-              <p className="text-[14px]">Select date</p>
+            <input
+              type="date"
+              onChange={(e) => setDate(e.target.value)}
+              name="calender"
+              className="h-[48px] pl right-0 absolute pl-[80px] opacity-0 flex items-center justify-between border-[#0000004D] border-[1px] py-[12px] pr-[14.28px] rounded-[6px]"
+              id="calender"
+            />
+              <p className="text-[14px]">{Date}</p>
               <Image src="/calender.svg" width={24} height={24} />
             </label>
             <div className="flex items-center gap-[4px]">
-              <input type="checkbox" name="unsubmitted" id="unsubmitted" />
-              <label htmlFor="unsubmitted" className="text-[14px]">
+              <input type="checkbox" name="unsubmitted" id="unsubmitted" checked={unsubmittedOnly} onChange={(e) => setUnsubmittedOnly(e.target.checked)}/>
+              <label htmlFor="unsubmitted" className="text-[14px] max-[350px]:text-[12px]">
                 Show only unsubmitted assignments
               </label>
             </div>
           </div>
         </div>
         <div className="h-[609px] pb-[20px] overflow-scroll w-full bg-white mt-[18.5px] rounded-[8px]">
-          <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] min-w-[1109px] border-[#00000033]">
-            <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
+          <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] max-[1290px]:w-[1189px] border-[#00000033]">
+            <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-[1500px]:mr-[10px]">
               Date
             </p>
-            <p className="text-[14px] leading-[16.8px] opacity-70 w-[97px] mr-[50px]">
+            <p className="text-[14px] leading-[16.8px] opacity-70 w-[97px] mr-[50px] max-[1500px]:w-[120px] max-[1500px]:mr-[10px]">
               Topic
             </p>
-            <p className="text-[14px] leading-[16.8px] opacity-70 w-[271px] mr-[7.26px]">
+            <p className="text-[14px] leading-[16.8px] opacity-70 w-[271px] mr-[7.26px] max-[1420px]:w-[220px] max-[1420px]:truncate">
               Assignment
             </p>
             <p className="text-[14px] leading-[16.8px] opacity-70 mr-[37px]">
               Date assigned
             </p>
-            <p className="text-[14px] leading-[16.8px] opacity-70 mr-[242px]">
+            <p className="text-[14px] leading-[16.8px] opacity-70 mr-[242px] max-[1450px]:mr-[210.5px] max-[1365px]:mr-[165.5px]">
               Date submitted
             </p>
             <p className="text-[14px] leading-[16.8px] opacity-70 border-l-[1px] border-[#00000033] pt-[14.5px] pb-[13.5px] pl-[26.53px]">
               Grade assignment
             </p>
           </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
+          {assignment.length > 0 ? (
+            assignment.map((assignment, index) => (
+              <div key={index} className="flex items-center justify-between pl-[11.5px] pr-[39px] max-[1320px]:px-[10px] h-[59px] border-b-[0.5px] border-[#00000033] max-[1290px]:w-[1189px]">
+                <div className="flex items-center">
+                  <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-[1500px]:mr-[10px]">{assignment.date}</p>
+                  <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px] max-[1500px]:w-[120px] max-[1500px]:mr-[10px]">{assignment.topic}</p>
+                  <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px] max-[1420px]:w-[220px] max-[1420px]:truncate">{assignment.description}</p>
+                  <p className="text-[14px] leading-[16.8px] mr-[52px]">{assignment.dateAssigned}</p>
+                  <p className="text-[14px] leading-[16.8px] mr-[55px] max-[1365px]:mr-[10px]">{assignment.dateSubmitted || 'Not submitted'}</p>
+                  <button
+                    onClick={() => setAssignment(true)}
+                    className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px] max-[1450px]:ml-[30px]"
+                  >
+                    View Assignment
+                  </button>
                 </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
+                <div className="flex items-center gap-[22.09px] max-[1300px]:gap- border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
+                  <div className="flex gap-[4.76px]">
+                    <Image src="/yellow.svg" width={24.17} height={24.17} />
+                    <Image src="/yellow.svg" width={24.17} height={24.17} />
+                    <Image src="/yellow.svg" width={24.17} height={24.17} />
+                    <Image src="/yellow.svg" width={24.17} height={24.17} />
+                    <Image src="/blank.svg" width={24.17} height={24.17} />
+                  </div>
+                  <p
+                    onClick={() => setRemark(true)}
+                    className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
+                  >
+                    View Remarks
+                  </p>
                 </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
               </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pl-[11.5px] pr-[39px] h-[59px] border-b-[0.5px] border-[#00000033] min-w-[1109px]">
-            <div className="flex items-center">
-              <p className="text-[12px] leading-[14.4px] opacity-70 w-[104px] mr-[25.9px] max-xl:w-[30px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[97px] mr-[50px]">
-                Vitae facilisis
-              </p>
-              <p className="text-[14px] leading-[16.8px] w-[271px] mr-[7.26px]">
-                Erat mattis curabitur pretium sit
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[52px]">
-                02/20/2024
-              </p>
-              <p className="text-[14px] leading-[16.8px] mr-[55px]">
-                02/20/2024
-                <button
-                  onClick={() => setAssignment(true)}
-                  className="bg-[#30E29D] px-[10px] rounded-[6px] text-base font-semibold h-[29px] ml-[61.3px]"
-                >
-                  View Assignment
-                </button>
-              </p>
-              <div className=" flex items-center gap-[22.09px] border-l-[1px] border-[#00000033] py-[17.41px] pl-[26.53px]">
-                <div className="flex gap-[4.76px]">
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/yellow.svg" width={24.17} height={24.17} />
-                  <Image src="/blank.svg" width={24.17} height={24.17} />
-                </div>
-                <p
-                  onClick={() => setRemark(true)}
-                  className="text-[14px] leading-[16.8px] font-bold opacity-70 cursor-pointer text-[14px] underline"
-                >
-                  View Remarks
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="relative h-[32px] mt-[61px]">
-          <div className="flex gap-[16px] absolute right-[0px]">
-            <div className="w-[32px] h-[32px] flex pr-[2.98px] justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
-              <Image src="/Group 4.svg" width={14.13} height={14.13} />
-            </div>
-            <div className="flex gap-[8px]">
-              <p className="w-[32px] text-[17.23px] cursor-pointer bg-[#31E39E] leading-[16px] h-[32px] flex justify-center items-center text-black border-[#000]">
-                1
-              </p>
-              <p className="w-[32px] text-[17.23px] leading-[16px] h-[32px] flex justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
-                2
-              </p>
-              <p className="w-[32px] text-[17.23px] leading-[16px] h-[32px] flex justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
-                3
-              </p>
-              <p className="w-[25px] text-[17.23px] leading-[16px] h-[32px] flex justify-center items-center cursor-pointer"></p>
-              <p className="w-[32px] text-[17.23px] leading-[16px] h-[32px] flex justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
-                42
-              </p>
-            </div>
-            <div className="w-[32px] rotate-180 h-[32px] flex pr-[2.98px] justify-center items-center border-[1.23px] border-[#00000033] cursor-pointer">
-              <Image src="/Group 4.svg" width={14.13} height={14.13} />
-            </div>
-          </div>
+            ))
+          ) : (
+            <p>No assignments found.</p>
+          )}
         </div>
       </main>
       {assignment && (
         <div className="fixed top-0 bg-[#00000066] w-full h-[100vh] z-50 flex justify-center items-center">
-          <div className="w-[887px] bg-white relative rounded-[6px] pt-[53.01px] pb-[51.06px] pl-[48px]">
+          <div className="w-[887px] max-lg:w-[95%] bg-white relative rounded-[6px] pt-[53.01px] max-md:px-[20px] max-md:py-[30px] pb-[51.06px] pl-[48px]">
             <Image
               src="/close.svg"
-              className="absolute cursor-pointer right-[60.02px] top-[53.01px]"
+              className="absolute cursor-pointer max-md:right-[20px] max-md:top-[20px] right-[60.02px] top-[53.01px]"
               onClick={() => setAssignment(false)}
               width={40}
               height={40}
             />
-            <h1 className="text-[20px] w-[541.83px] leading-[26px] font-semibold mb-[20px]">
+            <h1 className="text-[20px] w-[541.83px] max-md:w-[90%] leading-[26px] font-semibold mb-[20px]">
               Faucibus nec adipiscing lacus faucibus rhoncus elit consequat.
               Suscipit lacus.
             </h1>
-            <p className="mb-[20px] w-[587px] text-base">
+            <p className="mb-[20px] max-md:w-full w-[587px] text-base">
               Mi mi morbi molestie integer lacinia arcu leo purus. Fringilla
               volutpat tellus vitae est. Sapien eget amet elit placerat.
               Porttitor urna egestas nisi viverra quam magnis lectus scelerisque
@@ -576,13 +236,13 @@ export default function Learn() {
             <button className="bg-white mb-[31px] text-black font-semibold border-[1px] border-[black] px-[24px] py-[12.04px] rounded-[6px] text-[16px] leading-[19.2px]">
               View Resources
             </button>
-            <div className="pt-[31px] border-t-[1px] w-[649px] border-[#00000033]">
+            <div className="pt-[31px] max-md:w-full border-t-[1px] w-[649px] border-[#00000033]">
               <p className="text-[#2C2E32] mb-[10px] text-[14px]">
                 Submitted link{" "}
               </p>
               <input
                 type="text"
-                className="border-[0.5px] rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] italic text-[14px] border-[#00000080]"
+                className="border-[0.5px] max-sm:w-full rounded-[4px] py-[18.5px] px-[16.27px] w-[309px] italic text-[14px] border-[#00000080]"
                 placeholder="https/sdgsdklhglhfldfh/.sdkghsihgfhjhh"
                 name=""
                 id=""
@@ -593,7 +253,7 @@ export default function Learn() {
       )}{" "}
       {remark && (
         <div className="fixed top-0 bg-[#00000066] w-full h-[100vh] z-50 flex justify-center items-center">
-          <div className="w-[657px] bg-white relative rounded-[6px] pt-[35px] pb-[23px] pl-[37px]">
+          <div className="w-[657px] max-md:w-[95%] bg-white relative rounded-[6px] pt-[35px] max-md:p-[20px] pb-[23px] pl-[37px]">
             <Image
               src="/close.svg"
               className="absolute cursor-pointer right-[39px] top-[25.01px]"
@@ -601,10 +261,10 @@ export default function Learn() {
               width={40}
               height={40}
             />
-            <h1 className="text-[20px] leading-[26px] font-semibold mb-[26px]">
+            <h1 className="text-[20px] max-md:mt-[15px] leading-[26px] font-semibold mb-[26px]">
               Assignment Remark
             </h1>
-            <p className="border-[1px] mb-[31px] pl-[19.1px] pr-[15.81px] pt-[18.81px] pb-[31.19px] border-[#00000033] w-[581px] rounded-[6px] text-[14px] leading-[21px]">
+            <p className="border-[1px] max-md:w-full mb-[31px] pl-[19.1px] pr-[15.81px] pt-[18.81px] pb-[31.19px] border-[#00000033] w-[581px] rounded-[6px] text-[14px] leading-[21px]">
               Tellus eget aliquam velit sagittis a diam. Neque at rhoncus leo
               neque risus aliquam. Fermentum ultricies mauris donec curabitur
               platea enim sed pretium. Imperdiet tellus adipiscing orci lorem
@@ -617,7 +277,7 @@ export default function Learn() {
             </p>
             <button
               onClick={() => setRemark(false)}
-              className="bg-black text-white px-[15px] py-[10px] rounded-[4px] text-[14px] leading-[16.8px]"
+              className="bg-black max-sm:w-full text-white px-[15px] py-[10px] rounded-[4px] text-[14px] leading-[16.8px]"
             >
               Close
             </button>

@@ -1,5 +1,5 @@
-import {connect} from '../../../lib/dbConnect';
-import Assignment from '../../../models/Assignment';
+import {connect} from '../../../lib/db';
+import Assignment from '../../../models/platform/Assignment';
 
 export default async function handler(req, res) {
   const {
