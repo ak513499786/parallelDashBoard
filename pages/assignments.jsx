@@ -22,7 +22,7 @@ export default function Learn() {
     const fetchAssignments = async () => {
       try {
         const response = await axios.get('/api/platform/assignments/route');
-        setAssignment(response.data.data);
+        setAssignmentData(response.data.data);
         console.log("Fetched assignments:", response.data.data);
       } catch (error) {
         console.error('Error fetching assignments:', error);
@@ -37,7 +37,7 @@ export default function Learn() {
     const fetchSubmitAssignment = async () => {
       try {
         const response = await axios.post('/api/platform/assignments/submitAssignment');
-        setAssignment(response.data.data);
+        setAssignmentData(response.data.data);
         console.log("Submitted assignment:", response.data.data);
       } catch (error) {
         console.error('Error submitting assignment:', error);
@@ -53,8 +53,8 @@ export default function Learn() {
       <Navbar />
       <main className="pt-[63.51px] px-[60px] max-sm:px-[20px] max-md:px-[40px] pb-[85px]">
         <div className="w-full pt-[25.52px] pl-[29.45px] max-md:p-[20px] pb-[52.49px] rounded-[6px] bg-white">
-        {assignment.length > 0 ? (
-        assignment.map((assignment, index) => (
+        {assignmentData.length > 0 ? (
+        assignmentData.map((assignment, index) => (
         <div key={index}>
           <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
             New Assignment
