@@ -38,21 +38,21 @@ export default function Jobs() {
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
         {active === "schedule" && (
           <>
-            <div className="mb-[13px] bg-white pl-[19.08px] max-sm:flex-col max-sm:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
+            <div className="mb-[13px] bg-white pl-[19.08px] max-md:flex-col max-md:items-start relative pt-[15px] pb-[14px] max-md:px-[20px] max-sm:px-[15px] pr-[22.92px] rounded-[6px] flex gap-[34px] max-sm:gap-[8px] items-center">
               <input
                 type="search"
                 name=""
-                className="w-[483px] max-sm:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
+                className="w-[483px] max-lg:w-[350px] max-md:w-full h-[48px] rounded-[9px] bg-[#F8F8F8] border-[#00000033] border-[1px] placeholder:text-[#000000B2] text-[14px] leading-[16.8px] pl-[18.63px] pr-[14px]"
                 placeholder="Search student name, instructor, batch ID"
                 id=""
               />
               <Image
                 src="/search.svg"
-                className="cursor-pointer max-sm:right-[24px] max-sm:left-auto max-sm:top-[83px] max-sm:right-[30px] max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
+                className="cursor-pointer max-lg:left-[330px] max-md:right-[24px] max-md:left-auto max-hamburger:right-[34px] max-hamburger:top-[27px] max-sm:top-[28px] absolute left-[467.88px]"
                 width={24}
                 height={24}
               />
-              <div className="w-[244px] px-[14.28px]  border-[1px] border-[#0000004D] rounded-[8px]">
+              <div className="w-[244px] px-[14.28px] max-md:w-full  border-[1px] border-[#0000004D] rounded-[8px]">
                 <select className="h-[48px] w-full">
                   <option value="Select course" className="py-[18.5px]">
                     Select course
@@ -63,12 +63,12 @@ export default function Jobs() {
                 </select>
               </div>
             </div>
-            <div className="pb-[75px] w-full bg-white rounded-[8px]">
+            <div className="pb-[75px] max-xl:overflow-scroll w-full bg-white rounded-[8px]">
               <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] min-w-[1109px] border-[#00000033]">
                 <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                   Slno.
                 </p>
-                <p className="text-[14px] leading-[16.8px] opacity-70 w-[300px] mr-[50px]">
+                <p className="text-[14px] leading-[16.8px] opacity-70 w-[300px] mr-[50px] max-[1350px]:w-[200px]">
                   Batch ID
                 </p>
                 <p className="text-[14px] leading-[16.8px] opacity-70 w-[260px] mr-[30px]">
@@ -86,7 +86,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     01
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -111,7 +111,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     02
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -136,7 +136,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     03
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -161,7 +161,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     04
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -186,7 +186,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     05
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -211,7 +211,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     06
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -236,7 +236,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     07
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -261,7 +261,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     08
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -286,7 +286,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     09
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -311,7 +311,7 @@ export default function Jobs() {
                   <p className="text-[12px] leading-[14.4px] opacity-70 w-[52px] mr-[15px] max-xl:w-[30px]">
                     10
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     BFSD053AK{" "}
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[260px] mr-[30px]">
@@ -335,8 +335,8 @@ export default function Jobs() {
           </>
         )}
         {active === "Add next week Schedule" && (
-          <div className="w-full pt-[16.08px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
-            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033]">
+          <div className="w-full pt-[16.08px] max-[1400px]:px-[59px] max-md:px-[40px] max-sm:px-[20px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
+            <div className="py-[24px] w-[1127px] max-[1400px]:w-full border-b-[1px] border-[#00000033]">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Monday
               </h1>
@@ -424,7 +424,7 @@ export default function Jobs() {
                 Add Session{" "}
               </button>
             </div>
-            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033]">
+            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033] max-[1400px]:w-full">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Tuesday
               </h1>
@@ -512,7 +512,7 @@ export default function Jobs() {
                 Add Session{" "}
               </button>
             </div>
-            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033]">
+            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033] max-[1400px]:w-full">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Wednesday
               </h1>
@@ -600,7 +600,7 @@ export default function Jobs() {
                 Add Session{" "}
               </button>
             </div>
-            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033]">
+            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033] max-[1400px]:w-full">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Thursday
               </h1>
@@ -688,7 +688,7 @@ export default function Jobs() {
                 Add Session{" "}
               </button>
             </div>
-            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033]">
+            <div className="py-[24px] w-[1127px] border-b-[1px] border-[#00000033] max-[1400px]:w-full">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Friday
               </h1>
@@ -786,11 +786,11 @@ export default function Jobs() {
           </div>
         )}
         {active === "generate schedule" && (
-          <div className="w-full pt-[49.08px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
+          <div className="w-full pt-[49.08px] max-md:pl-[40px] max-sm:pl-[20px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
             <h1 className="text-[20px] mb-[29.16px] leading-[26px] font-semibold">
               BFSD053AK Week 05 Schedule
             </h1>
-            <div className="pb-[75px] w-full bg-white rounded-[8px]">
+            <div className="pb-[75px] overflow-scroll w-full bg-white rounded-[8px]">
               <div className="flex fixed z-10 sticky top-0 bg-white items-center pl-[11.5px] h-[45px] border-b-[0.5px] min-w-[1109px] border-[#00000033]">
                 <p className="text-[12px] leading-[14.4px] w-[104px] mr-[25px] max-xl:w-[30px]">
                   Day
@@ -798,7 +798,7 @@ export default function Jobs() {
                 <p className="text-[14px] leading-[16.8px] w-[160px] mr-[7px]">
                   Session type
                 </p>
-                <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px]">
+                <p className="text-[14px] leading-[16.8px] w-[300px] mr-[50px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                   Session name
                 </p>
                 <p className="text-[14px] leading-[16.8px] w-[150px] mr-[27px]">
@@ -814,7 +814,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -843,7 +843,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -874,7 +874,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -905,7 +905,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -936,7 +936,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -967,7 +967,7 @@ export default function Jobs() {
                   <p className="text-[16px] leading-[19.2px] w-[160px] mr-[7px]">
                     Vitae facilisis
                   </p>
-                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px]">
+                  <p className="text-[16px] leading-[19.2px] w-[300px] mr-[50px] max-[1350px]:w-[200px] max-[1370px]:w-[200px] max-[1370px]:truncate">
                     Erat mattis curabitur pretium sit
                   </p>
                   <p className="text-[16px] leading-[19.2px] w-[150px] mr-[27px]">
@@ -991,7 +991,7 @@ export default function Jobs() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-[17px]">
+            <div className="flex gap-[17px] max-sm:pr-[20px] max-[400px]:flex-col">
               <button
                 onClick={() => setactive("done")}
                 className="w-[130px] mt-[51px] h-[37px] max-sm:w-full text-white bg-[#000] rounded-[6px] text-[14px] leading-[16.8px]"
@@ -1000,7 +1000,7 @@ export default function Jobs() {
               </button>
               <button
                 onClick={() => setactive("Add next week Schedule")}
-                className="w-[121px] mt-[51px] h-[37px] max-sm:w-full text-black border-[1px] border-black bg-[#fff] rounded-[6px] text-[14px] leading-[16.8px]"
+                className="w-[121px] mt-[51px] max-[400px]:mt-0 h-[37px] max-sm:w-full text-black border-[1px] border-black bg-[#fff] rounded-[6px] text-[14px] leading-[16.8px]"
               >
                 Edit Schedule
               </button>
@@ -1008,10 +1008,12 @@ export default function Jobs() {
           </div>
         )}
         {active === "done" && (
-          <div className="w-full flex justify-center pt-[55px] h-[630px] pl-[59px] pb-[47px] bg-white rounded-[8px]">
-            <div className="w-[483px] h-[419px] border-[1px] border-[#00000033] rounded-[6px] pt-[30px] flex flex-col items-center">
+          <div className="w-full flex justify-center pt-[55px] h-[630px] max-sm:px-[20px] max-[360px]:px-[10px] pb-[47px] bg-white rounded-[8px]">
+            <div className="w-[483px] h-[419px] border-[1px] max-sm:px-[20px] border-[#00000033] rounded-[6px] max-[360px]:px-[10px] pt-[30px] flex flex-col items-center">
               <Image src="/done.svg" width={193.08} height={193.08} />
-              <h1 className="text-[20px] leading-[26px] mt-[36.92px] font-semibold">Schedule Sent to Batch BFSD053AK</h1>
+              <h1 className="text-[20px] leading-[26px] mt-[36.92px] font-semibold">
+                Schedule Sent to Batch BFSD053AK
+              </h1>
               <button
                 onClick={() => setactive("schedule")}
                 className="w-[247px] capitalize mt-[44px] h-[37px] max-sm:w-full text-white bg-[#000] rounded-[6px] text-[14px] leading-[16.8px]"

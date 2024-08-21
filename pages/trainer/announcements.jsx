@@ -38,14 +38,14 @@ export default function Jobs() {
       <main className="relative px-[59.5px] pb-[78px] pt-[0] max-md:px-[40px] max-sm:px-[20px]">
                 {active === "announcements" && (
           <>
-            <div className="h-[611px] pb-[36.88px] w-full bg-white rounded-[8px] pt-[37.12px] px-[31px] pr-[36px]">
+            <div className="h-[611px] pb-[36.88px] max-sm:px-[20px] w-full bg-white rounded-[8px] pt-[37.12px] px-[31px] pr-[36px]">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Send Announcement
               </h1>
               <div className="flex max-sm:flex-wrap gap-[26px] mt-[31.87px]">
                 <div
                   onClick={() => setactive("doubt clearing session")}
-                  className="flex items-center justify-center rounded-[10px] border-[#00000033] cursor-pointer border-[1px] h-[202px] w-[50%]"
+                  className="flex items-center justify-center rounded-[10px] border-[#00000033] cursor-pointer border-[1px] h-[202px] w-[50%] max-sm:w-full"
                 >
                   <h1 className="text-[20px] leading-[26px]">
                     Doubt clearing session
@@ -53,7 +53,7 @@ export default function Jobs() {
                 </div>
                 <div
                   onClick={() => setactive("general announcement")}
-                  className="flex items-center justify-center rounded-[10px] border-[#00000033] cursor-pointer border-[1px] h-[202px] w-[50%]"
+                  className="flex items-center justify-center rounded-[10px] border-[#00000033] cursor-pointer border-[1px] h-[202px] w-[50%] max-sm:w-full"
                 >
                   <h1 className="text-[20px] leading-[26px]">
                     General announcement
@@ -79,7 +79,7 @@ export default function Jobs() {
                 Go back
               </p>
             </div>
-            <div className="h-auto pb-[36.88px] w-full bg-white rounded-[8px] pt-[37.12px] px-[31.48px]">
+            <div className="h-auto pb-[36.88px] w-full bg-white rounded-[8px] pt-[37.12px] max-sm:px-[20px] px-[31.48px]">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Send Announcement
               </h1>
@@ -98,12 +98,12 @@ export default function Jobs() {
                   <p className="mt-[16px] text-[14px] leading-[18.2px] mb-[10px]">
                     Enter message
                   </p>
-                  <div className="relative w-[639px]">
+                  <div className="relative max-hamburger:w-[100%] w-[639px]">
                     <textarea
                       placeholder="Enter message"
                       onChange={handleChangeTextArea}
                       maxLength={250}
-                      className="w-[639px] h-[138px] rounded-[4px] resize-none border-[0.5px] py-[11.5px] px-[12.74px] border-[#00000080]"
+                      className="w-[639px] max-hamburger:w-[100%] h-[138px] rounded-[4px] resize-none border-[0.5px] py-[11.5px] px-[12.74px] border-[#00000080]"
                       name=""
                       id=""
                     ></textarea>
@@ -123,7 +123,7 @@ export default function Jobs() {
                   <p className="text-[14px] leading-[18.2px] mt-[16px] mb-[10px]">
                     Select course
                   </p>
-                  <div className="flex gap-[20px] w-[494px]">
+                  <div className="flex gap-[20px] max-sm:w-full max-sm:flex-wrap w-[494px]">
                     <div className="flex items-center gap-[6.5px]">
                       <input type="radio" name="course" id="course" />
                       <label
@@ -165,7 +165,7 @@ export default function Jobs() {
                       <option value="">Batch Code</option>
                     </select>
                   </div>
-                  <button className="text-[14px] leading-[16.8px] text-white bg-black px-[15px] rounded-[4px] mt-[36px] py-[10px]">
+                  <button className="text-[14px] max-sm:w-[100%] leading-[16.8px] text-white bg-black px-[15px] rounded-[4px] mt-[36px] py-[10px]">
                     Send Announcement
                   </button>
                 </div>
@@ -189,14 +189,14 @@ export default function Jobs() {
                 Go back
               </p>
             </div>
-            <div className="h-auto pb-[36.88px] w-full bg-white rounded-[8px] pt-[37.12px] px-[31.48px]">
+            <div className="h-auto pb-[36.88px] max-sm:px-[20px] w-full bg-white rounded-[8px] pt-[37.12px] px-[31.48px]">
               <h1 className="text-[20px] leading-[26px] font-semibold">
                 Send Announcement
               </h1>
               <div className="flex flex-col max-xl:flex-wrap max-hamburger:gap-[20px] mt-[32.88px] mb-[24px]">
                 <div className="max-hamburger:w-[100%]">
-                  <div className="flex gap-[16px]">
-                    <div>
+                  <div className="flex max-md:flex-wrap gap-[16px]">
+                    <div className="max-sm:w-full">
                       <p className="text-[14px] leading-[18.2px] mb-[10px]">
                         Enter heading
                       </p>
@@ -208,7 +208,7 @@ export default function Jobs() {
                         className="w-[254px] max-hamburger:w-[100%] pl-[15.71px] rounded-[4px] h-[45px] bg-[white] border-[0.5px] border-[#00000080]"
                       />
                     </div>
-                    <div>
+                    <div className="max-sm:w-full">
                       <p className="text-[14px] leading-[18.2px] mb-[10px]">
                         Select course{" "}
                       </p>
@@ -223,7 +223,7 @@ export default function Jobs() {
                         </select>
                       </div>
                     </div>
-                    <div>
+                    <div className="max-sm:w-full">
                       <p className="text-[14px] leading-[18.2px] mb-[10px]">
                         Enter topic
                       </p>
@@ -236,7 +236,7 @@ export default function Jobs() {
                       />
                     </div>
                   </div>
-                  <div className="flex mt-[16px] gap-[16px]">
+                  <div className="flex mt-[16px] max-sm:flex-col gap-[16px]">
                     <div>
                       <p className="text-[14px] leading-[18.2px] mb-[10px]">
                         Session start time
@@ -293,12 +293,12 @@ export default function Jobs() {
                   <p className="mt-[16px] text-[14px] leading-[18.2px] mb-[10px]">
                     Enter message (optional){" "}
                   </p>
-                  <div className="relative w-[639px]">
+                  <div className="relative max-hamburger:w-[100%] w-[639px]">
                     <textarea
                       placeholder="Enter message"
                       onChange={handleChangeTextArea}
                       maxLength={250}
-                      className="w-[639px] h-[138px] rounded-[4px] resize-none border-[0.5px] py-[11.5px] px-[12.74px] border-[#00000080]"
+                      className="w-[639px] max-hamburger:w-[100%] h-[138px] rounded-[4px] resize-none border-[0.5px] py-[11.5px] px-[12.74px] border-[#00000080]"
                       name=""
                       id=""
                     ></textarea>
@@ -329,7 +329,7 @@ export default function Jobs() {
                       <option value="">Batch Code</option>
                     </select>
                   </div>
-                  <button className="text-[14px] leading-[16.8px] text-white bg-black px-[15px] rounded-[4px] mt-[36px] py-[10px]">
+                  <button className="text-[14px] max-sm:w-full leading-[16.8px] text-white bg-black px-[15px] rounded-[4px] mt-[36px] py-[10px]">
                     Send Announcement
                   </button>
                 </div>

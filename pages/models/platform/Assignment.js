@@ -8,7 +8,7 @@ const assignmentSchema = new Schema({
   submitAssignment: { type: String },
   dateAssign: { type: String },
   dateSubmitted: { type: String },
-  date: { type: Date, required: true, index: true },  
+  date: { type: Date, required:true, index: true },  
   class: { type: Schema.Types.ObjectId, ref: 'Class' },
   userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });

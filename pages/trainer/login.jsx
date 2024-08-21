@@ -55,7 +55,7 @@ export default function Login() {
   };
   return (
     <main>
-      <div className="w-[598px] max-md:w-full max-md:px-[40px] max-sm:h-auto max-sm:px-[20px] relative bg-[white] h-[100vh] flex flex-col justify-between pl-[60px] pb-[48.07px] pt-[114px] pr-[113px]">
+      <div className="w-[598px] max-md:w-full max-md:px-[40px] max-sm:min-h-[100vh] max-sm:px-[20px] relative bg-[white] h-[100vh] flex flex-col justify-between pl-[60px] pb-[48.07px] pt-[114px] pr-[113px]">
         <div className="flex flex-col gap-[35px]">
           <strong className="text-[24.71px] leading-[29.65px]">Log In </strong>
           <div className="flex flex-col gap-[28px]">

@@ -30,11 +30,13 @@ export default async function handler(req, res) {
 
     case 'POST':
       try {
-        const { id, ...assignmentData } = req.body;
+        const {id, ...assignmentData} = req.body;
+
+        console.log("request body", req.body);
         
         console.log("Assignment data:", assignmentData);
 
-        if (typeof assignmentData !== 'object' || assignmentData === null) {
+        if (assignmentData === null) {
           throw new Error('Invalid assignment data format');
         }
 

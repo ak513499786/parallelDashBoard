@@ -15,19 +15,39 @@ export default function Learn() {
   const [unsubmittedOnly, setUnsubmittedOnly] = useState(false);
 
 
-  const fetchAssignments = async () => {
-    try {
-      const response = await axios.get('/api/platform/assignments/route');
-      setAssignment(response.data.data);
-      console.log("Fetched assignments:", response.data.data);
-    } catch (error) {
-      console.error('Error fetching assignments:', error);
-    }
-  };
+  // const fetchAssignments = async () => {
+  //   try {
+  //     const response = await axios.get('/api/platform/assignments/route');
+  //     setAssignmentData(response.data.data);
+  //     console.log("Fetched assignments:", response.data.data);
+  //   } catch (error) {
+  //     console.error('Error fetching assignments:', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchAssignments();
-  }, []);
+  // useEffect(() => {
+  //   fetchAssignments();
+  // }, []);
+  
+  // const handleSubmit = async () => {
+  //   if (!assignmentLink) {
+  //     alert('Please paste a link before submitting.');
+  //     return;
+  //   }}
+  //   setIsSubmitting(true);
+  
+    const fetchAssignments = async () => {
+      try {
+        const response = await axios.get('/api/platform/assignments/route');
+        setAssignmentData(response.data.data);
+        console.log("Fetched assignments:", response.data.data);
+      } catch (error) {
+        console.error('Error fetching assignments:', error);
+      }
+    };
+    useEffect(() => {
+      fetchAssignments();
+    }, []);
 
   const fetchAssignmentsByDate = async (selectedDate) => {
     try {
@@ -43,6 +63,17 @@ export default function Learn() {
       console.error('Error fetching assignments:', error);
     }
   };
+    
+
+    const fetchSubmitAssignment = async () => {
+      try {
+        const response = await axios.post('/api/platform/assignments/submitAssignment');
+        setAssignmentData(response.data.data);
+        console.log("Submitted assignment:", response.data.data);
+      } catch (error) {
+        console.error('Error submitting assignment:', error);
+      }
+    };
 
   useEffect(() => {
     if (date) {
@@ -79,23 +110,24 @@ export default function Learn() {
   return (
     <>
       <Navbar />
-      <main className="pt-[63.51px] px-[60px] pb-[85px]">
-      <div className="w-full pt-[25.52px] pl-[29.45px] pb-[52.49px] rounded-[6px] bg-white">
-          {assignment ? (
-            <div>
-              <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
-                New Assignment
-              </p>
-              <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
-                {assignment.title}
-              </h1>
-              <p className="mt-[20.14px] w-[587px]">
-                {assignment.description}
-              </p>
-            </div>
-          ) : (
-            <p>No assignments found</p>
-          )}
+      <main className="pt-[63.51px] px-[60px] max-sm:px-[20px] max-md:px-[40px] pb-[85px]">
+        <div className="w-full pt-[25.52px] pl-[29.45px] max-md:p-[20px] pb-[52.49px] rounded-[6px] bg-white">
+        {assignmentData.length > 0 ? (
+        assignmentData.map((assignment, index) => (
+        <div key={index}>
+          <p className="p-[8px] bg-[#0C6926] rounded-[24px] inline text-[14px] text-white leading-[18.2px]">
+            New Assignment
+          </p>
+          <h1 className="font-semibold mt-[28.72px] text-[20px] leading-[26px]">
+            {assignment.title}
+          </h1>
+          <p className="mt-[20.14px] max-sm:w-full w-[587px]">
+            {assignment.description}
+          </p>
+          </div>
+      ))) : (
+        <p>No assignments found</p>
+      )}
           <button className="py-[10px] px-[24px] border-[1px] border-black rounded-[6px] text-base font-semibold mt-[28.72px] mb-[33.75px]">
             View Resources
           </button>

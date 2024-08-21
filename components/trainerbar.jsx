@@ -8,14 +8,14 @@ export default function TrainerNavbar() {
     <>
       <nav className="px-[60px] sticky top-0 z-[99999] relative max-md:px-[40px] max-sm:px-[20px] flex justify-between pt-[40px] pb-[20px] bg-white border-b-[0.5px] border-[#00000033]">
         <Image src="/Frame 96.svg" width={120.92} height={22} />
-        <div className="flex gap-[64px]">
+        <div className="flex gap-[64px] max-sm:gap-[32px] max-[400px]:gap-[16px]">
           <Link
             href={"/trainer/account"}
-            className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
+            className="text-[16px] max-[500px]:text-[14px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]"
           >
             My Account
           </Link>
-          <p className="text-[16px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]">
+          <p className="text-[16px] max-[500px]:text-[14px] max-hamburger:text-right max-hamburger:text-2xl leading-[19.2px] py-[2.5px]">
             Log out
           </p>
         </div>

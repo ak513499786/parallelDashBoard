@@ -33,73 +33,73 @@ export default function Profile() {
     (_, index) => currentYear - index
   );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/viewprofiledata");
-        const data = response.data;
-        if (data.length > 0) {
-          const lastData = data[data.length - 1];
-          setPhonenumber(lastData.phonenumber);
-          setName(lastData.Name);
-          setUserName(lastData.userName);
-          setCollege(lastData.College);
-          setAllLocation(lastData.allLocation);
-          setRemote(lastData.remote);
-          setBangalore(lastData.bangalore);
-          setHyderabad(lastData.hyderabad);
-          setChennai(lastData.chennai);
-          setDelhi(lastData.delhi);
-          setMumbai(lastData.mumbai);
-          setGurgaon(lastData.gurgaon);
-          setAhmedabad(lastData.ahmedabad);
-          setNoida(lastData.noida);
-          setPune(lastData.pune);
-          setNashik(lastData.nashik);
-          setChattisgarh(lastData.chattisgarh);
-          setSelectedYear(lastData.selectedYear);
-          setSelectedPassingYear(lastData.selectedPassingYear);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("/api/viewprofiledata");
+  //       const data = response.data;
+  //       if (data.length > 0) {
+  //         const lastData = data[data.length - 1];
+  //         setPhonenumber(lastData.phonenumber);
+  //         setName(lastData.Name);
+  //         setUserName(lastData.userName);
+  //         setCollege(lastData.College);
+  //         setAllLocation(lastData.allLocation);
+  //         setRemote(lastData.remote);
+  //         setBangalore(lastData.bangalore);
+  //         setHyderabad(lastData.hyderabad);
+  //         setChennai(lastData.chennai);
+  //         setDelhi(lastData.delhi);
+  //         setMumbai(lastData.mumbai);
+  //         setGurgaon(lastData.gurgaon);
+  //         setAhmedabad(lastData.ahmedabad);
+  //         setNoida(lastData.noida);
+  //         setPune(lastData.pune);
+  //         setNashik(lastData.nashik);
+  //         setChattisgarh(lastData.chattisgarh);
+  //         setSelectedYear(lastData.selectedYear);
+  //         setSelectedPassingYear(lastData.selectedPassingYear);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    const data = {
-      Name,
-      userName,
-      College,
-      selectedYear,
-      selectedPassingYear,
-      allLocation,
-      remote,
-      bangalore,
-      hyderabad,
-      chennai,
-      delhi,
-      mumbai,
-      gurgaon,
-      ahmedabad,
-      noida,
-      pune,
-      nashik,
-      chattisgarh,
-      phonenumber,
-    };
+  //   const data = {
+  //     Name,
+  //     userName,
+  //     College,
+  //     selectedYear,
+  //     selectedPassingYear,
+  //     allLocation,
+  //     remote,
+  //     bangalore,
+  //     hyderabad,
+  //     chennai,
+  //     delhi,
+  //     mumbai,
+  //     gurgaon,
+  //     ahmedabad,
+  //     noida,
+  //     pune,
+  //     nashik,
+  //     chattisgarh,
+  //     phonenumber,
+  //   };
 
-    try {
-      const response = await axios.post("/api/profile", data);
-      console.log("Data sent successfully:", response.data);
-    } catch (error) {
-      console.error("Error sending data:", error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post("/api/profile", data);
+  //     console.log("Data sent successfully:", response.data);
+  //   } catch (error) {
+  //     console.error("Error sending data:", error);
+  //   }
+  // };
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -118,7 +118,7 @@ export default function Profile() {
   return (
     <>
       <TrainerNavbar />
-      <main className="pl-[60px] max-xl:px-[60px] max-md:px-[40px] max-sm:px-[20px] pt-[51.08px] pb-[67px]">
+      <main className="pl-[60px] max-xl:px-[60px] max-md:px-[40px] max-sm:px-[20px] pt-[0.08px] pb-[67px]">
         <div className="w-[1097px] max-sm:px-[20px] max-hamburger:pr-[60px] max-md:pr-[20px] pb-[39px] max-xl:w-full max-hamburger:h-auto max-hamburger:pb-[38.5px] pt-[38.5px] pl-[28.5px] bg-white rounded-[5px]">
           <h1 className="text-[20px] leading-[26px] font-semibold">
             User Information
